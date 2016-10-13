@@ -31,4 +31,4 @@ class Empreendimento(models.Model):
 	lancamento = models.DateTimeField('Data prevista para lançamento',blank=True, null=True)
 
 	def __str__(self):
-		return('titulo')
+		return()

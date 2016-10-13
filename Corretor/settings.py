@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Corretor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'canal_corretor',  
+        'NAME': 'newbank_portal',  
         'USER': 'root',                  
         'PASSWORD': 'YM-51D@vida',                  
         'HOST': 'localhost', 
