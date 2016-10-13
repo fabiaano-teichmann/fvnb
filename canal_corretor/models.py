@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 import datetime
 
-class Corretor(models.Model):
+class Corretore(models.Model):
 	nome = models.CharField(max_length=150)
 	#precisa o usuário ter acesso admin
 	author = models.ForeignKey ('auth.User')
@@ -31,7 +31,14 @@ class Empreendimento(models.Model):
 	img = models.ImageField(blank=True, upload_to=None)
 	lancamento = models.DateTimeField('Data prevista para lançamento',blank=True, null=True)
 
+	def __str__(self):
+		return (self.titulo)
+
 class Material(models.Model):
 	nome = models.CharField(max_length=100)
 	descricao = models.CharField(max_length=200)
 	url = models.URLField()	
+	#emreendimento = models.ForeignKey("Empreendimento", on_delete=models.CASCADE,)
+ 
+	def __str__(self):
+		return(self.nome)
