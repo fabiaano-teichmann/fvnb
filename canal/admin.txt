@@ -1,0 +1,35 @@
+from django.contrib import admin
+from .models import Corretor, Categoria, Empreendimento
+
+class CorretorAdmin(admin.ModelAdmin):
+	salve_on_top = True
+	list_display = ('Nome', 'creci')
+	#list_filter = ('Nome', 'creci' )
+
+class MetaCorretor:
+	model = Corretor
+	admin.site.register(Corretor, CorretorAdmin)
+
+
+
+class CategoriaAdmin(admin.ModelAdmin):
+	salve_on_top = True
+	list_display = ('titulo')
+	#list_filter = ('titulo' )
+
+class MetaCategoria:
+	model = Categoria
+	admin.site.register(Categoria, CategoriaAdmin)
+
+
+
+
+class EmpreendimentoAdmin(admin.ModelAdmin):
+	salve_on_top = True
+	list_display = ('titulo')
+	#list_filter = ('titulo' )
+class MetaEmpreendimento:
+	model = Empreendimento
+	admin.site.register(Empreendimento, EmpreendimentoAdmin)
+
+# Register your models here.
