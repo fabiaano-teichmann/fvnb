@@ -2,8 +2,8 @@ from django.contrib import admin
 from .models import Corretor, Categoria, Empreendimento, Material
 class EmpreendimentoAdmin(admin.ModelAdmin):
 	save_on_top = True
-	list_display = ('titulo', 'lancamento')
-	list_filter = ('titulo', 'lancamento')
+	list_display = ('titulo', 'cat')
+	list_filter = ('titulo', 'cat')
 
 class MetaEmpreendimento:
 	model = Empreendimento
@@ -36,8 +36,8 @@ class MetaCategoria(admin.ModelAdmin):
 
 class MaterialAdmin(admin.ModelAdmin):
 	save_on_top = True
-	list_display = ('nome', 'descricao')
-	list_filter = ('nome', 'descricao')
+	list_display = ('nome', 'empreendimento')
+	list_filter = ('nome', 'empreendimento')
 
 
 class MetaMaterial:
