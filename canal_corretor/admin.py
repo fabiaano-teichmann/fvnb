@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Corretor, Categoria, Empreendimento, Material
+from .models import Corretore, Categoria, Empreendimento, Material
 class EmpreendimentoAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('titulo', 'cat')
@@ -11,14 +11,14 @@ class MetaEmpreendimento:
 
 
 
-class CorretorAdmin(admin.ModelAdmin):
+class CorretoreAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('nome', 'cidade')
 	list_filter = ('nome', 'cidade')
 
 
-class MetaCorretor:
-	model = Corretor
+class MetaCorretore:
+	model = Corretore
 	admin.site.register(Corretor, CorretorAdmin)
 
 

@@ -1,0 +1,12 @@
+{%extends 'canal_corretor/base.html'%}
+
+{% block cad_co %}
+
+
+<form method="POST" action="">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Enviar">
+</form>
+
+
+{% endblock cad_co %}

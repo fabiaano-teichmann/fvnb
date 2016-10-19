@@ -30,22 +30,24 @@ estado = (
 	('Sergipe',	'SE'),
 	('Tocantins','TO'),
 	)
-tipo = (
-	('J', 'Jurídica'),
-	('F', 'Fisica')
-	)
 
-class Corretor(models.Model):
-	nome = models.CharField(verbose_name='Nome: (campo obrigatório)',max_length=150)
-	#precisa o usuário ter acesso admin
-	author = models.ForeignKey ('auth.User')
-	creci =  models.IntegerField(verbose_name='Registro CRECI: (campo obrigatório)', blank=False)
-	tipo = models.CharField(max_length=10,verbose_name='Tipo registro:', blank=True,choices=tipo)
-	phone = models.IntegerField(verbose_name='Telefone: (campo obrigatório)')
+
+class Corretore(models.Model):
+	nome = models.CharField(verbose_name='Nome: (campo obrigatório)',max_length=150, blank=False)
+	nasc = models.DateField(verbose_name="Data de nascimento")
+	cpf = models.CharField(verbose_name='Cep: (Campo obrigatório', blank=False))
+	telefone = models.CharField(verbose_name='Telefone:')
+	email = models.EmailField(max_length=254,verbose_name='E-mail: (campo obrigatório)', blank=False)
+	creci =  models.CharField(verbose_name='Registro CRECI: (campo obrigatório)', blank=False)
+	#tipo = models.CharField(max_length=10,verbose_name='Tipo registro:', blank=True,choices=tipo)
+	phone = models.CharField(verbose_name='Celular: (campo obrigatório)')
 	cidade = models.CharField(verbose_name='Cidade: (campo obrigatório)',default='none',max_length=200)
 	endereco = models.CharField(max_length=254, verbose_name='Endereço:(campo obrigatório)')
-	cep = models.IntegerField()
-	email = models.EmailField(max_length=254,verbose_name='E-mail: (campo obrigatório)', blank=False)
+	cep = models.CharField()
+	
+	
+	
+	
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado: (campo obrigatório)' )
 	# AO adicionar estado tive que colocar que o campo pode ser nullo pois já tem a tabela
 	def __str__(self):
