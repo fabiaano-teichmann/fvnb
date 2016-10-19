@@ -1,7 +1,7 @@
 from django import forms
-from .models import Corretore
+from .models import Corretor
 
-class CorretoreForm(forms.ModelForm):
+class CorretorForm(forms.ModelForm):
 	class Meta:
-		model = Corretore
-		fields = ["nome", "creci", "tipo","phone", "endereco", "cep" ,"cidade",  "email", "estado"]
+		model = Corretor
+		fields = ["nome", "creci", "phone", "endereco", "cep" ,"cidade",  "email", "estado"]

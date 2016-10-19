@@ -32,24 +32,49 @@ estado = (
 	)
 
 
-class Corretore(models.Model):
+class Corretor(models.Model):
 	nome = models.CharField(verbose_name='Nome: (campo obrigatório)',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
-	cpf = models.CharField(verbose_name='Cep: (Campo obrigatório', blank=False))
-	telefone = models.CharField(verbose_name='Telefone:')
+	cpf = models.CharField(verbose_name='Cep: (Campo obrigatório)', blank=False, max_length=16)
+	creci =  models.CharField(verbose_name=' Creci Físico: (campo obrigatório)', blank=False, max_length=12)
+	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=False)
+	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail: (campo obrigatório)', blank=False)
-	creci =  models.CharField(verbose_name='Registro CRECI: (campo obrigatório)', blank=False)
-	#tipo = models.CharField(max_length=10,verbose_name='Tipo registro:', blank=True,choices=tipo)
-	phone = models.CharField(verbose_name='Celular: (campo obrigatório)')
-	cidade = models.CharField(verbose_name='Cidade: (campo obrigatório)',default='none',max_length=200)
-	endereco = models.CharField(max_length=254, verbose_name='Endereço:(campo obrigatório)')
-	cep = models.CharField()
-	
-	
-	
-	
+	site = models.URLField(verbose_name='site', blank=True)
+	endereco = models.CharField(max_length=254, verbose_name='Endereço:(campo obrigatório)',blank=False )
+	bairro = models.CharField(verbose_name='Bairro: (campo obrigatório)',max_length=100,blank=False)
+	cidade = models.CharField(verbose_name='Cidade: (campo obrigatório)',blank=False,max_length=200)
+	cep = models.CharField(verbose_name=' Cep: (campo obrigatório)', blank=False, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado: (campo obrigatório)' )
-	# AO adicionar estado tive que colocar que o campo pode ser nullo pois já tem a tabela
+	vinculado = models.ForeignKey("Imobiliaria",verbose_name='Imobiliária vinculada', on_delete=models.CASCADE)
+	#pedir os campos obrigátórios e se é só numero ou se é com caracter
+	# pegar a chave estrangeira de imobiliaria
+		
+	
+	def __str__(self):
+		return (self.nome)
+
+
+class Imobiliaria(models.Model):
+	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to=None)
+	razao = models.CharField(max_length=200 ,verbose_name=' Razão social:(campo obrigatório)', blank=False)
+	creci_j = models.CharField(max_length=6, verbose_name='Creci Jurídico(campo obrigatório)', blank=False)
+	nome = models.CharField(verbose_name='Nome Fantasia:(campo obrigatório)', blank=False, max_length=150)
+	cnpj = models.CharField(verbose_name=' Cnpj:(campo obrigatório)', blank=False, max_length=14)
+	endereco = models.CharField(max_length=254, verbose_name='Endereço:(campo obrigatório)',blank=False )
+	bairro = models.CharField(verbose_name='Bairro: (campo obrigatório)', max_length=100, blank=True)
+	cidade = models.CharField(verbose_name='Cidade: (campo obrigatório)',blank=False,max_length=200)
+	cep = models.CharField(verbose_name=' Cep: (campo obrigatório)', blank=False, max_length=12)
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado: (campo obrigatório)' )	
+	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
+	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
+	email = models.EmailField(max_length=254,verbose_name='E-mail: (campo obrigatório)', blank=False)
+	site = models.URLField(verbose_name='site', blank=True)
+	resp = models.CharField(verbose_name='(Corretor Resposável:campo obrigatório)', blank=False, max_length=150)
+	email_resp = models.CharField("Email do Responsável:", max_length=200)
+	cpf = models.CharField(verbose_name='Cep: (Campo obrigatório)', blank=False, max_length=16)
+	creci_f =  models.CharField(verbose_name=' Creci Físico: (campo obrigatório)', blank=False, max_length=12)
+
 	def __str__(self):
 		return (self.nome)
 
@@ -57,7 +82,7 @@ class Corretore(models.Model):
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
 	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
-	descricao = models.TextField("Descrição:")
+	
 
 	def __str__(self):
 		return (self.titulo)
