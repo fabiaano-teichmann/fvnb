@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Corretor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'forca_venda_nb',  
+        'NAME': 'forca_venda',  
         'USER': 'root',                  
         'PASSWORD': 'YM-51D@vida',                  
         'HOST': 'localhost', 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .forms import CorretorForm
-from .models import Corretor
+from .forms import AutonomoForm
+from .models import Autonomo
 # Create your views here.
 
 def index(request):
@@ -14,7 +14,7 @@ def corretor_new(request):
 		#print (request.POST.get("email"))
 		#print (request.POST.get("estado"))
 		#Post.object.create("nome")
-	form = CorretorForm(request.POST or None)
+	form = AutonomoForm(request.POST or None)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
