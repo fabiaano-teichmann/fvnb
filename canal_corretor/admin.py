@@ -40,6 +40,7 @@ class AutonomoAdmin(admin.ModelAdmin):
 class MetaAutonomo:
 	model = Autonomo
 	admin.site.register(Autonomo, AutonomoAdmin)
+
 #categoria
 class CategoriaAdmin(admin.ModelAdmin):
 	save_on_top = True

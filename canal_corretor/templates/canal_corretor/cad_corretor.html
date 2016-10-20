@@ -1,13 +1,38 @@
 {%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
 
 {% block cad_co %}
-<div class="col-md-10 col-md-offset-2">
-<div class="input-group">
 
-<form method="POST" action="">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Enviar">
-</form>
+<div class=" container form-group">
+
+<form method="POST" action="", class="post-form">{% csrf_token %}
+<div class="col-md-12">
+<h1>Cadastro Corretor Autônomo</h1>
+
+	<div class="col-md-6">
+		<label class="label-nb" > Nome*:</label> <br>{{form.nome}}
+		<label class="label-nb" >Nascimento*: </label><br> {{form.nasc}}
+		<label class="label-nb" >Telefone*:</label><br>{{form.telefone}}
+		<label class="label-nb">Endereço:</label> <br>{{form.endereco}}
+		<label class="label-nb">Cep*: </label><br>{{form.cep}}
+		<label class="label-nb">Email*:</label> <br> {{form.email}}
+		
+	</div>
+	<div class="col-md-6">
+		<label class="label-nb" > Cpf*:</label> <br>{{form.cpf}}
+		<label class="label-nb">Creci*:</label><br> {{form.creci}}
+		<label class="label-nb">Celular:</label><br> {{form.phone}}
+		<label class="label-nb">Cidade*:</label><br> {{form.cidade}}
+		<label class="label-nb">Estado*:</label><br> {{form.estado}}<br>
+		<label class="label-nb">Site: </label><br> {{form.site}}
+	</div>
+
+
+
+<input type="submit" value="Enviar" class="btn btn-lg  button-send">
+
 </div>
+</form>
+
 </div>
 {% endblock cad_co %}

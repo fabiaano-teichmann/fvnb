@@ -32,19 +32,19 @@ estado = (
 	)
 
 class Autonomo(models.Model):
-	nome = models.CharField(verbose_name='Nome *: ',max_length=150, blank=False)
-	nasc = models.DateField(verbose_name="Data de nascimento *")
-	cpf = models.CharField(verbose_name='Cep *:)', blank=False, max_length=16)
-	creci =  models.CharField(verbose_name=' Creci Físico *:', blank=False, max_length=12)
+	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
+	nasc = models.DateField(verbose_name="Data de nascimento*:")
+	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
+	creci =  models.CharField(verbose_name='Creci Físico*:', blank=False, max_length=12)
 	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=False)
-	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
-	email = models.EmailField(max_length=254,verbose_name='E-mail: (campo obrigatório)', blank=False)
+	phone = models.CharField(verbose_name='Celular:', max_length=16, blank=True)
+	email = models.EmailField(max_length=254,verbose_name='E-mail*:', blank=False)
 	site = models.URLField(verbose_name='site', blank=True)
 	endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
-	bairro = models.CharField(verbose_name='Bairro *:',max_length=100,blank=False)
-	cidade = models.CharField(verbose_name='Cidade *:',blank=False,max_length=200)
-	cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=16)
-	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado: (campo obrigatório)' )
+	bairro = models.CharField(verbose_name='Bairro*:',max_length=100,blank=False)
+	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
+	cep = models.CharField(verbose_name=' Cep*:', blank=False, max_length=16)
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	
 	#pedir os campos obrigátórios e se é só numero ou se é com caracter
 	# pegar a chave estrangeira de imobiliaria
@@ -55,12 +55,12 @@ class Autonomo(models.Model):
 
 
 class Corretor(models.Model):
-	nome = models.CharField(verbose_name='Nome *: ',max_length=150, blank=False)
+	nome = models.CharField(verbose_name='Nome: * ',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
-	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
-	creci =  models.CharField(verbose_name=' Creci Físico *: ', blank=False, max_length=12)
-	telefone = models.CharField(verbose_name='Telefone *:', max_length=16, blank=False)
-	phone = models.CharField(verbose_name='Celular *: ', max_length=16, blank=True)
+	cpf = models.CharField(verbose_name='CPF: * ', blank=False, max_length=16)
+	creci =  models.CharField(verbose_name=' Creci Físico: * ', blank=False, max_length=12)
+	telefone = models.CharField(verbose_name='Telefone:*', max_length=16, blank=False)
+	phone = models.CharField(verbose_name='Celular: * ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *: ', blank=False)
 	vinculado = models.ForeignKey("Imobiliaria",verbose_name='Imobiliária vinculada', on_delete=models.CASCADE)
 	#pedir os campos obrigátórios e se é só numero ou se é com caracter
