@@ -4,11 +4,19 @@
 {% block cad_co %}
 
 <div class=" container form-group">
-
-<form method="POST" action="", class="post-form">{% csrf_token %}
-<div class="col-md-12">
 <h1>Cadastro Corretor Autônomo</h1>
+<form method="POST"  class="form-group">{% csrf_token %}
 
+<div class=" form-campo">
+
+{{ form.as_p}}
+
+<input type="submit" value="Enviar" class="btn btn-lg  button-send">
+
+</div>
+
+
+<!--
 	<div class="col-md-6">
 		<label class="label-nb" > Nome*:</label> <br>{{form.nome}}
 		<label class="label-nb" >Nascimento*: </label><br> {{form.nasc}}
@@ -26,13 +34,30 @@
 		<label class="label-nb">Estado*:</label><br> {{form.estado}}<br>
 		<label class="label-nb">Site: </label><br> {{form.site}}
 	</div>
+["nome", "nasc", "cpf", "creci", "telefone", "email", "site", "phone", "endereco", "cep" ,"cidade",  "email", "estado"]
 
-
-
+<br>
 <input type="submit" value="Enviar" class="btn btn-lg  button-send">
 
 </div>
 </form>
 
+
+	<label for="nome"><input id="" name="nome" type="text" ></label>	
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+	<label for=""><input id="" name="" type="text"></label>
+-->
+</div>
+</form>
 </div>
 {% endblock cad_co %}

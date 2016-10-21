@@ -27,9 +27,15 @@ h1, h2, h3, h4 {
     float: right;
 }
 
-.post-form textarea, .post-form input {
-    width: 100%;
+ .form-campo input, textarea, label {
+    width: 90%;
+    margin-left: 5%;
+    border-color: #86744f !important;    
+    border-width: 0 0 5px 0;
+    font-size: 25px;
+    color: #86744f !important
 }
+
 
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
@@ -57,7 +63,7 @@ h1, h2, h3, h4 {
 }
 
 .label-nb{
-    background-color: 
-    border-color:#86744f;
-    border-radius: 0;
+    font-size: 18px;
+    color:#86744f;
+    
 }
