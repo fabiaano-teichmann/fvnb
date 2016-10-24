@@ -31,7 +31,12 @@ estado = (
 	('Tocantins','TO'),
 	)
 
-class Autonomo(models.Model):
+status_user = (
+	('1','Inativo'),
+	('2','Ativo'),
+	)
+#CORRETOR AUTONOMO
+class Corretor(models.Model):
 	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
 	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
@@ -45,16 +50,15 @@ class Autonomo(models.Model):
 	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep*:', blank=False, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
+	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default='Inativo') 
 	
-	#pedir os campos obrigátórios e se é só numero ou se é com caracter
-	# pegar a chave estrangeira de imobiliaria
-		
+	#campo para'criar a senha para o usuário 
 	
 	def __str__(self):
 		return (self.nome)
 
-
-class Corretor(models.Model):
+# CORRETOR LIGADO A IMOBILIARIA 
+class CorretorAfiliado(models.Model):
 	nome = models.CharField(verbose_name='Nome: * ',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
 	cpf = models.CharField(verbose_name='CPF: * ', blank=False, max_length=16)
@@ -62,7 +66,9 @@ class Corretor(models.Model):
 	telefone = models.CharField(verbose_name='Telefone:*', max_length=16, blank=False)
 	phone = models.CharField(verbose_name='Celular: * ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *: ', blank=False)
+	#verificar a necessidade desse campo estar aparecendo 
 	vinculado = models.ForeignKey("Imobiliaria",verbose_name='Imobiliária vinculada', on_delete=models.CASCADE)
+	
 	#pedir os campos obrigátórios e se é só numero ou se é com caracter
 	# pegar a chave estrangeira de imobiliaria
 		
@@ -90,7 +96,7 @@ class Imobiliaria(models.Model):
 	email_resp = models.CharField("Email do Responsável:", max_length=200)
 	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
 	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=False, max_length=12)
-
+	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default='Inativo')
 	def __str__(self):
 		return (self.nome)
 

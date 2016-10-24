@@ -1,0 +1,4 @@
+CREATE == POST criar 
+RETRIEVE == GET listar e procurar
+UPDATE = PUT/ PATCH atualiza
+DELETE = DELETE

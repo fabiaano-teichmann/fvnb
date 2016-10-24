@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Corretor, Imobiliaria, Autonomo, Categoria, Empreendimento, Material
+from .models import CorretorAfiliado, Imobiliaria, Corretor, Categoria, Empreendimento, Material
 # empreendimentos
 class EmpreendimentoAdmin(admin.ModelAdmin):
 	save_on_top = True
@@ -20,8 +20,8 @@ class MetaImobiliaria:
 	model = Imobiliaria
 	admin.site.register(Imobiliaria, ImobiliariaAdmin) 
 
-# corretor
-class CorretorAdmin(admin.ModelAdmin):
+# Corretor Afiliado 
+class CorretorAfiliadoAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('nome',  'vinculado')
 	list_filter = ('nome', 'vinculado')
@@ -29,17 +29,17 @@ class CorretorAdmin(admin.ModelAdmin):
 
 class MetaCorretor:
 	model = Corretor
-	admin.site.register(Corretor, CorretorAdmin)
+	admin.site.register(CorretorAfiliado, CorretorAfiliadoAdmin)
 
-#autonomo
-class AutonomoAdmin(admin.ModelAdmin):
+#Corretor
+class CorretorAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('nome', 'cidade')
 	list_filter = ('nome', 'cidade')
 
-class MetaAutonomo:
-	model = Autonomo
-	admin.site.register(Autonomo, AutonomoAdmin)
+class MetaCorretor:
+	model = Corretor
+	admin.site.register(Corretor, CorretorAdmin)
 
 #categoria
 class CategoriaAdmin(admin.ModelAdmin):

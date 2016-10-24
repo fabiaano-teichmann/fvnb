@@ -1,0 +1,23 @@
+{%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
+
+
+{% block cad_afiliado %}
+
+<div class=" container form-group">
+
+
+<form method="POST"  class="form-group">{% csrf_token %}
+
+<div class=" form-campo">
+
+{{ form.as_p}}
+
+<input type="submit" value="Enviar" class="btn btn-lg  button-send">
+
+
+
+</div>
+</form>
+</div>
+{% endblock cad_afiliado %}
