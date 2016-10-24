@@ -1,16 +1,21 @@
 {%extends 'canal_corretor/base.html'%}
 
 {% block cad_imobi %}
-<div class="col-md-10 col-md-offset-2">
-<div class="input-group">
+<div class=" container form-group">
 
-<form method="POST" action="", class="post-form">{% csrf_token %}
-<div class="col-md-12">
-{{ form.as_p }}
+
+<form method="POST"  class="form-group">{% csrf_token %}
+
+<div class=" form-campo">
+
+{{ form.as_p}}
+
+<input type="submit" value="Enviar" class="btn btn-lg  button-send">
+
+
+
 </div>
-
-<input type="submit" value="Enviar">
 </form>
-</div>
-</div>
+</div
+
 {% endblock cad_imobi %}
