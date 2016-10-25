@@ -2,40 +2,43 @@ from django.db import models
 from django.utils import timezone
 import datetime
 estado = (
-	('Acre', 'AC'),
-	('Alagoas','AL'),
-	('Amapá','AP'),
-	('Amazonas','AM'),
-	('Bahia','BA'),
-	('Ceará','CE'),
-	('Distrito Federal', 'DF'),
-	('Espírito Santo', 'ES'),
-	('Goiás', 'GO'),
-	('Maranhão', 'MA'),
-	('Mato Grosso', 'MT'),
-	('Mato Grosso do Sul', 'MS'),
-	('Minas Gerais', 'MG'),
-	('Pará', 'PA'),
-	('Paraíba', 'PB'),
-	('Paraná' ,'PR'),
-	('Pernambuco', 'PE'),
-	('Piauí', 'PI'),
-	('Rio de Janeiro', 'RJ'),
-	('Rio Grande do Norte', 'RN'),
-	('Rio Grande do Sul', 'RS'),
-	('Rondônia','RO'),
-	('Roraima',	'RR'),
-	('Santa Catarina', 'SC'),
+	('AC','Acre' ),
+	('AL','Alagoas'),
+	('AP','Amapá'),
+	('AM','Amazonas'),
+	('BA','Bahia'),
+	('CE','Ceará'),
+	('DF','Distrito Federal'),
+	('ES','Espírito Santo'),
+	('GO', 'Goiás'),
+	('MA', 'Maranhão'),
+	('MT', 'Mato Grosso'),
+	('MS', 'Mato Grosso do Sul'),
+	('MG', 'Minas Gerais'),
+	('PA', 'Pará'),
+	('PB', 'Paraíba'),
+	('PR','Paraná' ),
+	('PE','Pernambuco'),
+	('PI', 'Piauí'),
+	('RJ', 'Rio de Janeiro'),
+	('RN', 'Rio Grande do Norte'),
+	('RS', 'Rio Grande do Sul'),
+	('RO', 'Rondônia'),
+	('RR', 'Roraima'),
+	('SC','Santa Catarina'),
 	('São Paulo', 'SP'),
-	('Sergipe',	'SE'),
-	('Tocantins','TO'),
+	('SE', 'Sergipe'),
+	('TO', 'Tocantins'),
 	)
 
 status_user = (
 	('1','Inativo'),
 	('2','Ativo'),
 	)
+#CADASTRO DE USUÁRIOS
+
 #CORRETOR AUTONOMO
+
 class Corretor(models.Model):
 	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
@@ -58,6 +61,7 @@ class Corretor(models.Model):
 		return (self.nome)
 
 # CORRETOR LIGADO A IMOBILIARIA 
+
 class CorretorAfiliado(models.Model):
 	nome = models.CharField(verbose_name='Nome: * ',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
@@ -76,6 +80,7 @@ class CorretorAfiliado(models.Model):
 	def __str__(self):
 		return (self.nome)
 
+#IMOBILIARIA
 
 class Imobiliaria(models.Model):
 	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to=None)
@@ -87,7 +92,7 @@ class Imobiliaria(models.Model):
 	bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
 	cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=12)
-	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado: (campo obrigatório)' )	
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado *:' )	
 	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
 	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *:', blank=False)
@@ -100,6 +105,10 @@ class Imobiliaria(models.Model):
 	def __str__(self):
 		return (self.nome)
 
+#PARTE DE CADASTRO DOS EMPREENDIMENTOS NB
+
+
+#CATEGORIA
 
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
@@ -108,6 +117,8 @@ class Categoria(models.Model):
 
 	def __str__(self):
 		return (self.titulo)
+
+#EMPREENDIMENTOS
 
 class Empreendimento(models.Model):
 	titulo = models.CharField('Nome:(campo obrigatório)', max_length=200, blank=False)
@@ -118,6 +129,8 @@ class Empreendimento(models.Model):
 	estado = models.CharField(verbose_name='Estado: (campo obrigatório)',max_length=100, choices=estado, blank=True)
 	def __str__(self):
 		return (self.titulo)
+
+#MATERIAL DE APOIO DO CORRETOR
 
 class Material(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome: (campo obrigatório)', blank=False)

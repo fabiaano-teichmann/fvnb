@@ -1,11 +1,9 @@
 {%extends 'canal_corretor/base.html'%}
-{% load staticfiles %}
 
 
-{% block cad_afiliado %}
-
+{%block cad_afiliado%} 
 <div class=" container form-group">
-
+<h1 class="titulo"> Cadastro Corretor Afiliado</h1>
 
 <form method="POST"  class="form-group">{% csrf_token %}
 
@@ -19,5 +17,6 @@
 
 </div>
 </form>
-</div>
-{% endblock cad_afiliado %}
+</div
+
+{%endblock cad_afiliado%}

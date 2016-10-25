@@ -17,7 +17,7 @@ class ImobiliariaForm(forms.ModelForm):
 		fields = [
 		"img", "razao", "nome", "cnpj", "endereco",
 		"bairro", "cidade","cep","estado", "telefone",
-		"phone", "email", "site", "email_resp","cpf","creci_f"
+		"phone", "email", "site","resp", "email_resp","cpf","creci_f"
 
 		]
 class CorretorAfiliadoForm(forms.ModelForm):
