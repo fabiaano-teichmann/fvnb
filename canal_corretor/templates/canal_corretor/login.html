@@ -1,0 +1,42 @@
+{%extends 'canal_corretor/base.html'%}
+{%block login%}
+
+<!--login modal-->
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body">
+      <!-- formulário puro sem modal -->
+        <form action="" method="post">{% csrf_token %}
+          <div class="form-control">
+            <input type="text" name="username" placeholder="Usuário" class="form-control">
+          </div>
+
+          <div class="form-control">
+            <input type="password" name="password" placeholder="Senha" class="form-control">
+          </div>
+          <button class="btn btn-primary" type="submit">Login</button>
+
+        </form>  
+        <!-- formulário puro sem modal -->
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+  <!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+{% endblock login%}	

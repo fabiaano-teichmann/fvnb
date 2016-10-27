@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
-from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm, UserModelForm
 from .models import CorretorAfiliado, Imobiliaria, Corretor
 from django.http import HttpResponse
-from django.contrib.auth import views # Formulario de criacao de usuarios
+from django.contrib.auth.models import User 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
 	return render(request, 'canal_corretor/index.html', {})
@@ -24,7 +27,7 @@ def corretor_new(request):
 	return render(request, 'canal_corretor/cad_corretor.html',{'form': form})	
 
 # IMOBILIARIA
-
+@login_required
 def imobiliaria_new(request):
 	form = ImobiliariaForm(request.POST or None)
 	if form.is_valid():
@@ -38,17 +41,51 @@ def imobiliaria_new(request):
 		return render(request, 'canal_corretor/enviado.html')
 	return render (request, 'canal_corretor/cad_imobi.html', {'form':form})	
 
-# CORRETOR
-
+# CORRETOR AFILIADO
+@login_required
 def corretorafiliado_new(request):
+	
 	form = CorretorAfiliadoForm(request.POST or None)
 	if request.user.is_authenticated():
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance = form.save()
 			instance = form.cleaned_data.get('nome')
-			return render (request, 'canal_corretor/cad_afiliado.html')
-
+			
 	else:	
-		return HttpResponse("<h1> Se logue no sistema </h1>")
+		return redirect('/do_login')
+	
 	return render(request, 'canal_corretor/cad_afiliado.html', {'form':form})	
+
+# FORMULÁRIO DE lOGIN
+
+
+
+def do_login(request):
+	if request.method =='POST':
+		user = authenticate(username=request.POST['username'], password=request.POST['password'])
+		if user is not None:
+			login(request, user)
+			return redirect('/imobiliaria/corretor/new')
+
+	return render(request, 'canal_corretor/login.html')		
+
+
+def do_logout(request):
+	logout(request)
+	return redirect('/login')
+
+
+"""""
+def cadastro(request):
+	form = UserModelForm(request.POST or None)
+	context = {'form': form}
+	if request.method =='POST':
+		if form.is_valid():
+			instance = form.salve()
+			instance = form.cleaned_data('username')
+			
+
+	return render (request, 'canal_corretor/cadastro.html', context)
+
+"""
