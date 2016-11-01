@@ -7,7 +7,9 @@ url(r'^corretor/new$', views.corretor_new, name='corretor_new'),
 url(r'^imobiliaria/new$', views.imobiliaria_new, name="imobiliaria_new"),
 url(r'^imobiliaria/corretor/new$', views.corretorafiliado_new, name="corretorafiliado_new"),
 url(r'^login/$', views.do_login, name="login"),
-url(r'^logout/$', views.do_logout, name="logout")
+url(r'^logout/$', views.do_logout, name="logout"),
+url(r'^listar/ep/$', views.ep_list, name="empreendimento"),
+url(r'^visualizar/ep/(?P<id>[0-9]+)/$', views.ep_detail, name="visulizar ep"),
 
 ]
 

@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm, UserModelForm
-from .models import CorretorAfiliado, Imobiliaria, Corretor
+from .models import CorretorAfiliado, Imobiliaria, Corretor, Empreendimento
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.utils import timezone
 
 def index(request):
 	return render(request, 'canal_corretor/index.html', {})
@@ -47,9 +47,10 @@ def corretorafiliado_new(request):
 	
 	form = CorretorAfiliadoForm(request.POST or None)
 	if request.user.is_authenticated():
-		if form.is_valid():
+		if form.is_valid():			
 			instance = form.save(commit=False)
 			instance = form.save()
+			print(form)
 			instance = form.cleaned_data.get('nome')
 			
 	else:	
@@ -89,3 +90,20 @@ def cadastro(request):
 	return render (request, 'canal_corretor/cadastro.html', context)
 
 """
+#lISTAR EP
+@login_required
+def ep_list(request):
+	if request.user.is_authenticated():
+		eps = Empreendimento.objects.filter(lancamento=timezone.now()).order_by()
+		return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+ 
+	else:	
+		return redirect('/do_login')
+# DETALHAR EP
+@login_required
+def ep_detail(request):
+	if request.user.is_authenticated():
+		eps = get_object_or_404(Empreendimento, id=id)
+		return render(request, 'canal_corretor/ep_detail.html',{'eps': eps})
+	else:
+		return redirect('/do_login')	

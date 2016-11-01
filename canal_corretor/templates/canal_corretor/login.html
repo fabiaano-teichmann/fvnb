@@ -11,7 +11,8 @@
       </div>
       <div class="modal-body">
       <!-- formulário puro sem modal -->
-        <form action="" method="post">{% csrf_token %}
+        <form action="{% url 'canal_corretor.views.do_login' %}" method="post">
+        {% csrf_token %}
           <div class="form-control">
             <input type="text" name="username" placeholder="Usuário" class="form-control">
           </div>
@@ -37,6 +38,6 @@
 
 
   <!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		
 
 {% endblock login%}	

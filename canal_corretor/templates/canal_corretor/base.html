@@ -3,11 +3,9 @@
 <head>
 	<title>Canal do Corretor</title>
 	
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	
-	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">	
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}"> 
 	
 	
 </head>
@@ -31,7 +29,12 @@
 			{%block cad_afiliado%} 	{% endblock cad_afiliado %}
 			<!-- login -->
 			{%block login%}  {% endblock login %}
+			<!-- Listar empreendimentos -->
+			{%block ep_list %} {% endblock ep_list %}
+			<!-- Visualizar ep -->
+			{% block ep_detail %} {% endblock ep_detail %}
 		</div>
 	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </body>
 </html>

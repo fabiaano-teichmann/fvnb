@@ -25,8 +25,7 @@ class MetaImobiliaria:
 # Corretor Afiliado 
 class CorretorAfiliadoAdmin(admin.ModelAdmin):
 	save_on_top = True
-	list_display = ('nome',  'vinculado')
-	list_filter = ('nome', 'vinculado')
+	
 
 
 class MetaCorretor:
