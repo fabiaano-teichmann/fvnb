@@ -1,14 +1,21 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm, UserModelForm
-from .models import CorretorAfiliado, Imobiliaria, Corretor, Empreendimento
+from .models import CorretorAfiliado, Imobiliaria, Corretor, Empreendimento, Categoria
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-def index(request):
-	return render(request, 'canal_corretor/index.html', {})
+
+@login_required
+def index (request):
+	if request.user.is_authenticated():
+		cats = Categoria.objects.all()
+		return render(request, 'canal_corretor/index.html', {'cats': cats})
+	else:
+		return redirect('/do_login')	
+
 
 # AUTONOMO
 
@@ -91,14 +98,12 @@ def cadastro(request):
 
 """
 #lISTAR EP
-@login_required
+
 def ep_list(request):
-	if request.user.is_authenticated():
-		eps = Empreendimento.objects.filter(lancamento=timezone.now()).order_by()
-		return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+	eps = Empreendimento.objects.filter(lancamento=timezone.now()).order_by()
+	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
  
-	else:	
-		return redirect('/do_login')
+	
 # DETALHAR EP
 @login_required
 def ep_detail(request):
@@ -107,3 +112,6 @@ def ep_detail(request):
 		return render(request, 'canal_corretor/ep_detail.html',{'eps': eps})
 	else:
 		return redirect('/do_login')	
+
+# CATEGORIAS
+

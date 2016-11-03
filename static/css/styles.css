@@ -90,3 +90,10 @@
     color: #86744f;  
 }
 .modal-footer {   border-top: 0px; }
+   
+.navbar-default{ 
+
+	background-color: #86744f;
+    border-width: 0;
+    margin-bottom: 0;
+}

@@ -1,28 +1,22 @@
 {%extends 'canal_corretor/base.html'%}
-{% load static %}
+{% load staticfiles %}
+
 {%block ep_list %}
 
-   
-{% for ep in eps %}         
-<div class="container">
-    <div class="row"> 
-        <div class="col-lg-12">
-            <div class="col-md-4 portfolio-item">
+         
+    <div class="col-lg-12">
+        <div class="col-md-4 portfolio-item">
             
-
-                <a href="">
-                    <img class="img-responsive" src="{% static 'img/logotipo_1diamont.jpg'  %}" alt="imagem de text">
-                    
-                <h3>  {{ep.titulo}}  </h3>
-                </a>
+        {% for ep in eps %}                
                            
-                
-                <p>{{ep.descricao}}</p>
-            {%endfor%}    
-            </div>
+        <h3>  {{ep.titulo}}  </h3>
+         <img src="/{{ep.img}}" alt="{{ep.titulo}}">                       
+        <p>{{ep.descricao}}</p>
+        
+        {%endfor%}   
+        </div>
  
         </div>
-    </div>
-</div>        
+          
    
 {% endblock ep_list %}

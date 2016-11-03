@@ -114,7 +114,7 @@ class Imobiliaria(models.Model):
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
 	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
-	
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img')
 
 	def __str__(self):
 		return (self.titulo)
@@ -144,7 +144,7 @@ class Material(models.Model):
 	descricao = models.CharField(max_length=200, blank=True)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos texto',blank=True)
 	#testar se fica na pasta de upload
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img')	
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='canal_corretor/static/img')	
 	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
  
 	def __str__(self):
