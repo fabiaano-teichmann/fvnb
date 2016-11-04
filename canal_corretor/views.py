@@ -97,13 +97,19 @@ def cadastro(request):
 	return render (request, 'canal_corretor/cadastro.html', context)
 
 """
-#lISTAR EP
-
+#lISTAR EPRENDIMENTOS
 def ep_list(request):
 	eps = Empreendimento.objects.filter(lancamento=timezone.now()).order_by()
+	#aplicar um filtro para que possa redirecionar 
 	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
- 
-	
+
+# LISTAR CATEGORIA
+"""
+def cat_list(request):
+	cat = Categoria.objects.all()
+	return render 
+
+"""	
 # DETALHAR EP
 @login_required
 def ep_detail(request):

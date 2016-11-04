@@ -26,13 +26,15 @@
 
 	<div class="col-md-12"> 
 	{%for cats in cat%}
-
+	
 		<div class="col-md-4" id="smartcity">
-		<a href="{% url 'canal_corretor/ep_list' %}">
-			<img src="{{cat.img}}" alt="{{cat.titulo}}">
-		</a>
+		
+			<a href="{% url 'canal_corretor/ep_list' %}">
+				<img src="{{cat.img}}" alt="{{cat.titulo}}">
+			</a>
 		</div>
 	
+
 	</div>
 
 	{%endfor%}

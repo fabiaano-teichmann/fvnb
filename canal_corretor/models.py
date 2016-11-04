@@ -35,6 +35,11 @@ status_user = (
 	('1','Inativo'),
 	('2','Ativo'),
 	)
+status = (
+	('1', 'Pronto para Construir'),
+	('2', 'Em breve'),
+	('3', 'Lançado')
+	)
 #CADASTRO DE USUÁRIOS
 
 #CORRETOR AUTONOMO
@@ -114,7 +119,7 @@ class Imobiliaria(models.Model):
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
 	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img')
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='/static/img')
 
 	def __str__(self):
 		return (self.titulo)
@@ -124,11 +129,11 @@ class Categoria(models.Model):
 class Empreendimento(models.Model):
 	titulo = models.CharField('Nome:(campo obrigatório)', max_length=200, blank=False)
 	descricao = models.TextField('Descrição',blank=False)
-	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='static/img')
+	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='/static/cat/')
 	lancamento = models.DateField('Data prevista para lançamento',blank=True, null=True)
 	cat = models.ForeignKey("Categoria",verbose_name='categoria', on_delete=models.PROTECT)
 	estado = models.CharField(verbose_name='Estado: (campo obrigatório)',max_length=100, choices=estado, blank=True)
-	
+	status = models.CharField('Status', max_length=30, blank=False, choices=status)
 	def publish(self):
 		self.lancamento = timezone.now()
 		self.save()
@@ -144,7 +149,7 @@ class Material(models.Model):
 	descricao = models.CharField(max_length=200, blank=True)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos texto',blank=True)
 	#testar se fica na pasta de upload
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='canal_corretor/static/img')	
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='/static/img/')	
 	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
  
 	def __str__(self):
