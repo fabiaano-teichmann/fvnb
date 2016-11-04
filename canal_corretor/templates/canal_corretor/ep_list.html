@@ -3,20 +3,19 @@
 
 {%block ep_list %}
 
-         
-    <div class="col-lg-12">
-        <div class="col-md-4 portfolio-item">
-            
-        {% for ep in eps %}                
-                           
-        <h3>  {{ep.titulo}}  </h3>
-         <img src="/{{ep.img}}" alt="{{ep.titulo}}">                       
-        <p>{{ep.descricao}}</p>
         
+    <div class="col-md-12">
+        {% for ep in eps %} 
+       
+        <div class="col-md-4">                        
+            <h3>  {{ep.titulo}} </h3>
+            <img src="{{ep.img}}" alt="{{ep.titulo}}">                       
+            <p>{{ep.sub_titulo}}</p>
+        </div>
         {%endfor%}   
-        </div>
+    </div>
  
-        </div>
+        
           
    
 {% endblock ep_list %}
