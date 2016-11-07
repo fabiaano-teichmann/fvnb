@@ -114,7 +114,7 @@ def cat_list(request):
 @login_required
 def ep_detail(request):
 	if request.user.is_authenticated():
-		eps = get_object_or_404(Empreendimento, id=id)
+		eps = get_object_or_404(Empreendimento, pk=pk)
 		return render(request, 'canal_corretor/ep_detail.html',{'eps': eps})
 	else:
 		return redirect('/do_login')	

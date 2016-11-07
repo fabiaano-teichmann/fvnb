@@ -1,0 +1,18 @@
+Cadastre-se (para cadastrar corretor e imobiliaria) nnN
+	cad imobiliria sn
+	cad corretor sn
+	cad funcionario imobiliaria ns
+	tela de login ss
+	logaut ss
+	index (mostrando os icones das categorias) nn
+		empreendimento sn
+			material de apoio
+			fotos
+			book corretor
+			tabela de preços
+	criacao de lista de email
+	envio de email
+	notificação 
+	
+Inserção no site]		
+	

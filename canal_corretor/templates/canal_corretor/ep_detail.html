@@ -1,5 +1,14 @@
 {%extends 'canal_corretor/base.html'%}
 {% block ep_detail %}
 
+<div class="post">
+        {% if empreendimento.lancamento %}
+            <div class="date">
+                {{ empreendimento.lancamento }}
+            </div>
+        {% endif %}
+        <h1>{{ empreendimento.titulo }}</h1>
+        <p>{{ empreendimento.descricao|linebreaksbr }}</p>
+    </div>
 
 {%endblock ep_detail %}

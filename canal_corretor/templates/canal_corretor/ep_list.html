@@ -7,9 +7,11 @@
     <div class="col-md-12">
         {% for ep in eps %} 
        
-        <div class="col-md-4">                        
+        <div class="col-md-4"> 
+            <a href="{url 'canal_corretor.views.ep_detail, pk=categoria.pk'}">                       
             <h3>  {{ep.titulo}} </h3>
-            <img src="{{ep.img}}" alt="{{ep.titulo}}">                       
+            <img src="{{ep.img}}" alt="{{ep.titulo}}"> 
+            </a>                      
             <p>{{ep.sub_titulo}}</p>
         </div>
         {%endfor%}   
