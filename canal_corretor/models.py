@@ -45,6 +45,8 @@ status = (
 #CORRETOR AUTONOMO
 
 class Corretor(models.Model):
+	class Meta:
+		verbose_name = 'Corretor'
 	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
 	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
@@ -97,12 +99,12 @@ class Imobiliaria(models.Model):
 	bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
 	cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=12)
-	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado *:' )	
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )	
 	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
 	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *:', blank=False)
 	site = models.URLField(verbose_name='site', blank=True)
-	resp = models.CharField(verbose_name='Corretor Resposável *:', blank=False, max_length=150)
+	resp = models.CharField(verbose_name='Corretor Resposável*:', blank=False, max_length=150)
 	email_resp = models.CharField("Email do Responsável:", max_length=200)
 	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
 	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=False, max_length=12)
@@ -143,18 +145,45 @@ class Empreendimento(models.Model):
 	def __str__(self):
 		return (self.titulo)
 
-#MATERIAL DE APOIO DO CORRETOR
+# MATERIAL DE APOIO DO CORRETOR
 
-class Material(models.Model):
-	nome = models.CharField(max_length=100,verbose_name='Nome: (campo obrigatório)', blank=False)
-	descricao = models.CharField(max_length=200, blank=True)
-	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos texto',blank=True)
-	#testar se fica na pasta de upload
+class Image(models.Model):
+	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/mt')	
 	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
  
 	def __str__(self):
 		return(self.nome)
+class Tabela(models.Model):
+	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
+	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
+	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+
+	def __str__(self):
+		return(self.nome)
+class Planta(models.Model):
+	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
+	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
+	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+
+	def __str__(self):
+		return(self.nome)
+
+class Material(models.Model):
+	class Meta:
+		verbose_name = 'Material de apoio'
+
+	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/ma')	
+	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+ 
+	def __str__(self):
+		return(self.nome)
+class Video(models.Model):
+	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/vd')
+	link = models.TextField(blank=False)
+# Material de Apoio
 
 # EMAIL MARKETING
 

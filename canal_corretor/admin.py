@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import CorretorAfiliado, Imobiliaria, Corretor, Categoria, Empreendimento, Material
-# empreendimentos
+from .models import *
 
 class EmpreendimentoAdmin(admin.ModelAdmin):
 	save_on_top = True
@@ -53,7 +52,7 @@ class MetaCategoria(admin.ModelAdmin):
 	admin.site.register(Categoria, CategoriaAdmin)
 
 
-#material 
+#MATERIAL
 class MaterialAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('nome', 'empreendimento')
@@ -65,5 +64,28 @@ class MetaMaterial:
 	model = Material
 	admin.site.register(Material, MaterialAdmin)
 
-# criar a classe bonitas
+class ImageAdmin(admin.ModelAdmin):
+	save_on_top = True
 
+class MetaImage:
+	model = Image
+	admin.site.register(Image, ImageAdmin)
+
+class TabelaAdmin(admin.ModelAdmin):
+	save_on_top = True
+class MetaTabela:	
+	admin.site.register(Tabela, TabelaAdmin)
+
+class PlantaAdmin(admin.ModelAdmin):
+	save_on_top = True
+
+class MetaPlanta:
+	admin.site.register(Planta, PlantaAdmin)
+
+
+class VideoAdmin(admin.ModelAdmin):
+	save_on_top = True
+class Meta:
+	admin.site.register(Video, VideoAdmin)
+
+#MATERIAL

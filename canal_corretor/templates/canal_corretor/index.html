@@ -14,8 +14,7 @@
 		<div class="container pos-r">
 			<ul>
 				<li><a href="{% url 'canal_corretor.views.ep_list' %}"> Empreendimentos</li>
-				<!-- Adicionar no site o cadastro de revenda -->
-
+				
 					
 				
 			</ul> 
@@ -25,15 +24,11 @@
 	</div>
 
 	<div class="col-md-12"> 
-	{%for cats in cat%}
+	{%for cat in cats%}
 	
 		<div class="col-md-4">
-		
-			<a href="{% url 'canal_corretor.views.ep_list, pk=categoria.pk' %}">
-
-				<img src="/{{cat.img}}" alt="{{cat.titulo}}">
-				</h1
-			</a>
+			<img src="/{{cat.img}}" alt="{{cat.titulo}}">
+							
 		</div>
 	
 

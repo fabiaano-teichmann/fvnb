@@ -67,8 +67,6 @@ def corretorafiliado_new(request):
 
 # FORMULÁRIO DE lOGIN
 
-
-
 def do_login(request):
 	if request.method =='POST':
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -83,8 +81,6 @@ def do_logout(request):
 	logout(request)
 	return redirect('/login')
 
-
-"""""
 def cadastro(request):
 	form = UserModelForm(request.POST or None)
 	context = {'form': form}
@@ -96,28 +92,28 @@ def cadastro(request):
 
 	return render (request, 'canal_corretor/cadastro.html', context)
 
-"""
+
 #lISTAR EPRENDIMENTOS
+@login_required
 def ep_list(request):
-	eps = Empreendimento.objects.filter(lancamento=timezone.now()).order_by()
+	eps = Empreendimento.objects.all()
 	#aplicar um filtro para que possa redirecionar 
 	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
 
 # LISTAR CATEGORIA
-"""
-def cat_list(request):
-	cat = Categoria.objects.all()
-	return render 
 
-"""	
-# DETALHAR EP
 @login_required
-def ep_detail(request):
-	if request.user.is_authenticated():
-		eps = get_object_or_404(Empreendimento, pk=pk)
-		return render(request, 'canal_corretor/ep_detail.html',{'eps': eps})
-	else:
-		return redirect('/do_login')	
+def categoria(request):
+	cats = Categoria.objects.all()
+	return render(request,'canal_corretor/categoria.html', {'cat': cat})
+	
+# DETALHAR EP
+
+def ep_detail(request, pk):
+	emp = get_object_or_404(Empreendimento, pk=pk)
+	#adicionar chave estrangeira de material
+	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
+		
 
 # CATEGORIAS
 
