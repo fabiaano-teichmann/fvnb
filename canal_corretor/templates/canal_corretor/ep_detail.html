@@ -1,13 +1,44 @@
 {%extends 'canal_corretor/base.html'%}
 {% block ep_detail %}
 
-<div class="post">
-       
+<div class="row">
+	<ul class="nav nav-tabs">
+		<li role="presentation" class="active"><a href="#describe">Descrição</a></li>
+		<li role='presentation'><a href="#planta"> Plantas</a></li>
+		<li role="presentation"><a href="#table">Tabela de Vendas</a></li>
+		<li role="presentation"><a href="#image">Images</a></li>
+		<li role="presentation"><a href="#video">Vídeo</a></li>
+		<li role="presentation"><a href="#material">Material de Apoio</a></li>
+	</ul>
+
+</div>
            
-        
-        <h1>{{ emp.titulo }}</h1>
-        <h3>{{emp.sub_titulo}}</h3>
-        <p>{{ emp.descricao|linebreaksbr }}</p>
-    </div>
+<div id="describe" > 
+
+    <h1>{{ emp.titulo }}</h1>
+    <h3>{{emp.sub_titulo}}</h3>
+    <p>{{ emp.descricao|linebreaksbr }}</p>
+
+</div>
+<div id="planta">
+	
+</div>
+<div id="table">
+	
+</div>
+
+<div id="image">
+
+</div>
+
+<div id="video">
+	
+</div>
+
+<div id="material">
+	
+</div>
+
+   
 
 {%endblock ep_detail %}

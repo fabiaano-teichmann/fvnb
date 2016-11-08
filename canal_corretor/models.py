@@ -46,7 +46,7 @@ status = (
 
 class Corretor(models.Model):
 	class Meta:
-		verbose_name = 'Corretor'
+		verbose_name = 'Corretore'
 	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
 	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
@@ -132,7 +132,7 @@ class Empreendimento(models.Model):
 	titulo = models.CharField('Nome:(campo obrigatório)', max_length=200, blank=False)
 	sub_titulo= models.CharField('Sub titulo',blank=False, max_length=150)
 	descricao = models.TextField('Descrição')
-	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='static/img/ep')
+	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='static/img/empreendimento')
 	lancamento = models.DateField('Data prevista para lançamento',blank=True, null=True)
 	cat = models.ForeignKey("Categoria",verbose_name='categoria', on_delete=models.PROTECT)
 	estado = models.CharField(verbose_name='Estado: (campo obrigatório)',max_length=100, choices=estado, blank=True)
@@ -150,21 +150,22 @@ class Empreendimento(models.Model):
 class Image(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/mt')	
-	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
  
 	def __str__(self):
 		return(self.nome)
 class Tabela(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
-	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
 
 	def __str__(self):
 		return(self.nome)
+		#não há necessidade
 class Planta(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
-	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
 
 	def __str__(self):
 		return(self.nome)
@@ -175,7 +176,7 @@ class Material(models.Model):
 
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/ma')	
-	empreendimento = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
  
 	def __str__(self):
 		return(self.nome)
@@ -183,6 +184,8 @@ class Video(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/vd')
 	link = models.TextField(blank=False)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+ 
 # Material de Apoio
 
 # EMAIL MARKETING

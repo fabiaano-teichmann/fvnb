@@ -3,38 +3,48 @@
 <html>
 <head>
 	<meta charset="utf8">
-	<title> Força de Venda  NB</title>
+	<title> Força de Venda NB</title>
        <meta name="Fabiano Teichmann">
 	
 </head>
 <body>
+<div class="row">
 	{% block index %}
-	<div class="col-md-12">
-	<nav class="navbar navbar-default">
-		<div class="container pos-r">
-			<ul>
-				<li><a href="{% url 'canal_corretor.views.ep_list' %}"> Empreendimentos</li>
-				
-					
-				
-			</ul> 
-		</div>
-	 </nav>
+	<div class="col-md-8 col-md-offset-4">
+		<img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+	</div>
+	<div class="col-md-4 col-md-offset-2 login">		
+	
+      <!-- formulário puro sem modal -->
+      
+      <div class="cicle">
+      	<h2 class="lg"> Login</h2>
+	    <form action="{% url 'canal_corretor.views.do_login' %}" method="post">
+	        	{% csrf_token %}
+	        	<br>
+	            <input type="text" name="username" placeholder="Usuário" class="form-control ">
+	        	 <br>	      
+	            <input type="password" name="password" placeholder="Senha" class="form-control ">
+	        	<br>
+	          <button class="btn btn-default lg" type="submit">Login</button>
+
+	    </form>
+	 <ul class=" nav navbar-default">
+	    <a  class="navbar-text " href="{% url 'canal_corretor.views.corretor_new' %}"><p class="plink"> Cadastro Corretor </p></a>    		
+    	<a  class="navbar-text" href = "{% url 'canal_corretor.views.corretor_new' %}"> Cadastro Corretor </a>
+    	<a  class=" navbar-text" href="{% url 'canal_corretor.views.imobiliaria_new'%}"> Cadastro Imobiliária</a></li>
+    </ul>  
+        </div>
+        <!-- formulário puro sem modal -->
+	</div>
+     
+        	
+     
 		
-	</div>
+		
+</div>
 
-	<div class="col-md-12"> 
-	{%for cat in cats%}
 	
-		<div class="col-md-4">
-			<img src="/{{cat.img}}" alt="{{cat.titulo}}">
-							
-		</div>
-	
-
-	</div>
-
-	{%endfor%}
 	{%endblock index%}
 </body>
 </html>

@@ -97,3 +97,26 @@
     border-width: 0;
     margin-bottom: 0;
 }
+.login {
+    position: absolute;
+    top:20%;
+    right: 40%;
+   
+}
+.lg {
+   color: #86744f;  
+}
+}
+.cicle {
+   border-radius: 15%;
+   border-color: #86744f;
+   background: #86744f;
+
+
+}
+.plink {
+    font-size: 2.5em,
+    color: #86744f !important;  
+
+
+}

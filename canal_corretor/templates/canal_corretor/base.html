@@ -14,9 +14,10 @@
 	<div>
 		<div class="container">
 		<a href="{% url 'canal_corretor.views.corretor_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-			<!-- Pagina Home -->
+			<!-- Pagina de cadastro e de login -->
 			{%block index%} {%endblock index%}
-			
+			<!-- Tela de boas vindas-->
+			{% block bem_vindo %} {% endblock bem_vindo %}
 			<!-- Formulário Corretor autonomo -->
 			{% block cad_co %} 	{% endblock cad_co %}
 			

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm, UserModelForm
-from .models import CorretorAfiliado, Imobiliaria, Corretor, Empreendimento, Categoria
+from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
 from django.contrib.auth import authenticate, login, logout
@@ -8,11 +8,19 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 
-@login_required
-def index (request):
+def index(request):
+	cr = Corretor.objects.all()
+	im = Imobiliaria.objects.all()
+	context = {
+	'cr': cr,
+	'im': im,
+	}
+	return render(request,'canal_corretor/index.html',context)
+
+def bem_vindo (request):
 	if request.user.is_authenticated():
 		cats = Categoria.objects.all()
-		return render(request, 'canal_corretor/index.html', {'cats': cats})
+		return render(request, 'canal_corretor/bem_vindo.html', {'cats': cats})
 	else:
 		return redirect('/do_login')	
 
@@ -34,7 +42,7 @@ def corretor_new(request):
 	return render(request, 'canal_corretor/cad_corretor.html',{'form': form})	
 
 # IMOBILIARIA
-@login_required
+
 def imobiliaria_new(request):
 	form = ImobiliariaForm(request.POST or None)
 	if form.is_valid():
@@ -72,7 +80,7 @@ def do_login(request):
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
 		if user is not None:
 			login(request, user)
-			return redirect('/imobiliaria/corretor/new')
+			return redirect('/bem_vindo')
 
 	return render(request, 'canal_corretor/login.html')		
 
@@ -111,6 +119,7 @@ def categoria(request):
 
 def ep_detail(request, pk):
 	emp = get_object_or_404(Empreendimento, pk=pk)
+	# pegar outros campos do material
 	#adicionar chave estrangeira de material
 	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
 		

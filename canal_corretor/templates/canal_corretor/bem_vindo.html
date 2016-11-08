@@ -1,0 +1,30 @@
+{%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
+{% block bem_vindo %}
+<div class="col-md-12">
+	<nav class="navbar navbar-default">
+		<div class="container pos-r">
+			<ul>
+				<li><a href="{% url 'canal_corretor.views.ep_list' %}"> Empreendimentos</li>
+				
+					
+				
+			</ul> 
+		</div>
+	 </nav>
+		
+	</div>
+
+	<div class="col-md-12"> 
+	{%for cat in cats%}
+	
+		<div class="col-md-4">
+			<img src="/{{cat.img}}" alt="{{cat.titulo}}">
+							
+		</div>
+	{% endfor %}
+
+	</div>
+
+
+{% endblock bem_vindo %}

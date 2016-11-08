@@ -3,6 +3,7 @@ from .import views
 
 urlpatterns = [
 url(r'^$', views.index, name='index'),
+url (r'^bem_vindo/$', views.bem_vindo, name='bem_vindo'),
 url(r'^corretor/new$', views.corretor_new, name='corretor_new'),
 url(r'^imobiliaria/new$', views.imobiliaria_new, name="imobiliaria_new"),
 url(r'^imobiliaria/corretor/new$', views.corretorafiliado_new, name="corretorafiliado_new"),

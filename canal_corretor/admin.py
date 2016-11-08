@@ -55,10 +55,7 @@ class MetaCategoria(admin.ModelAdmin):
 #MATERIAL
 class MaterialAdmin(admin.ModelAdmin):
 	save_on_top = True
-	list_display = ('nome', 'empreendimento')
-	list_filter = ('nome', 'empreendimento')
-
-
+	
 class MetaMaterial:
 	
 	model = Material
