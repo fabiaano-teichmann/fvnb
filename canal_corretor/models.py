@@ -58,7 +58,7 @@ class Corretor(models.Model):
 	endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
 	bairro = models.CharField(verbose_name='Bairro*:',max_length=100,blank=False)
 	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
-	cep = models.CharField(verbose_name=' Cep*:', blank=False, max_length=16)
+	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default=1) 
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
@@ -107,7 +107,7 @@ class Imobiliaria(models.Model):
 	resp = models.CharField(verbose_name='Corretor Resposável*:', blank=False, max_length=150)
 	email_resp = models.CharField("Email do Responsável:", max_length=200)
 	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
-	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=False, max_length=12)
+	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
 	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default=1)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	def __str__(self):
