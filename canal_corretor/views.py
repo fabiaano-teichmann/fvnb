@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import CorretorForm, ImobiliariaForm,CorretorAfiliadoForm, UserModelForm
+from .forms import CorretorForm, ImobiliariaForm, UserModelForm, CorretorAfiliadoForm
+# criar um para corretor afiliado https://www.youtube.com/watch?v=AZ1d5yEwitM&t=1718s
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
@@ -25,21 +26,7 @@ def bem_vindo (request):
 		return redirect('/do_login')	
 
 
-# AUTONOMO
-
-def corretor_new(request):
-	form = CorretorForm(request.POST or None)
-	if form.is_valid():
-		# erro 
-		instance = form.save(commit=False)
-		instance.save()
-		#depois de salvo limpa o campo nome 
-		instance = form.cleaned_data.get('nome')
-		#  criar um retorno. dizendo que o formulário foi enviado com sucesso
-		form = CorretorForm()
-		return render(request, 'canal_corretor/enviado.html')
-		
-	return render(request, 'canal_corretor/cad_corretor.html',{'form': form})	
+	
 
 # IMOBILIARIA
 
@@ -57,21 +44,35 @@ def imobiliaria_new(request):
 	return render (request, 'canal_corretor/cad_imobi.html', {'form':form})	
 
 # CORRETOR AFILIADO
-@login_required
+
 def corretorafiliado_new(request):
-	
+	# quando o formulário está vazio ele é none ou seja em branco 
 	form = CorretorAfiliadoForm(request.POST or None)
-	if request.user.is_authenticated():
+	context = {'form': form}
+	if request.method== "POST":
 		if form.is_valid():			
 			instance = form.save(commit=False)
 			instance = form.save()
-			print(form)
 			instance = form.cleaned_data.get('nome')
-			
-	else:	
-		return redirect('/do_login')
+			return render(request, 'canal_corretor/enviado.html')
+	return render(request, 'canal_corretor/cad_afiliado.html', context)		
+		
+# AUTONOMO
+
+def corretor_new(request):
+	form = CorretorForm(request.POST or None)
+	if form.is_valid():
+		# erro 
+		instance = form.save(commit=False)
+		instance.save()
+		#depois de salvo limpa o campo nome 
+		instance = form.cleaned_data.get('nome')
+		#  criar um retorno. dizendo que o formulário foi enviado com sucesso
+		form = CorretorForm()
+		return render(request, 'canal_corretor/enviado.html')
+		
+	return render(request, 'canal_corretor/cad_corretor.html',{'form': form})	
 	
-	return render(request, 'canal_corretor/cad_afiliado.html', {'form':form})	
 
 # FORMULÁRIO DE lOGIN
 
@@ -113,7 +114,7 @@ def ep_list(request):
 @login_required
 def categoria(request):
 	cats = Categoria.objects.all()
-	return render(request,'canal_corretor/categoria.html', {'cat': cat})
+	return render(request,'canal_corretor/categoria.html', {'cats': cats})
 	
 # DETALHAR EP
 

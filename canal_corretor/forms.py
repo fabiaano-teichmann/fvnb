@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from .models import Corretor, Imobiliaria, CorretorAfiliado
 from django.contrib.auth.models import User # importa o model da  tabela User que o django cria
+
 #CORRETOR
 class CorretorForm(forms.ModelForm):
 	class Meta:
@@ -34,7 +35,7 @@ class CorretorAfiliadoForm(forms.ModelForm):
 			'nome': forms.TextInput(attrs = {'class': 'form-control'}),
 			'nasc': forms.DateInput(attrs = {'class': 'form-control' }),
 			'cpf' : forms.TextInput( attrs = {'class': 'form-control'}),
-			'nasc': forms.TextInput(attrs = {'class': 'form-control'}),
+			'creci': forms.TextInput(attrs= {'class': 'form-control'}),
 			'telefone': forms.TextInput(attrs = {'class': 'form-control'}),
 			'phone': forms.TextInput(attrs = {'class': 'form-control'}),
 			'email': forms.EmailInput(attrs = {'class': 'form-control'}),				

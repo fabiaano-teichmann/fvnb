@@ -121,7 +121,7 @@ class Imobiliaria(models.Model):
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
 	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/cat')
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='/static/img/cat')
 
 	def __str__(self):
 		return (self.titulo)

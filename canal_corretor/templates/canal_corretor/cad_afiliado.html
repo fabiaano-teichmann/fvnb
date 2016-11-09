@@ -2,50 +2,56 @@
 {%block cad_afiliado%} 
 
 
-<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">Cadastro Corretor Afiliado</h1>
+<div class="col-md-10 col-md-ofsset-4">
+ 
+  <h1 align="center"> Cadastro de Corretores Afiliados  </h1>    
+
+  <form method="POST" class="form col-md-12 center-block">
+  {% csrf_token %}
+      <div class="form-group">
+        <label>Nome:</label>
+        {{form.nome}}
+        {{form.mome.error}}
       </div>
-      
-      <div class="modal-body">
-          <form action="" class="form col-md-12 center-block">{% csrf_token %}
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" name="Nome" placeholder="Nome">
-            </div>
-            <div class="form-group">
-              <input type="date" class="form-control input-lg" name="nasc" placeholder="Data de Nascimento">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" name="cpf" placeholder="cpf">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" name="creci" placeholder="creci">
-            </div>
-            
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="telefone" name="telefone">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Celular" name="phone">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="email" name="email">
-            </div>
-            
-            
-            <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">Enviar</button>
-            </div>
-          </form>
+      <div class="form-group">
+        <label>Data de Nascimento:</label>
+        {{form.nasc}}
+        {{form.nasc.error}}
       </div>
+      <div class="form-group">
+        <label>cpf:</label>
+        {{form.cpf}}
+        {{form.cpf.error}}
+      </div>
+      <div class="form-group">
+        <label>Creci:</label>
+        {{form.creci}}
+        {{form.creci.error}}
+      </div>
+            
+      <div class="form-group">
+       <label>telefone:</label> 
+       {{form.telefone}}
+       {{form.telefone.error}}
+      </div>
+      <div class="form-group">
+        <label>celular:</label>
+        {{form.phone}}
+        {{form.phone.error}}
+      </div>
+      <div class="form-group">
+        <label>email:</label>
+        {{form.email}}
+        {{form.email.error}}
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-lg btn-block">Enviar</button>
+      </div>
+  </form>
+     
       
     
-  </div>
-  </div>
-</div>
+</div>  
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
