@@ -51,8 +51,8 @@ class Corretor(models.Model):
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
 	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
 	creci =  models.CharField(verbose_name='Creci Físico*:', blank=False, max_length=12)
-	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=False)
-	phone = models.CharField(verbose_name='Celular:', max_length=16, blank=True)
+	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
+	phone = models.CharField(verbose_name='Celular:', max_length=16, blank=False)
 	email = models.EmailField(max_length=254,verbose_name='E-mail*:', blank=False)
 	site = models.URLField(verbose_name='site', blank=True)
 	endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
@@ -78,6 +78,11 @@ class CorretorAfiliado(models.Model):
 	phone = models.CharField(verbose_name='Celular: * ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *: ', blank=False)
 	#verificar a necessidade desse campo estar aparecendo 
+	endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
+	bairro = models.CharField(verbose_name='Bairro*:',max_length=100, blank=False)
+	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
+	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	# verificar a necessidade de o corretor ter creci quando afiliado

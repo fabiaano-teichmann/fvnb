@@ -1,13 +1,14 @@
 {%extends 'canal_corretor/base.html'%}
-
+{% load staticfiles %}
 {% block cad_imobi %}
-<div class="col-md-12">
- 
-<h1 class="titulo"> Cadastro de Corretores Afiliados  </h1>    
+<div class="col-md-12"> 
+
+   
 
 <form method="POST" class="form  center-block">
+<h2 class="lg"> Cadastro de Imobiliarias </h2> 
   {% csrf_token %}
-    <div class="form-group col-md-5">
+    <div class="form-group col-md-5"">
     	<label> Imagem</label>
     	{{form.img}}
     </div>
@@ -32,18 +33,18 @@
         <label>cnpj:</label>
         {{form.cnpj}}
         {{form.cnpj.error}}
-     </div>
+    </div>
       
-     <div class="form-group col-md-5">
+    <div class="form-group col-md-5">
         <label>endereço:</label>
         {{form.endereco}}
         {{form.endereco.error}}
-     </div>
-     <div class="form-group col-md-5">
+    </div>
+    <div class="form-group col-md-5">
         <label>bairro:</label>
         {{form.bairro}}
         {{form.bairro.error}}
-      </div>
+    </div>
             
     <div class="form-group col-md-5">
        <label>cidade:</label> 
@@ -61,7 +62,7 @@
         {{form.estado.error}}
     </div>
     <div class="form-group col-md-5"> 
-	<label>telefone:</label>
+		<label>telefone:</label>
 		{{form.telefone}}
 		{{form.telefone.error}}
     </div>
@@ -101,8 +102,8 @@
 		{{form.creci_f}}
 		{{form.creci_f.error}}
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-lg btn-block">Enviar</button>
+      <div class="form-group col-md-5 col-md-5-offset-1">
+     <button class="btn btn-lg lg">Enviar</button>
       </div>
 
 </form>

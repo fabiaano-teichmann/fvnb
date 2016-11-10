@@ -48,6 +48,7 @@ def imobiliaria_new(request):
 def corretorafiliado_new(request):
 	# quando o formulário está vazio ele é none ou seja em branco 
 	form = CorretorAfiliadoForm(request.POST or None)
+	#capturar id imobi
 	context = {'form': form}
 	if request.method== "POST":
 		if form.is_valid():			

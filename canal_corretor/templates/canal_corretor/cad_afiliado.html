@@ -2,10 +2,10 @@
 {%block cad_afiliado%} 
 
 <div class="col-md-12">
- 
-  <h1 class="titulo"> Cadastro de Corretores Afiliados  </h1>    
+    
 
-  <form method="POST" class="form  center-block">
+  <form method="POST" class="form  center-block">  
+  <h2 class="lg"> Cadastro de Corretores Afiliados  </h2> 
   {% csrf_token %}
       <div class="form-group col-md-5">
         <label>Nome:</label>
@@ -43,8 +43,26 @@
         {{form.email}}
         {{form.email.error}}
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-lg btn-block">Enviar</button>
+    <div class="form-group col-md-5">
+    <label>Endereço: </label>
+    {{form.endereco}}
+    {{form.endereco.error}}
+    </div>  
+ 
+    <div class="form-group col-md-5">
+      <label>Cidade:</label>
+      {{form.cidade}}
+      {{form.cidade.error}}
+      
+    </div>
+    <div class="form-group col-md-5">
+    <label>Estado:</label>
+    {{form.estado}}
+    {{form.estado.error}}
+    </div>
+      <span class="clearfix"></span>
+      <div class="form-group col-md-5">
+       <button class="btn btn-lg lg">Enviar</button>
       </div>
   </form>
      

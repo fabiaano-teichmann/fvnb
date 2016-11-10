@@ -13,20 +13,33 @@ class CorretorForm(forms.ModelForm):
 		 "estado"
 		  ]
 		widgets = {
-			"nome":forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"nasc" :forms.DateInput(attrs ={'class': 'form-control'}),
-		  	"cpf"	:forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"creci" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"telefone" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"email" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"site" :forms.URLInput(attrs ={'class': 'form-control'}),
-		  	"phone" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"endereco":forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"cep" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control'}),
-		  	"email" :forms.EmailInput(attrs ={'class': 'form-control'}),
-		  	"estado":forms.Select(attrs ={'class': 'form-control'}),
+			"nome":forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Nome'}),
+		  	"nasc" :forms.DateInput(attrs ={'class': 'form-control fvnb','placeholder': 'Data Nascimento'}),
+		  	"cpf"	:forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'CPF'}),
+		  	"creci" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Creci'}),
+		  	"telefone" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Telefone'}),
+		  	"email" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'E-mail'}),
+		  	"site" :forms.URLInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Site'}),
+		  	"phone" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Celular'}),
+		  	"endereco":forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Endereço'}),
+		  	"cep" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cep'}),
+		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cidade'}),
+		  	"estado":forms.Select(attrs ={'class': 'form-control fvnb', 'placeholder': 'Estado'}),
 		  }
+		error_messages = { 
+			'nome': {'required': 'Este campo é obrigatório'},
+			'nasc': {'required': 'Este campo é obrigatório'},
+			'cpf': {'required': 'Este campo é obrigatório'},
+			'creci':{'required': 'Este campo é obrigatório'},
+			'email':{'required': 'Este campo é obrigatório'},
+			'phone': {'required': 'Este campo é obrigatório'},
+			'endereco': {'required': 'Este campo é obrigatório'},
+			'cidade': {'required': 'Este campo é obrigatório'},
+			'estado': {'required': 'Este campo é obrigatório'},
+
+		  }
+
+
 
 #IMOBILIARIA
 class ImobiliariaForm(forms.ModelForm):
@@ -39,24 +52,24 @@ class ImobiliariaForm(forms.ModelForm):
 
 		]
 		widgets = {
-			'img': forms.FileInput(attrs = {'class': 'form-control'}),
+			'img': forms.FileInput(attrs = {'class': 'form-control', 'placeholder': 'Imagem'}),
 			'razao':forms.TextInput(attrs ={'class': 'form-control'}),
-			'creci_j': forms.TextInput(attrs ={'class': 'form-control'}),
-			'nome': forms.TextInput(attrs ={'class': 'form-control'}), 
-			'cnpj': forms.TextInput(attrs ={'class': 'form-control'}),
-			'endereco': forms.TextInput(attrs ={'class': 'form-control'}),
-			'bairro': forms.TextInput(attrs ={'class': 'form-control'}),
-			'cidade': forms.TextInput(attrs ={'class': 'form-control'}),
-			'cep': forms.TextInput(attrs ={'class': 'form-control'}),
-			'estado': forms.Select(attrs ={'class': 'form-control'}),
-			'telefone': forms.TextInput(attrs ={'class': 'form-control'}),
-			'phone': forms.TextInput(attrs ={'class': 'form-control'}),
-			'email': forms.EmailInput(attrs ={'class': 'form-control'}),
-			'site': forms.TextInput(attrs ={'class': 'form-control'}),
-			'resp': forms.TextInput(attrs ={'class': 'form-control'}),
-			'email_resp': forms.EmailInput(attrs ={'class': 'form-control'}),
-			'cpf': forms.TextInput(attrs ={'class': 'form-control'}),
-			'creci_f': forms.TextInput(attrs ={'class': 'form-control'}),	
+			'creci_j': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Creci Jurídico'}),
+			'nome': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Nome'}), 
+			'cnpj': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Cnpj'}),
+			'endereco': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+			'bairro': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Bairro'}),
+			'cidade': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Cidade'}),
+			'cep': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cep'}),
+			'estado': forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado' }),
+			'telefone': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Telefone'}),
+			'phone': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Celular'}),
+			'email': forms.EmailInput(attrs ={'class': 'form-control', 'placeholder': 'E-mail' }),
+			'site': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Site'}),
+			'resp': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Responsável'}),
+			'email_resp': forms.EmailInput(attrs ={'class': 'form-control' , 'placeholder': 'E-mail responsável'}),
+			'cpf': forms.TextInput(attrs ={'class': 'form-control' , 'placeholder': 'Cpf'}),
+			'creci_f': forms.TextInput(attrs ={'class': 'form-control' , 'placeholder': 'Creci Físico'}),	
 
 		}
 		error_messages = {
@@ -83,17 +96,19 @@ class CorretorAfiliadoForm(forms.ModelForm):
 		model = CorretorAfiliado
 		fields = [
 		"nome","nasc", "cpf", "creci",
-		 "telefone","phone", "email"
+		 "telefone","phone", "email","endereco", "cidade", "estado"
 		]
 		widgets = {
-			'nome': forms.TextInput(attrs = {'class': 'form-control'}),
-			'nasc': forms.DateInput(attrs = {'class': 'form-control' }),
-			'cpf' : forms.TextInput( attrs = {'class': 'form-control'}),
-			'creci': forms.TextInput(attrs= {'class': 'form-control'}),
-			'telefone': forms.TextInput(attrs = {'class': 'form-control'}),
-			'phone': forms.TextInput(attrs = {'class': 'form-control'}),
-			'email': forms.EmailInput(attrs = {'class': 'form-control'}),				
-			
+			'nome': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nome'}),
+			'nasc': forms.DateInput(attrs = {'class': 'form-control', 'placeholder':'Data Nascimento' }),
+			'cpf' : forms.TextInput( attrs = {'class': 'form-control',  'placeholder': 'Cpf'}),
+			'creci': forms.TextInput(attrs= {'class': 'form-control' , 'placeholder': 'Creci'}),
+			'telefone': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Telefone'}),
+			'phone': forms.TextInput(attrs = {'class': 'form-control' , 'placeholder': 'Celular'}),
+			'email': forms.EmailInput(attrs = {'class': 'form-control' , 'placeholder': 'E-mail'}),				
+			"endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
+		  	"estado":forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
 		}
 		error_messages ={
 			'nome': {
@@ -116,6 +131,15 @@ class CorretorAfiliadoForm(forms.ModelForm):
 			'email':{
 				'required': 'Este campo é obrigatório'
 			},
+			'endereco': {
+				'required': 'Este campo é obrigatório'
+				},
+			'bairro': {
+				'required': 'Este campo é obrigatório'
+				},
+			'cidade': {
+				'required': 'Este campo é obrigatório'
+				},
 
 		}	
 

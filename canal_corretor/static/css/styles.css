@@ -30,15 +30,24 @@
     margin-left: 1%;
     border-color: #86744f !important;    
     border-width: 0 0 2px 0;
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: #86744f !important;
     text-transform:uppercase;
    
 
 }
+.forms {
+    position: fixed;
+    
+}
 .form-group{
     background-color: transparent;
-    width: 45%;
+    border-radius: 30px;
+    background-color: #86744f;
+    position: 
+
+
+    
  
 }
 
@@ -73,9 +82,10 @@
     font-family: 
 }
 .titulo{
-    font-weight: 900 !important;
+    
     text-align: center;
     color: #86744f;
+    
 }
 
 .modal-footer {   border-top: 0px; }
@@ -93,7 +103,16 @@
    
 }
 .lg {
-   color: #86744f;  
+   color: #86744f;
+   margin-left: 0.5em;  
+}
+.lg-a {
+   color: #fff;
+   margin-left: 0.5em;  
+}
+.fvnb {
+    
+    border-bottom: 1px solid #86744f;
 }
 }
 .cicle {
@@ -107,6 +126,7 @@
     font-size: 1.0em;
     color: #86744f !important;
     text-transform: uppercase;
-
+    
+    padding-right: 5px;
 
 }

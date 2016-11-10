@@ -1,25 +1,81 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
+{% block cad_corretor %}
 
+<div class="col-md-10 col-md-offset-1 form-group"> 
+    
 
-{% block cad_co %}
+<form method="POST" class="form  center-block">
+<h2 class="lg-a"> Cadastro de Corretores  </h2>
+  {% csrf_token %}
+    <div class=" col-md-5 col-md-offset-1">
+        <label>Nome:</label>
+        {{form.nome}}
+        {{form.mome.error}}
+    </div>
+    <div class=" col-md-5 ">
+        <label>Data de Nascimento:</label>
+        {{form.nasc}}
+        {{form.nasc.error}}
+      </div>
+	<div class="col-md-5 col-md-offset-1">
+        <label>cpf:</label>
+        {{form.cpf}}
+        {{form.cpf.error}}
+    </div>
+	<div class="col-md-5 ">
+        <label>Creci:</label>
+        {{form.creci}}
+        {{form.creci.error}}
+      </div>
+            
+    <div class="col-md-5 col-md-offset-1">
+       <label>telefone:</label> 
+       {{form.telefone}}
+       
+    </div>
+    <div class=" col-md-5 ">
+        <label>celular:</label>
+        {{form.phone}}
+        {{form.phone.error}}
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+        <label>email:</label>
+        {{form.email}}
+        {{form.email.error}}
+    </div>
+    <div class=" col-md-5 ">
+		<label>Site </label>
+		{{form.site}}
+    </div>
+	<div class=" col-md-5 col-md-offset-1">
+		<label>Endereço: </label>
+		{{form.endereco}}
+		{{form.endereco.error}}
+    </div>	
+	<div class=" col-md-5 ">
+		<label>CEP: </label>
+		{{form.cep}}
+    </div>
+    <div class="col-md-5 col-md-offset-1">
+    	<label>Cidade:</label>
+    	{{form.cidade}}
+    	{{form.cidade.error}}
+    	
+    </div>
+    <div class=" col-md-5 ">
+		<label>Estado:</label>
+		{{form.estado}}
+		{{form.estado.error}}
+    </div>
+   
+  
+	<div class="form-group col-md-5">
+        <br>
+        <button class="btn btn-lg lg">Enviar</button>
+    </div>
 
-<div class=" container form-group">
-<h1 class="titulo">Cadastro de Corretores Autônomo</h1>
-</div>
-<br> <hr>
-<form method="POST"  class="form-group">{% csrf_token %}
-
-<div class=" form-campo">
-
-{{ form.as_p}}
-
-<input type="submit" value="Enviar" class="btn btn-lg  button-send">
-
-
-
-</div>
 </form>
 
 </div>
-{% endblock cad_co %}
+{% endblock cad_corretor %}
