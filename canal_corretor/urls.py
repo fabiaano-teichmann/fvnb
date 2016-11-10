@@ -10,7 +10,7 @@ url(r'^imobiliaria/corretor/new$', views.corretorafiliado_new, name="corretorafi
 url(r'^login/$', views.do_login, name="login"),
 url(r'^logout/$', views.do_logout, name="logout"),
 url(r'^listar/ep/$', views.ep_list),
-#url(r'^ep/(?P<pk>[0-9]+)/$', views.categoria, name="categoria"),
+url(r'^categorias/(?P<pk>[0-9]+)/$', views.categoria, name="categoria"),
 url(r'^detalhes/empreendimento/(?P<pk>[0-9]+)/$', views.ep_detail, name="ep_detail"),
 
 

@@ -1,30 +1,34 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block bem_vindo %}
-<div class="col-md-12">
-	<nav class="navbar navbar-default">
-		<div class="container pos-r">
-			<ul>
-				<li><a href="{% url 'canal_corretor.views.ep_list' %}"> Empreendimentos</li>
-								
-			</ul> 
-		</div>
-	 </nav>
+<div class="menu col-md-12">
+   <nav class="navbar ">
+		<a class="navbar-text plink " href="{% url 'canal_corretor.views.bem_vindo' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
+			<ul class="nav-pills">
+				
+				<a class="navbar-text"  href="{% url 'canal_corretor.views.ep_list' %}"><p class="menu"> Empreendimentos </p></a>
+				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a>    		
+    			 
+			</ul> 	
 		
-	</div>
+	</nav> 
+</div>
 
-	<div class="col-md-12"> 
+<div class="col-md-12"> 
 	{%for cat in cats%}
 	
-		<div class="col-md-4">
-		
-			<h1 class="plink">{{cat.titulo}}</h1>
-			<img src="{{cat.img}}" alt="{{cat.titulo}}">
-		    				
-		</div>
-	{% endfor %}
+	<div class="col-md-4">
 
+		<a href="{% url 'canal_corretor.views.categoria' pk=cat.pk %}" >
+		  		 
+		<img src="{{cat.img}}" alt="{{cat.titulo}}">
+		<h1 class="plink">{{cat.titulo}}</h1>
+		</a>
+		    				
 	</div>
+
+	{% endfor %}
+</div>
 
 
 {% endblock bem_vindo %}

@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-
+# Cadastro dos corretores
 def index(request):
 	cr = Corretor.objects.all()
 	im = Imobiliaria.objects.all()
@@ -17,16 +17,13 @@ def index(request):
 	'im': im,
 	}
 	return render(request,'canal_corretor/index.html',context)
-
+# entrada do sistema
 def bem_vindo (request):
 	if request.user.is_authenticated():
 		cats = Categoria.objects.all()
 		return render(request, 'canal_corretor/bem_vindo.html', {'cats': cats})
 	else:
 		return redirect('/do_login')	
-
-
-	
 
 # IMOBILIARIA
 
@@ -36,7 +33,6 @@ def imobiliaria_new(request):
 		instance = form.save(commit=False)
 		instance.save()
 		instance = form.cleaned_data.get('razao')
-		
 		# tenho que  validar consultando se o corretor já não esta cadastrado
 		
 
@@ -56,7 +52,7 @@ def corretorafiliado_new(request):
 			instance = form.save()
 			instance = form.cleaned_data.get('nome')
 			return render(request, 'canal_corretor/enviado.html')
-	return render(request, 'canal_corretor/cad_afiliado.html', context)		
+	return render(request, 'canal_corretor/corretorafiliado_new.html', context)		
 		
 # AUTONOMO
 
@@ -98,8 +94,6 @@ def cadastro(request):
 		if form.is_valid():
 			instance = form.salve()
 			instance = form.cleaned_data('username')
-			
-
 	return render (request, 'canal_corretor/cadastro.html', context)
 
 
@@ -115,14 +109,24 @@ def ep_list(request):
 @login_required
 def categoria(request):
 	cats = Categoria.objects.all()
-	return render(request,'canal_corretor/categoria.html', {'cats': cats})
-	
-# DETALHAR EP
+	eps = Empreendimento.objects.all()
+	context = {
+	'cats': cats,
+	'eps':eps}
 
+	return render(request,'canal_corretor/categoria.html',context )
+
+# Detalhe da categoria
+@login_required	
+def cat_detail(request, pk):
+	cats = get_object_or_404(Categoria, pk=pk)
+	return render(request, 'canal_corretor/cat_detail.html', {'cats': cats})
+
+
+# DETALHAR EP
+@login_required
 def ep_detail(request, pk):
 	emp = get_object_or_404(Empreendimento, pk=pk)
-	# pegar outros campos do material
-	#adicionar chave estrangeira de material
 	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
 		
 

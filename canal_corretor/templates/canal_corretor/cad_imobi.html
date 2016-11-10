@@ -1,14 +1,13 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cad_imobi %}
-<div class="col-md-12"> 
-
-   
+<div class=" col-md-12"> 
+<div class="col-md-10 col-md-offset-1 form-group"> 
 
 <form method="POST" class="form  center-block">
-<h2 class="lg"> Cadastro de Imobiliarias </h2> 
+<h2 class="lg-a"> Cadastro de Imobiliarias </h2> 
   {% csrf_token %}
-    <div class="form-group col-md-5"">
+    <div class=" col-md-5"">
     	<label> Imagem</label>
     	{{form.img}}
     </div>
@@ -108,7 +107,7 @@
 
 </form>
 </div>
-
+</div>
 
 
 {% endblock cad_imobi %}

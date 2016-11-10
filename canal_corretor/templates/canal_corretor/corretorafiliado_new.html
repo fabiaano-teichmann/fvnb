@@ -1,67 +1,65 @@
 {%extends 'canal_corretor/base.html'%}
 {%block cad_afiliado%} 
 
-<div class="col-md-12">
-    
-
-  <form method="POST" class="form  center-block">  
-  <h2 class="lg"> Cadastro de Corretores Afiliados  </h2> 
+<div class="col-md-10 col-md-offset-1 form-group"> 
+    <form method="POST" class="form  center-block">  
+    <h2 class="lg-a"> Cadastro de Corretores Afiliados  </h2> 
   {% csrf_token %}
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>Nome:</label>
         {{form.nome}}
         {{form.mome.error}}
       </div>
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>Data de Nascimento:</label>
         {{form.nasc}}
         {{form.nasc.error}}
       </div>
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>cpf:</label>
         {{form.cpf}}
         {{form.cpf.error}}
       </div>
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>Creci:</label>
         {{form.creci}}
         {{form.creci.error}}
       </div>
             
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
        <label>telefone:</label> 
        {{form.telefone}}
        {{form.telefone.error}}
       </div>
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>celular:</label>
         {{form.phone}}
         {{form.phone.error}}
       </div>
-      <div class="form-group col-md-5">
+      <div class="col-md-5">
         <label>email:</label>
         {{form.email}}
         {{form.email.error}}
       </div>
-    <div class="form-group col-md-5">
+    <div class="col-md-5">
     <label>Endereço: </label>
     {{form.endereco}}
     {{form.endereco.error}}
     </div>  
  
-    <div class="form-group col-md-5">
+    <div class="col-md-5">
       <label>Cidade:</label>
       {{form.cidade}}
       {{form.cidade.error}}
       
     </div>
-    <div class="form-group col-md-5">
+    <div class="col-md-5">
     <label>Estado:</label>
     {{form.estado}}
     {{form.estado.error}}
     </div>
       <span class="clearfix"></span>
-      <div class="form-group col-md-5">
+      <div class="col-md-5"><br>
        <button class="btn btn-lg lg">Enviar</button>
       </div>
   </form>

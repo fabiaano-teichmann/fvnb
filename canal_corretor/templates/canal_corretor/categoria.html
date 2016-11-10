@@ -1,0 +1,20 @@
+{%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
+{% block categoria%} 
+<div class="col-md-12">
+
+{% for ep in eps %}
+{% for cat in cats %}
+{%if ep.id ==  cat.id %} 
+       
+    <div class="col-md-4"> 
+        
+                                   
+        <h3>  {{ep.titulo}} </h3>
+        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}" >
+        <img src="{{ep.img}}" alt="{{ep.titulo}}"> </a>                      
+        <p>{{ep.sub_titulo}}</p>
+    </div>
+    {%endfor%}   
+    </div>
+{%endblock categoria %}

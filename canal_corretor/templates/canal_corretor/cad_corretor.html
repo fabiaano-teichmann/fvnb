@@ -1,12 +1,15 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cad_corretor %}
+<div class="menu col-md-12">
+  <img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+</div>
 
-<div class="col-md-10 col-md-offset-1 form-group"> 
+<div class="col-md-12  form-group"> 
     
 
 <form method="POST" class="form  center-block">
-<h2 class="lg-a"> Cadastro de Corretores  </h2>
+<h2 class="lg-a"> Cadastro de Corretores:  </h2>
   {% csrf_token %}
     <div class=" col-md-5 col-md-offset-1">
         <label>Nome:</label>
@@ -68,11 +71,14 @@
 		{{form.estado}}
 		{{form.estado.error}}
     </div>
-   
-  
-	<div class="form-group col-md-5">
+   <br>
+    <div class="col-md-5 col-md-offset-1">
         <br>
-        <button class="btn btn-lg lg">Enviar</button>
+        <button class="btn btn-lg lg" href="{% url 'canal_corretor.views.index' %}"> Cancelar </button>
+    </div>
+	<div class=" col-md-5 ">
+        <br>
+        <button class="btn btn-lg lg">Cadastrar</button>
     </div>
 
 </form>
