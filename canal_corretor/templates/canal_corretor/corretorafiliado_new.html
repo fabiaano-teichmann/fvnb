@@ -1,11 +1,12 @@
 {%extends 'canal_corretor/base.html'%}
 {%block cad_afiliado%} 
 
-<div class="col-md-10 col-md-offset-1 form-group"> 
+<div class="col-md-12  form-group"> 
+
     <form method="POST" class="form  center-block">  
     <h2 class="lg-a"> Cadastro de Corretores Afiliados  </h2> 
   {% csrf_token %}
-      <div class="col-md-5">
+      <div class="col-md-5 col-md-offset-1">
         <label>Nome:</label>
         {{form.nome}}
         {{form.mome.error}}
@@ -15,18 +16,18 @@
         {{form.nasc}}
         {{form.nasc.error}}
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 col-md-offset-1">
         <label>cpf:</label>
         {{form.cpf}}
         {{form.cpf.error}}
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 ">
         <label>Creci:</label>
         {{form.creci}}
         {{form.creci.error}}
       </div>
             
-      <div class="col-md-5">
+      <div class="col-md-5 col-md-offset-1">
        <label>telefone:</label> 
        {{form.telefone}}
        {{form.telefone.error}}
@@ -36,32 +37,45 @@
         {{form.phone}}
         {{form.phone.error}}
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 col-md-offset-1">
         <label>email:</label>
         {{form.email}}
         {{form.email.error}}
       </div>
-    <div class="col-md-5">
-    <label>Endereço: </label>
-    {{form.endereco}}
-    {{form.endereco.error}}
-    </div>  
+      <div class="col-md-5 ">
+        <label>Endereço: </label>
+        {{form.endereco}}
+        {{form.endereco.error}}
+      </div>  
  
-    <div class="col-md-5">
-      <label>Cidade:</label>
-      {{form.cidade}}
-      {{form.cidade.error}}
+      <div class="col-md-5 col-md-offset-1">
+        <label>Cidade:</label>
+        {{form.cidade}}
+        {{form.cidade.error}}
       
-    </div>
-    <div class="col-md-5">
-    <label>Estado:</label>
-    {{form.estado}}
-    {{form.estado.error}}
-    </div>
-      <span class="clearfix"></span>
-      <div class="col-md-5"><br>
-       <button class="btn btn-lg lg">Enviar</button>
       </div>
+    
+      <div class="col-md-5">
+        <label>Estado:</label>
+        {{form.estado}}
+        {{form.estado.error}}
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <label>Imobiliaria:</label>
+        {{form.id_imob}}
+        
+      </div>
+    <br>
+    <div class="col-md-5 col-md-offset-1">
+        <br>
+        <button class="btn btn-lg " href="{% url 'canal_corretor.views.index' %}"> Cancelar </button>
+    </div>
+  <div class=" col-md-5 ">
+        <br>
+        <button class="btn btn-lg ">Cadastrar</button>
+
+    </div>
+    <span class="clearfix"></span>
   </form>
      
       

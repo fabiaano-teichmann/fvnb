@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+
 estado = (
 	('AC','Acre' ),
 	('AL','Alagoas'),
@@ -83,11 +84,10 @@ class CorretorAfiliado(models.Model):
 	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
+	id_imob = models.ForeignKey("Imobiliaria", on_delete=models.PROTECT)
 	
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	# verificar a necessidade de o corretor ter creci quando afiliado
-	
-		
 	
 	def __str__(self):
 		return (self.nome)
@@ -117,6 +117,7 @@ class Imobiliaria(models.Model):
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	def __str__(self):
 		return (self.nome)
+    
 
 #PARTE DE CADASTRO DOS EMPREENDIMENTOS NB
 
@@ -126,7 +127,7 @@ class Imobiliaria(models.Model):
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
 	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='/static/img/cat')
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='corretor/static/img/cat')
 
 	def __str__(self):
 		return (self.titulo)
@@ -186,14 +187,20 @@ class Material(models.Model):
 	def __str__(self):
 		return(self.nome)
 class Video(models.Model):
+	iframe = models.CharField(max_length=250, verbose_name='Insira iframe', blank=False)
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/vd')
-	link = models.TextField(blank=False)
 	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
- 
-# Material de Apoio
 
-# EMAIL MARKETING
+	def __str__(self):
+		return(self.nome)
+
+class Prova(models.Model):
+	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=False)
+	pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
+	a = models.CharField(max_length=200, verbose_name="Opção", blank=False) 
+	b = models.CharField(max_length=200, verbose_name="Opção", blank=False)
+	c = models.CharField(max_length=200, verbose_name="Opção", blank=False)
+
 
 
 

@@ -2,18 +2,23 @@
 {% load staticfiles %}
 {% block bem_vindo %}
 <div class="menu col-md-12">
-   <nav class="navbar ">
+   <nav class="navbar col-md-12 ">
 		<a class="navbar-text plink " href="{% url 'canal_corretor.views.bem_vindo' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
 			<ul class="nav-pills">
 				
 				<a class="navbar-text"  href="{% url 'canal_corretor.views.ep_list' %}"><p class="menu"> Empreendimentos </p></a>
-				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a>    		
-    			 
+				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
+				<div class=" col-md-2">
+				<p>Bem Vindo</p>
+				 <p class="menu">{{ user.get_username }} </p> </div>
+				
+						
+    			<!-- videos  -->
 			</ul> 	
 		
 	</nav> 
 </div>
-
+<span class="clearfix"></span>
 <div class="col-md-12"> 
 	{%for cat in cats%}
 	
@@ -21,7 +26,7 @@
 
 		<a href="{% url 'canal_corretor.views.categoria' pk=cat.pk %}" >
 		  		 
-		<img src="{{cat.img}}" alt="{{cat.titulo}}">
+		<img src="/{{cat.img}}" alt="{{cat.titulo}}">
 		<h1 class="plink">{{cat.titulo}}</h1>
 		</a>
 		    				

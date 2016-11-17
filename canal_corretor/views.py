@@ -18,6 +18,7 @@ def index(request):
 	}
 	return render(request,'canal_corretor/index.html',context)
 # entrada do sistema
+@login_required
 def bem_vindo (request):
 	if request.user.is_authenticated():
 		cats = Categoria.objects.all()
@@ -34,20 +35,19 @@ def imobiliaria_new(request):
 		instance.save()
 		instance = form.cleaned_data.get('razao')
 		# tenho que  validar consultando se o corretor já não esta cadastrado
-		
-
 		return render(request, 'canal_corretor/enviado.html')
 	return render (request, 'canal_corretor/cad_imobi.html', {'form':form})	
 
 # CORRETOR AFILIADO
-
+@login_required
 def corretorafiliado_new(request):
 	# quando o formulário está vazio ele é none ou seja em branco 
 	form = CorretorAfiliadoForm(request.POST or None)
-	#capturar id imobi
+	#pega os dados do formulário
 	context = {'form': form}
-	if request.method== "POST":
-		if form.is_valid():			
+	print(context)
+	if request.method == "POST":
+		if form.is_valid():
 			instance = form.save(commit=False)
 			instance = form.save()
 			instance = form.cleaned_data.get('nome')
@@ -56,10 +56,15 @@ def corretorafiliado_new(request):
 		
 # AUTONOMO
 
+"""@login_required
+def corretorafiliado_new(request):
+	form = CorretorAfiliadoForm(request.POST or None)
+	context = {}
+"""
 def corretor_new(request):
+
 	form = CorretorForm(request.POST or None)
 	if form.is_valid():
-		# erro 
 		instance = form.save(commit=False)
 		instance.save()
 		#depois de salvo limpa o campo nome 
@@ -72,21 +77,20 @@ def corretor_new(request):
 	
 
 # FORMULÁRIO DE lOGIN
-
 def do_login(request):
 	if request.method =='POST':
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
 		if user is not None:
 			login(request, user)
-			return redirect('/bem_vindo')
+			return redirect('/portal')
 
-	return render(request, 'canal_corretor/login.html')		
+	return render(request, 'canal_corretor/index.html')		
 
-
+#SAÍDA DE USUÁRIO
 def do_logout(request):
 	logout(request)
-	return redirect('/login')
-
+	return redirect('login')
+"""
 def cadastro(request):
 	form = UserModelForm(request.POST or None)
 	context = {'form': form}
@@ -95,24 +99,27 @@ def cadastro(request):
 			instance = form.salve()
 			instance = form.cleaned_data('username')
 	return render (request, 'canal_corretor/cadastro.html', context)
+"""
 
-
-#lISTAR EPRENDIMENTOS
+#lISTAR EMPRENDIMENTOS
 @login_required
 def ep_list(request):
 	eps = Empreendimento.objects.all()
 	#aplicar um filtro para que possa redirecionar 
 	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
 
-# LISTAR CATEGORIA
+# DETALHAR EP
+@login_required
+def ep_detail(request, pk):
+	emp = get_object_or_404(Empreendimento, pk=pk)
+	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
 
+# LISTAR CATEGORIA
 @login_required
 def categoria(request):
 	cats = Categoria.objects.all()
-	eps = Empreendimento.objects.all()
 	context = {
-	'cats': cats,
-	'eps':eps}
+	'cats': cats}
 
 	return render(request,'canal_corretor/categoria.html',context )
 
@@ -123,12 +130,11 @@ def cat_detail(request, pk):
 	return render(request, 'canal_corretor/cat_detail.html', {'cats': cats})
 
 
-# DETALHAR EP
-@login_required
-def ep_detail(request, pk):
-	emp = get_object_or_404(Empreendimento, pk=pk)
-	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
+
 		
 
-# CATEGORIAS
+# PROVA
+def prova(request, pk):
+	provas = get_object_or_404(Prova, pk=pk)
+	return render(request, 'canal_corretor/prova.html',{'provas': provas} )
 

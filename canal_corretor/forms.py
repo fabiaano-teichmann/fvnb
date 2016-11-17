@@ -3,7 +3,7 @@ from django import forms
 from .models import Corretor, Imobiliaria, CorretorAfiliado
 from django.contrib.auth.models import User # importa o model da  tabela User que o django cria
 
-#CORRETOR
+#CORRETOR AUTONOMO 
 class CorretorForm(forms.ModelForm):
 	class Meta:
 		model = Corretor
@@ -30,8 +30,8 @@ class CorretorForm(forms.ModelForm):
 			'nome': {'required': 'Este campo é obrigatório'},
 			'nasc': {'required': 'Este campo é obrigatório'},
 			'cpf': {'required': 'Este campo é obrigatório'},
-			'creci':{'required': 'Este campo é obrigatório'},
-			'email':{'required': 'Este campo é obrigatório'},
+			'creci': {'required': 'Este campo é obrigatório'},
+			'email': {'required': 'Este campo é obrigatório'},
 			'phone': {'required': 'Este campo é obrigatório'},
 			'endereco': {'required': 'Este campo é obrigatório'},
 			'cidade': {'required': 'Este campo é obrigatório'},
@@ -53,7 +53,7 @@ class ImobiliariaForm(forms.ModelForm):
 		]
 		widgets = {
 			'img': forms.FileInput(attrs = {'class': 'form-control', 'placeholder': 'Imagem'}),
-			'razao':forms.TextInput(attrs ={'class': 'form-control'}),
+			'razao':forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Razão social'}),
 			'creci_j': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Creci Jurídico'}),
 			'nome': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Nome'}), 
 			'cnpj': forms.TextInput(attrs ={'class': 'form-control','placeholder': 'Cnpj'}),
@@ -109,8 +109,12 @@ class CorretorAfiliadoForm(forms.ModelForm):
 			"endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
 		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
 		  	"estado":forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
+
+		  	# ver documentação completa do form e perguntar em forum
+		  	#"id_imob": forms.Select(attrs={'class':'form-contrl', 'placeholder': 'imobiliaria'}),
 		}
 		error_messages ={
+
 			'nome': {
 				'required': 'Este campo é obrigatório'
 

@@ -41,7 +41,6 @@
     
 }
 .form-group{
-    background-color: transparent;
     border-radius: 30px;
     background-color: #86744f;
     position: relative;
@@ -104,12 +103,18 @@
    color: #86744f;
    margin-left: 0.5em;  
 }
+.alerta :hover {
+    background-color: #ff3333;
+
+
+
+
+}
 .lg-a {
    color: #fff;
    margin-left: 0.5em;
    text-transform: uppercase;
-   padding-right: 5px; 
-   padding-top: 1em;
+   text-align: center;
    font-size: 1.5em;
 }
 .fvnb {
@@ -151,4 +156,12 @@
 .logoimg {
     position: absolute;
     top:0.5em;
+}
+.user {
+width: 4em;
+height: 4em;
+position: relative;
+top: 0;
+left:  60em;
+
 }
