@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import CorretorForm, ImobiliariaForm, UserModelForm, CorretorAfiliadoForm
+from .forms import CorretorForm, ImobiliariaForm, AfiliadoForm, UserModelForm
 # criar um para corretor afiliado https://www.youtube.com/watch?v=AZ1d5yEwitM&t=1718s
+
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
@@ -18,6 +19,23 @@ def index(request):
 	}
 	return render(request,'canal_corretor/index.html',context)
 # entrada do sistema
+
+
+# FORMULÁRIO DE lOGIN
+def do_login(request):
+	if request.method =='POST':
+		user = authenticate(username=request.POST['username'], password=request.POST['password'])
+		if user is not None:
+			login(request, user)
+			return redirect('portal')
+
+	return render(request, 'canal_corretor/login.html')		
+
+#SAÍDA DE USUÁRIO
+def do_logout(request):
+	logout(request)
+	return redirect('login')
+#Portal do corretor
 @login_required
 def bem_vindo (request):
 	if request.user.is_authenticated():
@@ -40,19 +58,21 @@ def imobiliaria_new(request):
 
 # CORRETOR AFILIADO
 @login_required
-def corretorafiliado_new(request):
+#deferia ser uma classe protegida
+def afiliado_new(request):
 	# quando o formulário está vazio ele é none ou seja em branco 
-	form = CorretorAfiliadoForm(request.POST or None)
+	form = AfiliadoForm(request.POST or None)
 	#pega os dados do formulário
 	context = {'form': form}
-	print(context)
-	if request.method == "POST":
-		if form.is_valid():
-			instance = form.save(commit=False)
-			instance = form.save()
-			instance = form.cleaned_data.get('nome')
-			return render(request, 'canal_corretor/enviado.html')
-	return render(request, 'canal_corretor/corretorafiliado_new.html', context)		
+	if not request.user.has_perm(''):
+		
+		if request.method == "POST":
+			if form.is_valid():
+				instance = form.save(commit=False)
+				instance = form.save()
+				instance = form.cleaned_data.get('nome')
+				return render(request, 'canal_corretor/enviado.html')
+	return render(request, 'canal_corretor/afiliado_new.html', context)		
 		
 # AUTONOMO
 
@@ -64,44 +84,35 @@ def corretorafiliado_new(request):
 def corretor_new(request):
 
 	form = CorretorForm(request.POST or None)
+	context = {'form': form}
+
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
 		#depois de salvo limpa o campo nome 
 		instance = form.cleaned_data.get('nome')
 		#  criar um retorno. dizendo que o formulário foi enviado com sucesso
-		form = CorretorForm()
-		return render(request, 'canal_corretor/enviado.html')
 		
-	return render(request, 'canal_corretor/cad_corretor.html',{'form': form})	
+		redirect(cadastro)
+		    #envia para prova 
+	return render(request, 'canal_corretor/cad_corretor.html', context)	
 	
 
-# FORMULÁRIO DE lOGIN
-def do_login(request):
-	if request.method =='POST':
-		user = authenticate(username=request.POST['username'], password=request.POST['password'])
-		if user is not None:
-			login(request, user)
-			return redirect('/portal')
 
-	return render(request, 'canal_corretor/index.html')		
-
-#SAÍDA DE USUÁRIO
-def do_logout(request):
-	logout(request)
-	return redirect('login')
-"""
 def cadastro(request):
 	form = UserModelForm(request.POST or None)
 	context = {'form': form}
+
 	if request.method =='POST':
 		if form.is_valid():
-			instance = form.salve()
-			instance = form.cleaned_data('username')
+			instance = form.save(commit=False)
+			instance.save()
+			instance = form.cleaned_data.get('username')
 	return render (request, 'canal_corretor/cadastro.html', context)
-"""
+
 
 #lISTAR EMPRENDIMENTOS
+
 @login_required
 def ep_list(request):
 	eps = Empreendimento.objects.all()
@@ -109,6 +120,7 @@ def ep_list(request):
 	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
 
 # DETALHAR EP
+
 @login_required
 def ep_detail(request, pk):
 	emp = get_object_or_404(Empreendimento, pk=pk)
@@ -116,10 +128,13 @@ def ep_detail(request, pk):
 
 # LISTAR CATEGORIA
 @login_required
-def categoria(request):
-	cats = Categoria.objects.all()
+def categoria(request, pk):
+	cats = get_object_or_404(Categoria, pk=pk)
+	eps = Empreendimento.objects.all()
 	context = {
-	'cats': cats}
+	'cats': cats,
+	'eps': eps
+	}
 
 	return render(request,'canal_corretor/categoria.html',context )
 
@@ -134,6 +149,7 @@ def cat_detail(request, pk):
 		
 
 # PROVA
+#esperar para ver que tipo de prova
 def prova(request, pk):
 	provas = get_object_or_404(Prova, pk=pk)
 	return render(request, 'canal_corretor/prova.html',{'provas': provas} )

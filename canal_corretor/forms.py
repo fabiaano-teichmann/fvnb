@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Corretor, Imobiliaria, CorretorAfiliado
+from .models import Corretor, Imobiliaria, Afiliado
 from django.contrib.auth.models import User # importa o model da  tabela User que o django cria
 
 #CORRETOR AUTONOMO 
@@ -25,6 +25,7 @@ class CorretorForm(forms.ModelForm):
 		  	"cep" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cep'}),
 		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cidade'}),
 		  	"estado":forms.Select(attrs ={'class': 'form-control fvnb', 'placeholder': 'Estado'}),
+		  	
 		  }
 		error_messages = { 
 			'nome': {'required': 'Este campo é obrigatório'},
@@ -36,10 +37,32 @@ class CorretorForm(forms.ModelForm):
 			'endereco': {'required': 'Este campo é obrigatório'},
 			'cidade': {'required': 'Este campo é obrigatório'},
 			'estado': {'required': 'Este campo é obrigatório'},
-
+			
 		  }
 
 
+class UserModelForm(forms.ModelForm):
+	class Meta:
+		model = User 
+		fields = ['username','password']
+		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
+		widgets = {
+			'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
+				
+			'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
+			
+			
+		}
+		
+		error_messages = {
+			'username': {
+				'required': 'Esse usuário não exite'
+			},
+
+			'password':{
+				'required': 'senha Inválida'
+			}
+	}
 
 #IMOBILIARIA
 class ImobiliariaForm(forms.ModelForm):
@@ -91,9 +114,10 @@ class ImobiliariaForm(forms.ModelForm):
 
 		}
 #CORRETOR AFILIADO
-class CorretorAfiliadoForm(forms.ModelForm):
+
+class AfiliadoForm(forms.ModelForm):
 	class Meta:
-		model = CorretorAfiliado
+		model = Afiliado
 		fields = [
 		"nome","nasc", "cpf", "creci",
 		 "telefone","phone", "email","endereco", "cidade", "estado"
@@ -148,21 +172,7 @@ class CorretorAfiliadoForm(forms.ModelForm):
 		}	
 
 #FORMULÁRIO DE LOGIN
-class UserModelForm(forms.ModelForm):
-	class Meta:
-		model = User 
-		fields = ['username','password']
-		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
-		widgets = {
-			'username': forms.TextInput(attrs = {'class': 'form-control'}),	
-			'password': forms.PasswordInput(attrs = {'class': 'form-control'}),
-		}
-		
-		error_messages = {
-			'username': {
-				'required': 'Esse usuário não exite'
-			},
-			'password':{
-				'required': 'senha Inválida'
-			}
-		}
+
+
+# Formulário de cadastro de usuário
+

@@ -70,7 +70,7 @@ class Corretor(models.Model):
 
 # CORRETOR LIGADO A IMOBILIARIA 
 
-class CorretorAfiliado(models.Model):
+class Afiliado(models.Model):
 	nome = models.CharField(verbose_name='Nome: * ',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
 	cpf = models.CharField(verbose_name='CPF: * ', blank=False, max_length=16)
@@ -84,8 +84,7 @@ class CorretorAfiliado(models.Model):
 	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
-	id_imob = models.ForeignKey("Imobiliaria", on_delete=models.PROTECT)
-	
+	imob = models.OneToOneField("Imobiliaria", on_delete=models.CASCADE, primary_key=True)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	# verificar a necessidade de o corretor ter creci quando afiliado
 	
@@ -115,9 +114,11 @@ class Imobiliaria(models.Model):
 	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
 	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default=1)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
+	
 	def __str__(self):
 		return (self.nome)
     
+
 
 #PARTE DE CADASTRO DOS EMPREENDIMENTOS NB
 
@@ -126,7 +127,6 @@ class Imobiliaria(models.Model):
 
 class Categoria(models.Model):
 	titulo = models.CharField(verbose_name='Nome:',max_length=100, blank=False)
-	sub_titulo = models.CharField('Sub Titulo:',max_length=150)
 	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='corretor/static/img/cat')
 
 	def __str__(self):
@@ -143,6 +143,7 @@ class Empreendimento(models.Model):
 	cat = models.ForeignKey("Categoria",verbose_name='categoria', on_delete=models.PROTECT)
 	estado = models.CharField(verbose_name='Estado: (campo obrigatório)',max_length=100, choices=estado, blank=True)
 	status = models.CharField('Status', max_length=30, blank=False, choices=status)
+	
 	def publish(self):
 		self.lancamento = timezone.now()
 		self.save()

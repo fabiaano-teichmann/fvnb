@@ -1,30 +1,39 @@
 {%extends 'canal_corretor/base.html'%}
-{%block login%}
-
-<!--login modal-->
+{% load staticfiles %}
+{% block cadastro %}
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">Login</h1>
+          <h1 class="text-center">Cadastro Usuário</h1>
       </div>
       <div class="modal-body">
       <!-- formulário puro sem modal -->
-        <form action="{% url 'canal_corretor.views.do_login' %}" method="post">
+        <form action="{% url 'canal_corretor.views.cadastro' %}" method="post">
         {% csrf_token %}
-          
+         <label>Nome de usuário</label>
+         {{form.username}} 
+         {{form.username.error}}
+         <label>senha </label>
+         {{form.password}}
+         {{form.password.error}}
+         
+         <button class="btn btn-primary" type="submit">cadastrar</button>
+         <!--
         <input type="text" name="username" placeholder="Usuário" class="form-control">
+         <br>
+         <input type="text" name="email" placeholder="E-mail" class="form-control">
          <br>         
-        <input type="password" name="password" placeholder="Senha" class="form-control">
+         <input type="password" name="password" placeholder="Senha" class="form-control">
          <span class="clearfix"></span>
          <br>
          <div class="col-md-2">  
-         <button class="btn btn-primary" type="submit">Login</button> 
+         <button class="btn btn-primary" type="submit">cadastrar</button> 
          </div> 
-         <div class="col-md-2 col-md-2-offset-8"></div>
+         <div class="col-md-2 col-md-offset-4">
          <button class="btn btn-alert" href="{% url 'canal_corretor.views.index' %}">Cancelar</button>
-
+		</div>
         </form>  
         <!-- formulário puro sem modal -->
       </div>
@@ -32,11 +41,4 @@
   </div>
   </div>
 </div>
-
-
-
-
-  <!-- script references -->
-		
-
-{% endblock login%}	
+{% endblock cadastro%}

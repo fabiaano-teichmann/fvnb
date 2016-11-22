@@ -16,3 +16,11 @@ Cadastre-se (para cadastrar corretor e imobiliaria) nnN
 	
 Inserção no site]		
 	
+INSERT INTO fvnb.canal_corretor_categoria (`id`, `titulo`) VALUES
+(18, 'New Golden Park'),
+(20, 'New Boulevard'),
+(21, 'New Golden Ville'),
+(22, 'New Towers'),
+(23, 'Cidade Industrial'),
+(24, 'Cidade Industrial'),
+(25, 'Cidade Universitária');

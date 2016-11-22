@@ -10,7 +10,7 @@
 				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
 				<div class=" col-md-2">
 				<p>Bem Vindo</p>
-				 <p class="menu">{{ user.get_username }} </p> </div>
+				<p class="menu">{{ user.get_username }} </p> </div>
 				
 						
     			<!-- videos  -->
@@ -19,21 +19,17 @@
 	</nav> 
 </div>
 <span class="clearfix"></span>
-<div class="col-md-12"> 
-	{%for cat in cats%}
-	
-	<div class="col-md-4">
 
-		<a href="{% url 'canal_corretor.views.categoria' pk=cat.pk %}" >
-		  		 
-		<img src="/{{cat.img}}" alt="{{cat.titulo}}">
-		<h1 class="plink">{{cat.titulo}}</h1>
-		</a>
-		    				
-	</div>
-
-	{% endfor %}
+<div class="col-md-12">
+    {% for ep in eps %} 
+       
+    <div class="col-md-4"> 
+        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}" > 
+        <h3>  {{ep.titulo}} </h3>
+        <img src="{{ep.img}}" alt="{{ep.titulo}}"> 
+        </a>                      
+        <p>{{ep.sub_titulo}}</p>
+    </div>
+        {%endfor%}   
 </div>
-
-
 {% endblock bem_vindo %}

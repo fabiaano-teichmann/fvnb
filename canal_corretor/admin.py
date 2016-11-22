@@ -22,14 +22,12 @@ class MetaImobiliaria:
 	admin.site.register(Imobiliaria, ImobiliariaAdmin) 
 
 # Corretor Afiliado 
-class CorretorAfiliadoAdmin(admin.ModelAdmin):
+class AfiliadoAdmin(admin.ModelAdmin):
 	save_on_top = True
 	
-
-
 class MetaCorretor:
-	model = Corretor
-	admin.site.register(CorretorAfiliado, CorretorAfiliadoAdmin)
+	model = Afiliado
+	admin.site.register(Afiliado, AfiliadoAdmin)
 
 #Corretor
 class CorretorAdmin(admin.ModelAdmin):
@@ -44,8 +42,8 @@ class MetaCorretor:
 #categoria
 class CategoriaAdmin(admin.ModelAdmin):
 	save_on_top = True
-	list_display = ('titulo', 'sub_titulo')
-	list_filter = ('titulo', 'sub_titulo')
+	
+	
 
 class MetaCategoria(admin.ModelAdmin):
 	model = Categoria

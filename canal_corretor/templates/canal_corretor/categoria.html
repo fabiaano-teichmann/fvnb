@@ -1,11 +1,12 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block categoria%} 
-<div class="col-md-12">
+<div class="col-md-12" id="categoria">
 
 {% for ep in eps %}
-{% for cat in cats %}
-{%if ep.id ==  cat.id %} 
+{% for ep in eps %} 
+	{% for cat in cats %}
+		{%if ep.id == cat.id %} 
        
     <div class="col-md-4"> 
         
@@ -15,6 +16,9 @@
         <img src="{{ep.img}}" alt="{{ep.titulo}}"> </a>                      
         <p>{{ep.sub_titulo}}</p>
     </div>
-    {%endfor%}   
-    </div>
+		{%endif%}
+    {%endfor%}
+{%endfor%}  
+</div>
+
 {%endblock categoria %}

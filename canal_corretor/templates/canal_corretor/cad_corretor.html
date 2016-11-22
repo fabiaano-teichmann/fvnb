@@ -9,7 +9,7 @@
 <div class="col-md-12  form-group"> 
     
 
-<form method="POST" class="form  center-block">
+<form action="{% url 'canal_corretor.views.corretor_new' %}"" method="POST" class="form  center-block">
 <h1 class="lg-a"> Cadastro de Corretores:  </h1>
   {% csrf_token %}
     <div class=" col-md-5 col-md-offset-1">
@@ -72,6 +72,16 @@
 		{{form.estado}}
 		{{form.estado.error}}
     </div>
+    <div class=" col-md-5 ">
+    <label>Nome de usuário</label>
+         {{form.username}} 
+         {{form.username.error}}
+    </div>
+    <div class="col-md-5 col-md-offset-1">     
+         <label>senha </label>
+         {{form.password}}
+         {{form.password.error}}
+    </div>     
    <br>
     <div class="col-md-5 col-md-offset-1">
         <br>
