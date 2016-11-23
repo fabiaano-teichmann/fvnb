@@ -41,6 +41,12 @@ status = (
 	('2', 'Em breve'),
 	('3', 'Lançado')
 	)
+escolha = (
+	('1','a'),
+	('2', 'b'),
+	('3', 'c'),
+	('4', 'd'),
+	)
 #CADASTRO DE USUÁRIOS
 
 #CORRETOR AUTONOMO
@@ -118,7 +124,8 @@ class Imobiliaria(models.Model):
 	def __str__(self):
 		return (self.nome)
     
-
+class User(models.Model):
+	username = models
 
 #PARTE DE CADASTRO DOS EMPREENDIMENTOS NB
 
@@ -195,12 +202,12 @@ class Video(models.Model):
 	def __str__(self):
 		return(self.nome)
 
+
 class Prova(models.Model):
 	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=False)
 	pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
-	a = models.CharField(max_length=200, verbose_name="Opção", blank=False) 
-	b = models.CharField(max_length=200, verbose_name="Opção", blank=False)
-	c = models.CharField(max_length=200, verbose_name="Opção", blank=False)
+	resposta = models.CharField(verbose_name='Resposta',max_length=5, choices=escolha, blank=True)
+
 
 
 

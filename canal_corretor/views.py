@@ -84,21 +84,30 @@ def corretorafiliado_new(request):
 def corretor_new(request):
 
 	form = CorretorForm(request.POST or None)
+	
 	context = {'form': form}
 
+	#print(context)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
-		#depois de salvo limpa o campo nome 
 		instance = form.cleaned_data.get('nome')
-		#  criar um retorno. dizendo que o formulário foi enviado com sucesso
-		
-		redirect(cadastro)
-		    #envia para prova 
+		#  remcaminha para criar usuario e senha
+		return redirect(cadastro)
 	return render(request, 'canal_corretor/cad_corretor.html', context)	
+		
+	form = UserModelForm(request.POST or None)
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		instance = form.cleaned_data.get('username')
+		return redirect(portal)
+	return render(request, 'canal_corretor/cadastro.html', {'form': form})
+		    #envia para prova 
+	
 	
 
-
+@login_required
 def cadastro(request):
 	form = UserModelForm(request.POST or None)
 	context = {'form': form}

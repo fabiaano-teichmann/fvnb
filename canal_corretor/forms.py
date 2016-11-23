@@ -39,29 +39,27 @@ class CorretorForm(forms.ModelForm):
 			'estado': {'required': 'Este campo é obrigatório'},
 			
 		  }
+#class ProvaForm(forms.Model.Form)
 
 
 class UserModelForm(forms.ModelForm):
 	class Meta:
 		model = User 
-		fields = ['username','password']
+		fields = ['username','password', 'email' ]
 		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
 		widgets = {
 			'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
-				
+			'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'Email'}),				
 			'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
 			
 			
 		}
 		
 		error_messages = {
-			'username': {
-				'required': 'Esse usuário não exite'
-			},
+			'username': {'required': 'Esse usuário não exite'},
+			'email': {'required': 'Esse E-mail é invalido'},
+			'password':{ 'required': 'senha Inválida'},
 
-			'password':{
-				'required': 'senha Inválida'
-			}
 	}
 
 #IMOBILIARIA

@@ -15,27 +15,15 @@
          <label>Nome de usuário</label>
          {{form.username}} 
          {{form.username.error}}
+         <label>E-mail</label>
+         {{form.email}}
+         {{form.email.error}}
          <label>senha </label>
          {{form.password}}
          {{form.password.error}}
          
          <button class="btn btn-primary" type="submit">cadastrar</button>
-         <!--
-        <input type="text" name="username" placeholder="Usuário" class="form-control">
-         <br>
-         <input type="text" name="email" placeholder="E-mail" class="form-control">
-         <br>         
-         <input type="password" name="password" placeholder="Senha" class="form-control">
-         <span class="clearfix"></span>
-         <br>
-         <div class="col-md-2">  
-         <button class="btn btn-primary" type="submit">cadastrar</button> 
-         </div> 
-         <div class="col-md-2 col-md-offset-4">
-         <button class="btn btn-alert" href="{% url 'canal_corretor.views.index' %}">Cancelar</button>
-		</div>
-        </form>  
-        <!-- formulário puro sem modal -->
+         
       </div>
       
   </div>
