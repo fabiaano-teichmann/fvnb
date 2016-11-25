@@ -42,7 +42,7 @@
 }
 .form-group{
     border-radius: 30px;
-    background-color: #fff;
+   
     position: relative;
     top:5em;
  
@@ -101,7 +101,8 @@
 }
 .lg {
    color: #86744f;
-   margin-left: 0.5em;  
+   text-align: center; 
+   margin-top: 40px; 
 }
 .alerta :hover {
     background-color: #ff3333;
@@ -155,7 +156,8 @@
 }
 .logoimg {
     position: absolute;
-    top:0.5em;
+    top:0.2em;
+    left: 40%;
 }
 .user {
 width: 4em;

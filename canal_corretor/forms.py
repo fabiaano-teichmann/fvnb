@@ -44,7 +44,7 @@ class CorretorForm(forms.ModelForm):
 
 			}
 			#1784848Ab@$1sdgsA
-			
+	
 
 class ProvaForm(forms.ModelForm):
 	class Meta:
