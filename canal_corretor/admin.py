@@ -15,7 +15,7 @@ class MetaEmpreendimento:
 class ImobiliariaAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('razao', 'nome', 'cidade')
-	list_filter = ('razao', 'nome', 'cidade','ativacao','create_date')
+	list_filter = ('razao', 'nome', 'cidade','create_date')
 
 class MetaImobiliaria:
 	model = Imobiliaria
@@ -33,7 +33,7 @@ class MetaCorretor:
 class CorretorAdmin(admin.ModelAdmin):
 	save_on_top = True
 	list_display = ('nome', 'cidade')
-	list_filter = ('nome', 'cidade','ativacao', 'create_date')
+	list_filter = ('nome', 'cidade', 'create_date')
 
 class MetaCorretor:
 	model = Corretor

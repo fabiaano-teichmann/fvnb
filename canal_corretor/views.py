@@ -81,43 +81,49 @@ def corretorafiliado_new(request):
 	form = CorretorAfiliadoForm(request.POST or None)
 	context = {}
 """
+# Cadastro de corretor 
 def corretor_new(request):
 
 	form = CorretorForm(request.POST or None)
-	
 	context = {'form': form}
-
-	#print(context)
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
 		instance = form.cleaned_data.get('nome')
 		#  remcaminha para criar usuario e senha
-		return redirect(cadastro)
-	return render(request, 'canal_corretor/cad_corretor.html', context)	
-		
-	form = UserModelForm(request.POST or None)
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
-		instance = form.cleaned_data.get('username')
-		return redirect(portal)
-	return render(request, 'canal_corretor/cadastro.html', {'form': form})
-		    #envia para prova 
-	
-	
+		#return redirect(cadastro)
+		return redirect(ep_list)
+	return render(request, 'canal_corretor/cad_corretor.html', context)
 
-@login_required
 def cadastro(request):
 	form = UserModelForm(request.POST or None)
 	context = {'form': form}
-
-	if request.method =='POST':
-		if form.is_valid():
-			instance = form.save(commit=False)
-			instance.save()
-			instance = form.cleaned_data.get('username')
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		#instance = form.cleaned_data.get('username')
+		return redirect(corretor_new)
 	return render (request, 'canal_corretor/cadastro.html', context)
+
+
+
+
+# PROVA
+#esperar para ver que tipo de prova
+def prova(request, pk):
+	form = ProvaForm(request.POST or None)
+	#provas = get_object_or_404(Prova, pk=pk)
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		instance = form.clearned_data.get('pergunta')
+		return redirect(portal)
+
+	return render(request, 'canal_corretor/prova.html',{'form': form})
+
+	
+
+
 
 
 #lISTAR EMPRENDIMENTOS
@@ -156,10 +162,4 @@ def cat_detail(request, pk):
 
 
 		
-
-# PROVA
-#esperar para ver que tipo de prova
-def prova(request, pk):
-	provas = get_object_or_404(Prova, pk=pk)
-	return render(request, 'canal_corretor/prova.html',{'provas': provas} )
 

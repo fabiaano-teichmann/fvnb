@@ -32,10 +32,7 @@ estado = (
 	('TO', 'Tocantins'),
 	)
 
-status_user = (
-	('1','Inativo'),
-	('2','Ativo'),
-	)
+
 status = (
 	('1', 'Pronto para Construir'),
 	('2', 'Em breve'),
@@ -67,8 +64,8 @@ class Corretor(models.Model):
 	cidade = models.CharField(verbose_name='Cidade*:',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
-	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default=1) 
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
+	
 	#campo para'criar a senha para o usuário 
 	
 	def __str__(self):
@@ -118,16 +115,10 @@ class Imobiliaria(models.Model):
 	email_resp = models.CharField("Email do Responsável:", max_length=200)
 	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
 	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
-	ativacao = models.CharField(max_length=10, choices=status_user, blank=True, default=1)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	
 	def __str__(self):
 		return (self.nome)
-    
-class User(models.Model):
-	username = models
-
-#PARTE DE CADASTRO DOS EMPREENDIMENTOS NB
 
 
 #CATEGORIA
@@ -204,7 +195,7 @@ class Video(models.Model):
 
 
 class Prova(models.Model):
-	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=False)
+	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=True)
 	pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
 	resposta = models.CharField(verbose_name='Resposta',max_length=5, choices=escolha, blank=True)
 

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Corretor, Imobiliaria, Afiliado
+from .models import Corretor, Imobiliaria, Afiliado, Prova
 from django.contrib.auth.models import User # importa o model da  tabela User que o django cria
 
 #CORRETOR AUTONOMO 
@@ -12,44 +12,58 @@ class CorretorForm(forms.ModelForm):
 		 "endereco", "cep" ,"cidade",  "email",
 		 "estado"
 		  ]
+		#email = forms.ModelChoiceField(queryset=User.objects.all().order_by('id'), widget=forms.Select({'class': 'form-control' })),
+		#id_cargo = forms.ModelChoiceField (queryset=Cargo.objects.all().order_by('id'), widget=forms.Select)
 		widgets = {
-			"nome":forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Nome'}),
-		  	"nasc" :forms.DateInput(attrs ={'class': 'form-control fvnb','placeholder': 'Data Nascimento'}),
-		  	"cpf"	:forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'CPF'}),
-		  	"creci" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Creci'}),
-		  	"telefone" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Telefone'}),
-		  	"email" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'E-mail'}),
-		  	"site" :forms.URLInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Site'}),
-		  	"phone" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Celular'}),
-		  	"endereco":forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Endereço'}),
-		  	"cep" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cep'}),
-		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control fvnb', 'placeholder': 'Cidade'}),
-		  	"estado":forms.Select(attrs ={'class': 'form-control fvnb', 'placeholder': 'Estado'}),
+			"nome":forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Nome'}),
+		  	"nasc" :forms.DateInput(attrs ={'class': 'form-control ','placeholder': 'Data Nascimento'}),
+		  	"cpf"	:forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'CPF'}),
+		  	"creci" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Creci'}),
+		  	"telefone" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Telefone'}),
+		  	"email" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'E-mail'}),
+		  	#"email": forms.ModelChoiceField(queryset=User.objects.all().order_by('id'), widget=forms.Select(attrs ={'class': 'form-control ', 'placeholder': 'Email'})),
+		  	"site" :forms.URLInput(attrs ={'class': 'form-control ', 'placeholder': 'Site'}),
+		  	"phone" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Celular'}),
+		  	"endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+		  	"cep" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Cep'}),
+		  	"cidade" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Cidade'}),
+		  	"estado":forms.Select(attrs ={'class': 'form-control ', 'placeholder': 'Estado'}),
 		  	
 		  }
+		 
 		error_messages = { 
 			'nome': {'required': 'Este campo é obrigatório'},
 			'nasc': {'required': 'Este campo é obrigatório'},
 			'cpf': {'required': 'Este campo é obrigatório'},
 			'creci': {'required': 'Este campo é obrigatório'},
-			'email': {'required': 'Este campo é obrigatório'},
+			'email': {'Requer': 'O uso de @ e .'},
 			'phone': {'required': 'Este campo é obrigatório'},
 			'endereco': {'required': 'Este campo é obrigatório'},
 			'cidade': {'required': 'Este campo é obrigatório'},
 			'estado': {'required': 'Este campo é obrigatório'},
+
+			}
+			#1784848Ab@$1sdgsA
 			
-		  }
-#class ProvaForm(forms.Model.Form)
+
+class ProvaForm(forms.ModelForm):
+	class Meta:
+		model = Prova
+		fields = ['resposta']
+		widgets = {
+			
+			'resposta': forms.RadioSelect(attrs = {'class': 'form-control', 'placeholder': 'Resposta'}),
+		}
 
 
 class UserModelForm(forms.ModelForm):
 	class Meta:
 		model = User 
-		fields = ['username','password', 'email' ]
+		fields = ['username','email', 'password']
 		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
 		widgets = {
 			'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
-			'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'Email'}),				
+			'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'E-mail caso precise redefinir senha'}),			
 			'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
 			
 			
@@ -57,7 +71,7 @@ class UserModelForm(forms.ModelForm):
 		
 		error_messages = {
 			'username': {'required': 'Esse usuário não exite'},
-			'email': {'required': 'Esse E-mail é invalido'},
+			'email': {'Required': 'Email tem que possuir @'},
 			'password':{ 'required': 'senha Inválida'},
 
 	}
