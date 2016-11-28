@@ -9,16 +9,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-# Cadastro dos corretores
-def index(request):
-	cr = Corretor.objects.all()
-	im = Imobiliaria.objects.all()
-	context = {
-	'cr': cr,
-	'im': im,
-	}
-	return render(request,'canal_corretor/index.html',context)
-# entrada do sistema
 
 
 # FORMULÁRIO DE lOGIN
@@ -27,9 +17,21 @@ def do_login(request):
 		user = authenticate(username=request.POST['username'], password=request.POST['password'])
 		if user is not None:
 			login(request, user)
+			#redireciona para a pagina de entrada
 			return redirect('portal')
 
-	return render(request, 'canal_corretor/login.html')		
+	return render(request, 'canal_corretor/index.html')		
+
+"""
+	PAGINA PRINCIPAL DO PORTAL
+"""
+@login_required
+def portal(request):
+	eps = Empreendimento.objects.all()
+	#aplicar um filtro para que possa redirecionar 
+	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+
+
 
 #SAÍDA DE USUÁRIO
 def do_logout(request):
@@ -37,12 +39,7 @@ def do_logout(request):
 	return redirect('login')
 #Portal do corretor
 @login_required
-def bem_vindo (request):
-	if request.user.is_authenticated():
-		cats = Categoria.objects.all()
-		return render(request, 'canal_corretor/bem_vindo.html', {'cats': cats})
-	else:
-		return redirect('/do_login')	
+
 
 # IMOBILIARIA
 
@@ -106,8 +103,6 @@ def cadastro(request):
 	return render (request, 'canal_corretor/cadastro.html', context)
 
 
-
-
 # PROVA
 #esperar para ver que tipo de prova
 def prova(request, pk):
@@ -128,11 +123,7 @@ def prova(request, pk):
 
 #lISTAR EMPRENDIMENTOS
 
-@login_required
-def ep_list(request):
-	eps = Empreendimento.objects.all()
-	#aplicar um filtro para que possa redirecionar 
-	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+
 
 # DETALHAR EP
 

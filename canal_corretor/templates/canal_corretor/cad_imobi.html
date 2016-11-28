@@ -1,119 +1,115 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cad_imobi %}
-<div class="col-md-12  form-group"> 
-<form method="POST" class="form  center-block">
-<h2 class="lg-a"> Cadastro de Imobiliarias </h2> 
+<div class="col-md-8 col-md-offset-2">
+          <br>  
+          <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+          <span class="clearfix"><br></span>
+          <h1 class="lg"> Cadastro de Imobiliarias </h1> 
+  <form action="{% url 'canal_corretor.views.corretor_new' %}" method="POST" class="form  center-block">
   {% csrf_token %}
-    <div class="col-md-5 col-md-offset-1">
+  <div class="col-md-5"> 
     	<label> Imagem</label>
     	{{form.img}}
-    </div>
-    <div class=" col-md-5">
+  </div>
+  <div class="col-md-5 col-md-offset-1">  
     	<label>Razão social </label>
     	{{form.razao}}
     	{{fomr.razao.error}}
-    </div>
-    <div class=" col-md-5 col-md-offset-1">
+  </div>
+  <div class="col-md-5 ">  
     	<label>Creci Jurídico </label>
     	{{form.creci_j}}
     	{{fomr.creci_j.error}}
-    </div>
-    
-	<div class=" col-md-5">
-        <label>Nome Fantasia:</label>
+  </div>
+  <div class="col-md-5 col-md-offset-1">  
+      <label>Nome Fantasia:</label>
         {{form.nome}}
         {{form.mome.error}}
-     </div>
-
-    <div class="col-md-5 col-md-offset-1">
-        <label>cnpj:</label>
+  </div>
+  <div class="col-md-5 " >  
+      <label>cnpj:</label>
         {{form.cnpj}}
         {{form.cnpj.error}}
-    </div>
-      
-    <div class="col-md-5">
-        <label>endereço:</label>
+  </div>
+  <div class="col-md-5 col-md-offset-1"> 
+      <label>endereço:</label>
         {{form.endereco}}
         {{form.endereco.error}}
-    </div>
-    <div class="col-md-5 col-md-offset-1">
-        <label>bairro:</label>
+  </div>
+  <div class="col-md-5 ">  
+      <label>bairro:</label>
         {{form.bairro}}
         {{form.bairro.error}}
-    </div>
-            
-    <div class="col-md-5">
-       <label>cidade:</label> 
+  </div>
+  <div class="col-md-5 col-md-offset-1">  
+      <label>cidade:</label> 
        {{form.cidade}}
        {{form.cidade.error}}
-    </div>
-    <div class="col-md-5 col-md-offset-1">
-        <label>cep:</label>
+   </div>    
+  <div class="col-md-5 ">  
+      <label>cep:</label>
         {{form.cep}}
         {{form.cep.error}}
-    </div>
-    <div class="col-md-5">
-        <label>estado:</label>
+  </div>
+  <div class="col-md-5 col-md-offset-1">  
+      <label>estado:</label>
         {{form.estado}}
         {{form.estado.error}}
-    </div>
-    <div class="col-md-5 col-md-offset-1"> 
-		<label>telefone:</label>
-		{{form.telefone}}
-		{{form.telefone.error}}
-    </div>
-    <div class="col-md-5"> 
-		<label>celular: </label>
-		{{form.phone}}
-		{{form.phone.error}}
-    </div>
-    <div class="col-md-5 col-md-offset-1"> 
-		<label>e-mail:</label>
-		{{form.email}}
-		{{form.email.error}}
-    </div>
-      <div class="col-md-5 "> 
-		<label>site: </label>
-		{{form.site}}
-		{{form.site.error}}
-      </div>
-      <div class="col-md-5 col-md-offset-1"> 
-		<label>Responsável: </label>
-		{{form.resp}}
-		{{form.resp.error}}
-      </div>
-      <div class="col-md-5"> 
-		<label>Email responsável: </label>
-		{{form.email_resp}}
-		{{form.email_resp.error}}
-      </div>
-      <div class="col-md-5 col-md-offset-1"> 
-		<label>cpf: </label>
-		{{form.cpf}}
-		{{form.cpf.error}}
-      </div>
-
-      <div class="col-md-5"> 
-		<label>Creci Fisíco:</label>
-		{{form.creci_f}}
-		{{form.creci_f.error}}
-      </div>
+  </div>
+  <div class="col-md-5 ">    
+		  <label>telefone:</label>
+    		{{form.telefone}}
+    		{{form.telefone.error}}
+  </div>
+  <div class="col-md-5 col-md-offset-1">    
+    	<label>celular: </label>
+    		{{form.phone}}
+    		{{form.phone.error}}
+  </div>
+  <div class="col-md-5 ">    
+		  <label>e-mail:</label>
+    		{{form.email}}
+    		{{form.email.error}}
+  </div>
+  <div class="col-md-5 col-md-offset-1">     
+    	<label>site: </label>
+    		{{form.site}}
+    		{{form.site.error}}
+  </div>
+  <div class="col-md-5">      
+		  <label>Responsável: </label>
+    		{{form.resp}}
+    		{{form.resp.error}}
+  </div>
+  <div class="col-md-5 col-md-offset-1">      
+		  <label>Email responsável: </label>
+    		{{form.email_resp}}
+    		{{form.email_resp.error}}
+  </div>
+  <div class="col-md-5 ">      
+		  <label>cpf: </label>
+		    {{form.cpf}}
+		    {{form.cpf.error}}
+  </div>
+  <div class="col-md-5 col-md-offset-1">      
+		  <label>Creci Fisíco:</label>
+		    {{form.creci_f}}
+		    {{form.creci_f.error}}
+  </div>   
       
-     <br> 
-    <div class="col-md-5 col-md-offset-1">
+   
        <br>
-       <button class="btn btn-lg" href="{% url 'canal_corretor.views.index' %}"> Cancelar </button>
-    </div>
-    
-    <div class="col-md-5">
-        <br>
-         <button class="btn btn-lg ">Enviar</button>
-     </div>
-    <span class="clearfix"></span>
-</form>
-</div>
+  <div class="col-md-5 ">    
+       <span class="clearfix"> <hr> </span>
 
+         <button class="btn btn-primary" type="submit">cadastrar</button>
+     
+        <span class="clearfix"></span>
+  </div>  
+  </form>
+  
+</div>
 
 
 {% endblock cad_imobi %}

@@ -1,10 +1,16 @@
 {%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
+
 {%block cad_afiliado%} 
 
-<div class="col-md-12  form-group"> 
+<div class="col-md-8 col-md-offset-2">
+          <br>  
+           <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+          <span class="clearfix"><br></span>
+          <h1 class="lg"> Cadastro de Funcionários Afiliado a Imobiliária </h1> 
 
     <form method="POST" class="form  center-block">  
-    <h2 class="lg-a"> Cadastro de Corretores Afiliados  </h2> 
+    
   {% csrf_token %}
       <div class="col-md-5 col-md-offset-1">
         <label>Nome:</label>
@@ -64,18 +70,12 @@
         <label>Imobiliaria:</label>
         {{form.id_imob}}
         
-      </div>
-    <br>
-    <div class="col-md-5 col-md-offset-1">
-        <br>
-        <button class="btn btn-lg " href="{% url 'canal_corretor.views.index' %}"> Cancelar </button>
-    </div>
-  <div class=" col-md-5 ">
-        <br>
-        <button class="btn btn-lg ">Cadastrar</button>
-
-    </div>
-    <span class="clearfix"></span>
+    <div class="col-md-5 ">    
+       
+         <button class="btn btn-primary" type="submit">cadastrar</button>
+     
+        <span class="clearfix"></span>
+  </div>
   </form>
      
       
