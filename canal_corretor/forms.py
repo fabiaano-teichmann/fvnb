@@ -45,25 +45,15 @@ class CorretorForm(forms.ModelForm):
 			}
 			#1784848Ab@$1sdgsA
 	
-
-class ProvaForm(forms.ModelForm):
-	class Meta:
-		model = Prova
-		fields = ['resposta']
-		widgets = {
-			
-			'resposta': forms.RadioSelect(attrs = {'class': 'form-control', 'placeholder': 'Resposta'}),
-		}
-
-
 class UserModelForm(forms.ModelForm):
 	class Meta:
 		model = User 
 		fields = ['username','email', 'password']
 		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
+		email = forms.ModelChoiceField(queryset=Imobiliaria.objects.all().order_by('id'), widget=forms.Select({'class': 'form-control' })),
 		widgets = {
 			'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
-			'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'E-mail caso precise redefinir senha'}),			
+			#'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'E-mail caso precise redefinir senha'}),			
 			'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
 			
 			
@@ -74,8 +64,7 @@ class UserModelForm(forms.ModelForm):
 			'email': {'Required': 'Email tem que possuir @'},
 			'password':{ 'required': 'senha Inválida'},
 
-	}
-
+		}
 #IMOBILIARIA
 class ImobiliariaForm(forms.ModelForm):
 	class Meta:
@@ -122,9 +111,23 @@ class ImobiliariaForm(forms.ModelForm):
 			'resp': {'required': 'Este campo é obrigatório'},
 			'email_resp': {'required': 'Este campo é obrigatório'},
 			'cpf' : {'required': 'Este campo é obrigatório'},
-			
-
+		
 		}
+
+
+class ProvaForm(forms.ModelForm):
+	class Meta:
+		model = Prova
+		fields = ['resposta']
+		widgets = {
+			
+			'resposta': forms.RadioSelect(attrs = {'class': 'form-control', 'placeholder': 'Resposta'}),
+		}
+
+
+
+
+
 #CORRETOR AFILIADO
 
 class AfiliadoForm(forms.ModelForm):

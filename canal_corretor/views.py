@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CorretorForm, ImobiliariaForm, AfiliadoForm, UserModelForm
-# criar um para corretor afiliado https://www.youtube.com/watch?v=AZ1d5yEwitM&t=1718s
-
 from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User 
@@ -38,8 +36,6 @@ def do_logout(request):
 	logout(request)
 	return redirect('login')
 #Portal do corretor
-@login_required
-
 
 # IMOBILIARIA
 
@@ -50,7 +46,7 @@ def imobiliaria_new(request):
 		instance.save()
 		instance = form.cleaned_data.get('razao')
 		# tenho que  validar consultando se o corretor já não esta cadastrado
-		return render(request, 'canal_corretor/enviado.html')
+		return redirect('do_login')
 	return render (request, 'canal_corretor/cad_imobi.html', {'form':form})	
 
 # CORRETOR AFILIADO
@@ -89,7 +85,7 @@ def corretor_new(request):
 		instance = form.cleaned_data.get('nome')
 		#  remcaminha para criar usuario e senha
 		#return redirect(cadastro)
-		return redirect(ep_list)
+		return redirect(cadastro)
 	return render(request, 'canal_corretor/cad_corretor.html', context)
 
 def cadastro(request):
@@ -99,7 +95,7 @@ def cadastro(request):
 		instance = form.save(commit=False)
 		instance.save()
 		#instance = form.cleaned_data.get('username')
-		return redirect(corretor_new)
+		return redirect(portal)
 	return render (request, 'canal_corretor/cadastro.html', context)
 
 
