@@ -1,12 +1,12 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cad_imobi %}
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-2">
           <br>  
           <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
           <span class="clearfix"><br></span>
           <h1 class="lg"> Cadastro de Imobiliarias </h1> 
-  <form action="{% url 'canal_corretor.views.corretor_new' %}" method="POST" class="form  center-block">
+  <form action="{% url 'canal_corretor.views.imobiliaria_new' %}" method="POST" class="form  center-block">
   {% csrf_token %}
   <div class="col-md-5"> 
     	<label> Imagem</label>
@@ -100,7 +100,7 @@
       
    
        <br>
-  <div class="col-md-5 ">    
+  <div class="col-md-5 col-md-offset-1 ">    
        <span class="clearfix"> <hr> </span>
 
          <button class="btn btn-primary" type="submit">cadastrar</button>

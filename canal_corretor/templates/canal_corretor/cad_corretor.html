@@ -1,7 +1,8 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cad_corretor %}
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
+
           <br>  
           <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
           <span class="clearfix"><br></span>
@@ -10,52 +11,75 @@
       
 
         <form action="{% url 'canal_corretor.views.corretor_new' %}" method="POST" class="form  center-block">
-
+            
             {% csrf_token %}
-
-            <label>Nome:</label>
+          <div class="col-md-5">
+         <label>Nome:</label>
             {{form.nome}}
-            {{form.mome.error}}
-        
+            
+          </div>
+         <div class="col-md-5 col-md-offset-1"> 
             <label>Data de Nascimento:</label>
             {{form.nasc}}
             {{form.nasc.error}}
-         
+          </div>
+         <div class="col-md-5"> 
             <label>cpf:</label>
             {{form.cpf}}
             {{form.cpf.error}}
-       
-        
-            <label>Creci:</label>
+               </div>
+         <div class="col-md-5 col-md-offset-1"> 
+           <label>Creci:</label>
             {{form.creci}}
             {{form.creci.error}}
-          
+            </div>
+         <div class="col-md-5"> 
            <label>telefone:</label> 
            {{form.telefone}}
-           
+         </div>
+          <div class="col-md-5 col-md-offset-1"> 
             <label>celular:</label>
             {{form.phone}}
             {{form.phone.error}}
-        
+          </div>
+          <div class="col-md-5">
+              <label> Email: </label>
+              {{form.email}}
+              {{form.email.error}}
+          </div>    
+          <div class="col-md-5 col-md-offset-1"> 
+
             <label>Site </label>
             {{form.site}}
-        
-            <label>Endereço: </label>
+            {{form.site.error}}
+          </div>
+          <div class="col-md-5 "> 
+                <label>Endereço: </label>
             {{form.endereco}}
             {{form.endereco.error}}
-        
+          </div>
+          <div class="col-md-5 col-md-offset-1"> 
             <label>CEP: </label>
             {{form.cep}}
-        
+          </div>
+          <div class="col-md-5 ">    
             <label>Cidade:</label>
             {{form.cidade}}
             {{form.cidade.error}}
             
-        
-            <label>Estado:</label>
+          </div>
+          <div class="col-md-5 col-md-offset-1"> 
+            <label>Bairro:</label>
+            {{form.bairro}}
+            {{form.bairro.error}}
+          </div>
+          <div class="col-md-5 ">
+            <label> Estado </label>
             {{form.estado}}
-            {{form.estado.erro}}
-         <span class="clearfix"> <hr> </span>
+            {{form.estado.error}}
+          </div>    
+     <span class="clearfix"> <hr> </span>
+         <br>
          <button class="btn btn-primary" type="submit">cadastrar</button>
         </form>
 

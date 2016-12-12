@@ -25,16 +25,29 @@
     float: right;
 }
 
- .form-campo input, textarea, label {
+.form-campo input, textarea, label 
+{
     width: 100%;
-    margin-left: 5%;
+   
     border-color: #86744f !important;    
     border-width: 0 0 2px 0;
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: #86744f !important
    
 
+
 }
+.user {
+    float: right;
+    padding: 0;
+    margin: 0 0 0 20px;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
 .form-group{
   background-color: transparent;
 
@@ -77,9 +90,9 @@
     color: #86744f;
 }
 #id_estado{
-    margin-left: 2.5em;
+   
     width: 25em;
-    font-size: 1.5em;
+    font-size: 1.0em;
     color: #86744f;
 
 }
@@ -88,6 +101,15 @@
     width: 25em;
     font-size: 1.5em;
     color: #86744f;  
+}
+.lg {
+   text-align: center;
+   color: #86744f;
+   font-weight:800;
+}
+.logoimg{
+   margin-left: 40%;
+    
 }
 .modal-footer {   border-top: 0px; }
    

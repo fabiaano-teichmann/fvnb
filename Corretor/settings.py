@@ -20,11 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '%(fs+c157yulbams=-x23_vlf5=dbrz)l744ppnjsyprcz__1*'
 
+SECRET_KEY = "uu7V9t%m^YQ82HIOBtF;mJ=o/GvyfO#%9n+it3d3CA1?/c*YiES*@-?khLxbvzROM;OfX"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -37,9 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.auth.user',
     'canal_corretor',
-    
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,19 +75,15 @@ WSGI_APPLICATION = 'Corretor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'fvnb',  
-        'USER': 'root',                  
-        'PASSWORD': 'YM-51D@vida',                  
-        'HOST': 'localhost', 
-        'PORT': '',             
-        'OPTIONS': {
-            'init_command': 'SET default_storage_engine=INNODB',
-}
-    
-
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fvnb',
+        'USER': 'fabiano',
+        'PASSWORD': 'OUORNADa87vbP24BWo48nDjXucIuOh',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

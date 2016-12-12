@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
       <!-- formulário puro sem modal -->
-        <form action="{% url 'canal_corretor.views.corretor_new' %}"" method="POST" class="form  center-block">
+        <form action="{% url 'canal_corretor.views.cadastro' %}"" method="POST" class="form  center-block">
 
         {% csrf_token %}
 	         <label>Nome de usuário</label>
@@ -23,60 +23,7 @@
 	         {{form.password}}
 	         {{form.password.error}}
             
-	        <label>Nome:</label>
-	        {{form.nome}}
-	        {{form.mome.error}}
-	    
-	    
-	        <label>Data de Nascimento:</label>
-	        {{form.nasc}}
-	        {{form.nasc.error}}
-	     
-	        <label>cpf:</label>
-	        {{form.cpf}}
-	        {{form.cpf.error}}
-	   
-		
-	        <label>Creci:</label>
-	        {{form.creci}}
-	        {{form.creci.error}}
-	      
-	            
-	    
-	       <label>telefone:</label> 
-	       {{form.telefone}}
-	       
-	    
-	    
-	        <label>celular:</label>
-	        {{form.phone}}
-	        {{form.phone.error}}
-	    
-
-	   
-	        <label>email:</label>
-	        {{form.email}}
-	        {{form.email.error}}
-	   
-			<label>Site </label>
-			{{form.site}}
-	    
-			<label>Endereço: </label>
-			{{form.endereco}}
-			{{form.endereco.error}}
-	    
-			<label>CEP: </label>
-			{{form.cep}}
-	    
-	    	<label>Cidade:</label>
-	    	{{form.cidade}}
-	    	{{form.cidade.error}}
-	    	
-	    
-			<label>Estado:</label>
-			{{form.estado}}
-			{{form.estado.error}}
-    </div>
+	       </div>
          <button class="btn btn-primary" type="submit">cadastrar</button>
      </form>    
   	</div>

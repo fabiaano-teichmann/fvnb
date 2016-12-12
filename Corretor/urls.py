@@ -21,6 +21,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('canal_corretor.urls')),
-    #url(r'^usuario/$', include ('usuario.urls')),
+   
 
 ]

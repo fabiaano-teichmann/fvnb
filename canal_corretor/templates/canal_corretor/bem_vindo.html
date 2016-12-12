@@ -5,10 +5,11 @@
    <nav class="navbar col-md-12 ">
 		<a class="navbar-text plink " href="{% url 'canal_corretor.views.bem_vindo' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
 			<ul class="nav-pills">
-				
-				<a class="navbar-text"  href="{% url 'canal_corretor.views.ep_list' %}"><p class="menu"> Empreendimentos </p></a>
+                <div class="col-md-8 col-md-offset-3">
+                    <a class="navbar-text"  href="{% url 'canal_corretor.views.ep_list' %}"><p class="menu"> Empreendimentos </p></a>
 				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
-				<div class=" col-md-2">
+                </div>
+                <div id="user" class=" col-md-2 col-md-offset-6">
 				<p>Bem Vindo</p>
 				<p class="menu">{{ user.get_username }} </p> </div>
 				
@@ -28,7 +29,7 @@
         <h3>  {{ep.titulo}} </h3>
         <img src="{{ep.img}}" alt="{{ep.titulo}}"> 
         </a>                      
-        <p>{{ep.sub_titulo}}</p>
+       
     </div>
         {%endfor%}   
 </div>

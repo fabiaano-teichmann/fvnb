@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+from django.contrib.auth.models import User
 
 estado = (
 	('AC','Acre' ),
@@ -65,9 +66,7 @@ class Corretor(models.Model):
 	cep = models.CharField(verbose_name=' Cep*:', blank=True, max_length=16)
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
-	
-	#campo para'criar a senha para o usuário 
-	
+	#campo para'criar a senha para o usuário	
 	def __str__(self):
 		return (self.nome)
 
@@ -89,8 +88,7 @@ class Afiliado(models.Model):
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	imob = models.OneToOneField("Imobiliaria", on_delete=models.CASCADE, primary_key=True)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
-	# verificar a necessidade de o corretor ter creci quando afiliado
-	
+	# verificar a necessidade de o corretor ter creci quando afiliado	
 	def __str__(self):
 		return (self.nome)
 
@@ -106,7 +104,7 @@ class Imobiliaria(models.Model):
 	bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
 	cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
 	cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=12)
-	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )	
+	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
 	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *:', blank=False)
@@ -115,8 +113,8 @@ class Imobiliaria(models.Model):
 	email_resp = models.CharField("Email do Responsável:", max_length=200)
 	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
 	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
-	create_date = models.DateTimeField('Data de criação',default=timezone.now)
-	
+        user = models.OneToOneField(User, related_name="imobiliaria")
+        create_date = models.DateTimeField('Data de criação',default=timezone.now)
 	def __str__(self):
 		return (self.nome)
 
@@ -141,24 +139,21 @@ class Empreendimento(models.Model):
 	cat = models.ForeignKey("Categoria",verbose_name='categoria', on_delete=models.PROTECT)
 	estado = models.CharField(verbose_name='Estado: (campo obrigatório)',max_length=100, choices=estado, blank=True)
 	status = models.CharField('Status', max_length=30, blank=False, choices=status)
-	
 	def publish(self):
 		self.lancamento = timezone.now()
 		self.save()
-    	
-	
 	def __str__(self):
 		return (self.titulo)
 
 # MATERIAL DE APOIO DO CORRETOR
 
 class Image(models.Model):
-	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/mt')	
-	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
- 
-	def __str__(self):
-		return(self.nome)
+    nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
+    img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/mt')
+    ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+
+    def __str__(self):
+        return(self.nome)
 class Tabela(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
@@ -180,9 +175,8 @@ class Material(models.Model):
 		verbose_name = 'Material de apoio'
 
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
-	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/ma')	
+	img = models.ImageField(verbose_name='Insira uma imagem',blank=True, upload_to='static/img/ma')
 	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
- 
 	def __str__(self):
 		return(self.nome)
 class Video(models.Model):

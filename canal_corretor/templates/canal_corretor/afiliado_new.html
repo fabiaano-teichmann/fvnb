@@ -3,13 +3,13 @@
 
 {%block cad_afiliado%} 
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-10 col-md-offset-1">
           <br>  
            <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
           <span class="clearfix"><br></span>
-          <h1 class="lg"> Cadastro de Funcionários Afiliado a Imobiliária </h1> 
+          <h2 class="lg"> Corretores  Afiliado a Imobiliária </h2> 
 
-    <form method="POST" class="form  center-block">  
+          <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="form  center-block">  
     
   {% csrf_token %}
       <div class="col-md-5 col-md-offset-1">
@@ -68,8 +68,8 @@
       </div>
       <div class="col-md-5 col-md-offset-1">
         <label>Imobiliaria:</label>
-        {{form.id_imob}}
-        
+        {{form.imob}}
+        {{form.id_imob.error}}       
     <div class="col-md-5 ">    
        
          <button class="btn btn-primary" type="submit">cadastrar</button>
