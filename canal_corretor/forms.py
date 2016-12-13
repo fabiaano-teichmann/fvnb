@@ -83,7 +83,7 @@ class ImobiliariaForm(forms.ModelForm):
 			'resp': forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Responsável'}),
 			'email_resp': forms.EmailInput(attrs ={'class': 'form-control' , 'placeholder': 'E-mail responsável'}),
 			'cpf': forms.TextInput(attrs ={'class': 'form-control' , 'placeholder': 'Cpf'}),
-			'creci_f': forms.TextInput(attrs ={'class': 'form-control' , 'placeholder': 'Creci Físico'}),	
+			'creci_f': forms.TextInput(attrs ={'class': 'form-control' , 'placeholder': 'Creci Físico'}),
 
 		}
 		error_messages = {

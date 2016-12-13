@@ -95,28 +95,27 @@ class Afiliado(models.Model):
 #IMOBILIARIA
 
 class Imobiliaria(models.Model):
-	img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='static/img/imob')
-	razao = models.CharField(max_length=200 ,verbose_name=' Razão social  *:', blank=False)
-	creci_j = models.CharField(max_length=6, verbose_name='Creci Jurídico *:', blank=False)
-	nome = models.CharField(verbose_name='Nome Fantasia *:', blank=False, max_length=150)
-	cnpj = models.CharField(verbose_name=' Cnpj *:', blank=False, max_length=14)
-	endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
-	bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
-	cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
-	cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=12)
-	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
-	telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
-	phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
-	email = models.EmailField(max_length=254,verbose_name='E-mail *:', blank=False)
-	site = models.URLField(verbose_name='site', blank=True)
-	resp = models.CharField(verbose_name='Corretor Resposável*:', blank=False, max_length=150)
-	email_resp = models.CharField("Email do Responsável:", max_length=200)
-	cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
-	creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
-        user = models.OneToOneField(User, related_name="imobiliaria")
-        create_date = models.DateTimeField('Data de criação',default=timezone.now)
-	def __str__(self):
-		return (self.nome)
+    img = models.ImageField(verbose_name='Insira uma imagem:',blank=True, upload_to='static/img/imob')
+    razao = models.CharField(max_length=200 ,verbose_name=' Razão social  *:', blank=False)
+    creci_j = models.CharField(max_length=6, verbose_name='Creci Jurídico *:', blank=False)
+    nome = models.CharField(verbose_name='Nome Fantasia *:', blank=False, max_length=150)
+    cnpj = models.CharField(verbose_name=' Cnpj *:', blank=False, max_length=14)
+    endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
+    bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
+    cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
+    cep = models.CharField(verbose_name=' Cep *: ', blank=False, max_length=12)
+    estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
+    telefone = models.CharField(verbose_name='Telefone:', max_length=16, blank=True)
+    phone = models.CharField(verbose_name='Celular: ', max_length=16, blank=True)
+    email = models.EmailField(max_length=254,verbose_name='E-mail *:', blank=False)
+    site = models.URLField(verbose_name='site', blank=True)
+    resp = models.CharField(verbose_name='Corretor Resposável*:', blank=False, max_length=150)
+    email_resp = models.CharField("Email do Responsável:", max_length=200)
+    cpf = models.CharField(verbose_name='CPF *: ', blank=False, max_length=16)
+    creci_f =  models.CharField(verbose_name=' Creci Físico *: ', blank=True, max_length=12)
+    create_date = models.DateTimeField('Data de criação',default=timezone.now)
+    def __str__(self):
+        return (self.nome)
 
 
 #CATEGORIA
@@ -191,7 +190,7 @@ class Video(models.Model):
 class Prova(models.Model):
 	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=True)
 	pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
-	resposta = models.CharField(verbose_name='Resposta',max_length=5, choices=escolha, blank=True)
+	resposta = models.CharField(verbose_name='Resposta Correta',max_length=5, choices=escolha, blank=True)
 
 
 

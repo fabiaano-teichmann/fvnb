@@ -1,0 +1,38 @@
+{%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
+{% block bem_vindo %}
+<div class="menu col-md-12">
+   <nav class="navbar col-md-12 ">
+
+     <a class="navbar-text plink " href="{% url 'canal_corretor.viewsi.portal' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
+        
+			<ul class="nav-pills">
+                <div class="col-md-8 col-md-offset-3">
+                    <a class="navbar-text"  href="{% url 'canal_corretor.views.ep_list' %}"><p class="menu"> Empreendimentos </p></a>
+				<a class="navbar-text" href="{% url 'canal_corretor.views.corretorafiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
+                </div>
+                <div id="user" class=" col-md-2 col-md-offset-6">
+				<p>Bem Vindo</p>
+				<p class="menu">{{ user.get_username }} </p> </div>
+				
+						
+    			<!-- videos  -->
+			</ul> 	
+		
+	</nav> 
+</div>
+<span class="clearfix"></span>
+
+<div class="col-md-12">
+    {% for ep in eps %} 
+       
+    <div class="col-md-4"> 
+        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}" > 
+        <h3>  {{ep.titulo}} </h3>
+        <img src="{{ep.img}}" alt="{{ep.titulo}}"> 
+        </a>                      
+       
+    </div>
+        {%endfor%}   
+</div>
+{% endblock bem_vindo %}

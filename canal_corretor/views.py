@@ -18,7 +18,7 @@ def do_login(request):
         if user is not None:
             login(request, user)
             #redireciona para a pagina de entrada
-            return redirect(portal)
+            return redirect('portal')
     return render(request, 'canal_corretor/index.html')
 
 
@@ -27,9 +27,9 @@ Essa pagina o usuário depois de se locar entra e visualizar os empreendimentos 
 """
 @login_required
 def portal(request):
-	eps = Empreendimento.objects.all()
-	#aplicar um filtro para que possa redirecionar 
-	return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+    eps = Empreendimento.objects.all()
+    #aplicar um filtro para que possa redirecionar 
+    return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
 
 
 
@@ -42,16 +42,16 @@ def do_logout(request):
 # IMOBILIARIA
 
 def imobiliaria_new(request):
-# Pega a classe formm
-	form = ImobiliariaForm(request.POST or None)
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance = form.save()
-                #salva o  formulário e limpa o campo razão social 
-		instance = form.cleaned_data.get('razao')
-		# tenho que  validar consultando se o corretor já não esta cadastrado
-		return redirect(do_login)
-	return render (request, 'canal_corretor/cad_imobi.html', {'form':form})
+    # Pega a classe form
+    form = ImobiliariaForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance = form.save()
+        #salva o  formulário e limpa o campo razão social
+        instance = form.cleaned_data.get('razao')
+	# tenho que  validar consultando se o corretor já não esta cadastrado
+        return redirect(do_login)
+    return render (request, 'canal_corretor/cad_imobi.html', {'form':form})
 
 # CORRETOR AFILIADO
 @login_required
@@ -102,18 +102,14 @@ def cadastro(request):
 # PROVA
 #esperar para ver que tipo de prova
 def prova(request, pk):
-	form = ProvaForm(request.POST or None)
-
-#provas = get_object_or_404(Prova, pk=pk)
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
-		instance = form.clearned_data.get('pergunta')
-		return redirect(portal)
-
-	return render(request, 'canal_corretor/prova.html',{'form': form})
-
-
+    form = ProvaForm(request.POST or None)
+    #provas = get_object_or_404(Prova, pk=pk)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance = form.save()
+        instance = form.clearned_data.get('pergunta')
+        return redirect(portal)
+    return render(request, 'canal_corretor/prova.html',{'form': form})
 
 
 #lISTAR EMPRENDIMENTOS
@@ -124,26 +120,25 @@ def prova(request, pk):
 
 @login_required
 def ep_detail(request, pk):
-	emp = get_object_or_404(Empreendimento, pk=pk)
-	return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
+    emp = get_object_or_404(Empreendimento, pk=pk)
+    return render(request, 'canal_corretor/ep_detail.html',{'emp': emp})
 
 # LISTAR CATEGORIA
 @login_required
 def categoria(request, pk):
-	cats = get_object_or_404(Categoria, pk=pk)
-	eps = Empreendimento.objects.all()
-	context = {
+    cats = get_object_or_404(Categoria, pk=pk)
+    eps = Empreendimento.objects.all()
+    context = {
 	'cats': cats,
-	'eps': eps
-	}
+	'eps': eps }
 
-	return render(request,'canal_corretor/categoria.html',context )
+    return render(request,'canal_corretor/categoria.html',context )
 
 # Detalhe da categoria
 @login_required
 def cat_detail(request, pk):
-	cats = get_object_or_404(Categoria, pk=pk)
-	return render(request, 'canal_corretor/cat_detail.html', {'cats': cats})
+    cats = get_object_or_404(Categoria, pk=pk)
+    return render(request, 'canal_corretor/cat_detail.html', {'cats': cats})
 
 
 

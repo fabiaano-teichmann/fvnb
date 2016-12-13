@@ -7,9 +7,9 @@
           <br>  
            <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
           <span class="clearfix"><br></span>
-          <h2 class="lg"> Corretores  Afiliado a Imobiliária </h2> 
+          <h1 class="lg"> Corretores  Afiliado a Imobiliária </h1> 
 
-          <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="form  center-block">  
+          <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="nav-nb">  
     
   {% csrf_token %}
       <div class="col-md-5 col-md-offset-1">
@@ -72,7 +72,7 @@
         {{form.id_imob.error}}       
     <div class="col-md-5 ">    
        
-         <button class="btn btn-primary" type="submit">cadastrar</button>
+         <button class="btn btn-default lg" type="submit">cadastrar</button>
      
         <span class="clearfix"></span>
   </div>

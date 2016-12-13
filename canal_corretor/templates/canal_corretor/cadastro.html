@@ -1,18 +1,17 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block cadastro %}
-<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  	<div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h1 class="text-center">Cadastro Usuário</h1>
-      </div>
-      <div class="modal-body">
-      <!-- formulário puro sem modal -->
-        <form action="{% url 'canal_corretor.views.cadastro' %}"" method="POST" class="form  center-block">
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">      
+        <hr>
+        <img class="img-responsive logoimg" src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+        <h1 class="lg">Crie seu usuário!!</h1>
+      
+      
+        <form action="{% url 'canal_corretor.views.cadastro' %}" method="POST" class="form-nb">
 
         {% csrf_token %}
+            <div class="col-md-6 col-md-offset-3">
 	         <label>Nome de usuário</label>
 	         {{form.username}} 
 	         {{form.username.error}}
@@ -23,10 +22,9 @@
 	         {{form.password}}
 	         {{form.password.error}}
             
-	       </div>
-         <button class="btn btn-primary" type="submit">cadastrar</button>
+	        <button class="btn btn-default lg"submit">cadastrar</button>
+            </div>  
      </form>    
-  	</div>
   </div>
 </div>
 
