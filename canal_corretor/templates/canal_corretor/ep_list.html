@@ -5,9 +5,8 @@
 <div class="menu col-md-12">
    <nav class="navbar col-md-12 ">
         <a class="navbar-text plink " href="{% url 'canal_corretor.views.portal' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
-            <ul class="nav-pills">
-                
-                
+            <ul class="nav-pills">             
+               
                 <a class="navbar-text" href="{% url 'canal_corretor.views.afiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
                 <div class=" col-md-2">
                 <p>Bem Vindo</p>
@@ -27,7 +26,7 @@
     {% for ep in eps %} 
        
     <div class="col-md-4"> 
-        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}" > 
+        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}">
         <h3>  {{ep.titulo}} </h3>
         
         <img class="img-responsive"  src="/{{ep.img}}" alt="{{ep.titulo}}">

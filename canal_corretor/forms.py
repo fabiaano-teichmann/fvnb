@@ -123,7 +123,7 @@ class AfiliadoForm(forms.ModelForm):
 	class Meta:
 		model = Afiliado
 		fields = [
-		"nome","nasc", "cpf", "creci","telefone","phone", "email","endereco", "cidade", "estado", "imob"
+		"nome","nasc", "cpf", "creci","telefone","phone", "email","endereco","bairro", "cidade","cep", "estado", "imob"
 		]
 		widgets = {
 			'nome': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nome'}),
@@ -134,7 +134,9 @@ class AfiliadoForm(forms.ModelForm):
 			'phone': forms.TextInput(attrs = {'class': 'form-control' , 'placeholder': 'Celular'}),
 			'email': forms.EmailInput(attrs = {'class': 'form-control' , 'placeholder': 'E-mail'}),
                         "endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+                        "bairro" :forms.TextInput(attrs = {'class':'form-control', 'placeholder': 'Bairro'}),
                         "cidade" :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
+                        "cep" : forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Cep'}),
                         "estado":forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
                         "imob": forms.Select(attrs={'class':'form-control', 'placeholder': 'imobiliaria'}),
 		}
@@ -169,8 +171,11 @@ class AfiliadoForm(forms.ModelForm):
 			'cidade': {
 				'required': 'Este campo é obrigatório'
 				},
+                        'imob':{ 'required': 'Este campo é requirido'
+                            }
 
-		}	
+
+                        }
 
 #FORMULÁRIO DE LOGIN
 

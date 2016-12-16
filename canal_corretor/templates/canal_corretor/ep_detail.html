@@ -1,17 +1,22 @@
 {%extends 'canal_corretor/base.html'%}
+{% load staticfiles %}
 {% block ep_detail %}
 
 <div class="row">
+    <div class="col-md-10 col-md-offset-1">    
 	<ul class="nav nav-tabs">
-		<li role="presentation" class="active"><a href="#describe">Descrição</a></li>
-		<li role='presentation'><a href="#planta"> Plantas</a></li>
+        {% for ep in eps % }
+            
+        {% endfor %}
+        <li role="presentation" class="active"><a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk%}">Descrição</a></li>
+		<li role="presentation"><a href="#planta"> Plantas</a></li>
 		<li role="presentation"><a href="#table">Tabela de Vendas</a></li>
 		<li role="presentation"><a href="#image">Images</a></li>
 		<li role="presentation"><a href="#video">Vídeo</a></li>
-		<li role="presentation"><a href="#material">Material de Apoio</a></li>
+		<li role="presentation" ><a href="#material">Material de Apoio</a></li>
 	</ul>
 
-</div>
+
            
 <div id="describe" > 
 
@@ -22,4 +27,20 @@
 </div>
 <div id="planta">
 
+    <img src="{{planta.file}}" alt="{{planta.nome}}"> 
+</div>
+<div id="table">
+
+</div>
+
+<div id="image">
+
+</div>
+
+<div id="video">
+
+</div>
+<div id="material"> 
+
+</div>
 {%endblock ep_detail %}

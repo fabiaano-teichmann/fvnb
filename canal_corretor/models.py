@@ -76,7 +76,8 @@ class Afiliado(models.Model):
 	nome = models.CharField(verbose_name='Nome: * ',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento")
 	cpf = models.CharField(verbose_name='CPF: * ', blank=False, max_length=16)
-	creci =  models.CharField(verbose_name=' Creci Físico: * ', blank=False, max_length=12)
+	creci =  models.CharField(verbose_name=' Creci Físico: * ', blank=True, max_length=12)
+        #creci é opcional visto que muitas imobiliarias tem funcionarios se creci
 	telefone = models.CharField(verbose_name='Telefone:*', max_length=16, blank=False)
 	phone = models.CharField(verbose_name='Celular: * ', max_length=16, blank=True)
 	email = models.EmailField(max_length=254,verbose_name='E-mail *: ', blank=False)
@@ -88,9 +89,8 @@ class Afiliado(models.Model):
 	estado = models.CharField(max_length=100, choices=estado, blank=False, verbose_name='Estado*:' )
 	imob = models.OneToOneField("Imobiliaria", on_delete=models.CASCADE, primary_key=True)
 	create_date = models.DateTimeField('Data de criação',default=timezone.now)
-	# verificar a necessidade de o corretor ter creci quando afiliado	
 	def __str__(self):
-		return (self.nome)
+            return (self.nome)
 
 #IMOBILIARIA
 
@@ -188,9 +188,22 @@ class Video(models.Model):
 
 
 class Prova(models.Model):
-	nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=True)
-	pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
-	resposta = models.CharField(verbose_name='Resposta Correta',max_length=5, choices=escolha, blank=True)
+    nome = models.CharField(max_length=100, verbose_name='Nome da prova', blank=True)
+    pergunta = models.CharField(max_length=200, verbose_name="Pergunta", blank=False)
+    resposta = models.CharField(verbose_name='Resposta Correta',max_length=5, choices=escolha, blank=True)
+
+    def __str__(self):
+        return (self.nome)
+
+class Pagina(models.Model):
+    titulo = models.CharField('Titulo',max_length=100, blank=False )
+    sub_titulo = models.CharField('Subtitulo', max_length=150, blank=False)
+    nomeimg = models.CharField('Descrição da imagem', max_length=100, blank=False)
+    img = models.ImageField('Banner', blank=False, upload_to='static/img/')
+    descricacao = models.TextField('Descrição', blank=False)
+
+    def __str__(self):
+        return(self.titulo)
 
 
 

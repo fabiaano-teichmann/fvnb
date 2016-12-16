@@ -1,15 +1,16 @@
 {%extends 'canal_corretor/base.html'%}
+
 {% load staticfiles %}
 
 {%block cad_afiliado%} 
 
 <div class="col-md-10 col-md-offset-1">
-          <br>  
-           <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
-          <span class="clearfix"><br></span>
-          <h1 class="lg"> Corretores  Afiliado a Imobiliária </h1> 
+   <br>  
+   <img class="img-reponsive logoimg"  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
+   <span class="clearfix"><br></span>
+   <h1 class="lg"> Corretores  Afiliado a Imobiliária </h1> 
 
-          <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="nav-nb">  
+  <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="nav-nb">  
     
   {% csrf_token %}
       <div class="col-md-5 col-md-offset-1">
@@ -23,8 +24,8 @@
         {{form.nasc.error}}
       </div>
       <div class="col-md-5 col-md-offset-1">
-        <label>cpf:</label>
-        {{form.cpf}}
+        <label>Cpf:</label>
+            {{form.cpf}}
         {{form.cpf.error}}
       </div>
       <div class="col-md-5 ">
@@ -34,17 +35,17 @@
       </div>
             
       <div class="col-md-5 col-md-offset-1">
-       <label>telefone:</label> 
+       <label>Telefone:</label> 
        {{form.telefone}}
        {{form.telefone.error}}
       </div>
       <div class="col-md-5">
-        <label>celular:</label>
+        <label>Celular:</label>
         {{form.phone}}
         {{form.phone.error}}
       </div>
       <div class="col-md-5 col-md-offset-1">
-        <label>email:</label>
+        <label>Email:</label>
         {{form.email}}
         {{form.email.error}}
       </div>
@@ -53,24 +54,34 @@
         {{form.endereco}}
         {{form.endereco.error}}
       </div>  
- 
       <div class="col-md-5 col-md-offset-1">
-        <label>Cidade:</label>
+        <label> Bairro: </label>
+        {{form.bairro}}
+        {{form.bairro.error}}
+      </div>
+      <div class="col-md-5 ">
+          <label> Cidade: </label>
         {{form.cidade}}
         {{form.cidade.error}}
-      
       </div>
-    
-      <div class="col-md-5">
+      <div class="col-md-5 col-md-offset-1 ">
         <label>Estado:</label>
         {{form.estado}}
         {{form.estado.error}}
       </div>
+      <div class="col-md-5">
+          <label> Cep: </label>
+          {{form.cep}}
+          {{fom.cep.erro}}
+    </div>
       <div class="col-md-5 col-md-offset-1">
         <label>Imobiliaria:</label>
         {{form.imob}}
         {{form.id_imob.error}}       
-    <div class="col-md-5 ">    
+      </div>   
+      <span class="clearfix"> </span>
+    <div class="col-md-5 col-md-offset-1 ">    
+        <span class="clearfix"> </span>
        
          <button class="btn btn-default lg" type="submit">cadastrar</button>
      

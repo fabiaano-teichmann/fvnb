@@ -19,12 +19,11 @@ class ImobiliariaAdmin(admin.ModelAdmin):
 
 class MetaImobiliaria:
 	model = Imobiliaria
-	admin.site.register(Imobiliaria, ImobiliariaAdmin) 
+	admin.site.register(Imobiliaria, ImobiliariaAdmin)
 
 # Corretor Afiliado 
 class AfiliadoAdmin(admin.ModelAdmin):
 	save_on_top = True
-	
 class MetaCorretor:
 	model = Afiliado
 	admin.site.register(Afiliado, AfiliadoAdmin)
@@ -42,8 +41,7 @@ class MetaCorretor:
 #categoria
 class CategoriaAdmin(admin.ModelAdmin):
 	save_on_top = True
-	
-	
+
 
 class MetaCategoria(admin.ModelAdmin):
 	model = Categoria
@@ -53,9 +51,7 @@ class MetaCategoria(admin.ModelAdmin):
 #MATERIAL
 class MaterialAdmin(admin.ModelAdmin):
 	save_on_top = True
-	
 class MetaMaterial:
-	
 	model = Material
 	admin.site.register(Material, MaterialAdmin)
 
@@ -68,7 +64,7 @@ class MetaImage:
 
 class TabelaAdmin(admin.ModelAdmin):
 	save_on_top = True
-class MetaTabela:	
+class MetaTabela:
 	admin.site.register(Tabela, TabelaAdmin)
 
 class PlantaAdmin(admin.ModelAdmin):
@@ -80,7 +76,15 @@ class MetaPlanta:
 
 class VideoAdmin(admin.ModelAdmin):
 	save_on_top = True
-class Meta:
+
+class MetaVideo:
 	admin.site.register(Video, VideoAdmin)
+
+class PaginaAdmin(admin.ModelAdmin):
+    save_on_top = True
+    list_display = ('titulo', 'sub_titulo')
+
+class MetaPagina:
+    admin.site.register(Pagina, PaginaAdmin)
 
 #MATERIAL
