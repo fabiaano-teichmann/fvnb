@@ -4,20 +4,16 @@
 <div class="col-md-12" id="categoria">
 
 {% for ep in eps %}
-{% for ep in eps %} 
-	{% for cat in cats %}
-		{%if ep.id == cat.id %} 
-       
+} 
+	{% for cat in cats %}       
     <div class="col-md-4"> 
-        
-                                   
-        <h3>  {{ep.titulo}} </h3>
-        <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}" >
-        <img src="{{ep.img}}" alt="{{ep.titulo}}"> </a>                      
-        <p>{{ep.sub_titulo}}</p>
-    </div>
-		{%endif%}
-    {%endfor%}
+                                     
+        <h1> {{cat.titulo}}
+        <a href="{% url 'canal_corretor.views.cat_detail' pk=cat.pk %}" >
+        <img src="{{cat.img}}" alt="{{cat.titulo}}"> </a>                      
+     </div>
+
+
 {%endfor%}  
 </div>
 

@@ -1,28 +1,31 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
 {% block ep_detail %}
+<script >
+$('#image a[href="#image"]').tab('show')
+$('#planta a[href="#planta"]').tab('show')
+</script>
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1">    
-	<ul class="nav nav-tabs">
-        {% for ep in eps % }
-            
-        {% endfor %}
-        <li role="presentation" class="active"><a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk%}">Descrição</a></li>
-		<li role="presentation"><a href="#planta"> Plantas</a></li>
-		<li role="presentation"><a href="#table">Tabela de Vendas</a></li>
-		<li role="presentation"><a href="#image">Images</a></li>
-		<li role="presentation"><a href="#video">Vídeo</a></li>
-		<li role="presentation" ><a href="#material">Material de Apoio</a></li>
+	<ul class="nav nav-tabs"role="tablist" id="#myTabs" >
+        
+        <li role="presentation" class="active" role="tab" data-toggle="tab" ><a href="#home">Descrição</a></li>
+       	<li role="presentation" role="tab" data-toggle="tab" ><a href="#planta"> Plantas</a></li>
+		<li role="presentation" role="tab" data-toggle="tab"><a href="#table">Tabela de Vendas</a></li>
+		<li role="presentation" role="tab" data-toggle="tab"><a id="#planta"href="#image">Images</a></li>
+		<li role="presentation" role="tab" data-toggle="tab" ><a href="#video">Vídeo</a></li>
+		<li role="presentation" role="tab" data-toggle="tab"><a href="#material">Material de Apoio</a></li>
 	</ul>
 
 
            
 <div id="describe" > 
-
-    <h1>{{ emp.titulo }}</h1>
-    <h3>{{emp.sub_titulo}}</h3>
-    <p>{{ emp.descricao|linebreaksbr }}</p>
+    <div class="col-md-10 col-md-offset-1">
+        <img src="/{{eps.img}}" alt="{{eps.titulo}}">  
+    <h1>{{ eps.titulo }}</h1>
+    <h3>{{eps.sub_titulo}}</h3>
+    <p>{{ eps.descricao|linebreaksbr }}</p>
 
 </div>
 <div id="planta">

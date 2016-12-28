@@ -1,39 +1,32 @@
 {%extends 'canal_corretor/base.html'%}
 {% load staticfiles %}
-
 {%block ep_list %}
-<div class="menu col-md-12">
-   <nav class="navbar col-md-12 ">
-        <a class="navbar-text plink " href="{% url 'canal_corretor.views.portal' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a>
-            <ul class="nav-pills">             
-               
-                <a class="navbar-text" href="{% url 'canal_corretor.views.afiliado_new' %}"><p class="menu">Cadastro de corretor afiliado</p></a> 
-                <div class=" col-md-2">
-                <p>Bem Vindo</p>
-                <p class="menu">{{ user.get_username }} </p> </div>
-                
-                        
-                <!-- videos  -->
-            </ul>   
-        
-    </nav> 
-</div>
-<span class="clearfix"></span>
 
-        
-<div class="col-md-12">
-
+<div class="col-sm-10 col-sm-offset-1">
+    <nav class="navbar-nb navbar-static-top">
+        <ul class="col-sm-10 col-sm-ofsset-1 nav nav-pills">
+            <li class="logo-nb col-sm-3 ">  <a class="nav-text " href="{% url 'canal_corretor.views.portal' %}"><img class="img-reponsive" src="{% static 'img/brand.png'%}" alt="Logo New Bank"></a></li>
+      <li class="col-sm-3 nav-nb ">  <a class="link-nb"  href="{% url 'canal_corretor.views.afiliado_new' %}"><p class="nav-text" >Cadastro de corretor afiliado</p></a> </li>
+      <li class="col-sm-3 nav-nb "> <p class="nav-text">Bem Vindo {{user.get_username}}</p> </li>
+                            
+        </ul>        
+   </nav> 
+   <span class="clearfix"></span>
     {% for ep in eps %} 
        
-    <div class="col-md-4"> 
+ <div class="col-md-4 quad-nb"> 
+        
         <a href="{% url 'canal_corretor.views.ep_detail' pk=ep.pk %}">
-        <h3>  {{ep.titulo}} </h3>
-        
-        <img class="img-responsive"  src="/{{ep.img}}" alt="{{ep.titulo}}">
-        <p> {{ep.sub_titulo}}</p>
-        </a>                      
-        
+     <div>
+        <img class="img-responsive "  src="/{{ep.img}}" alt="{{ep.titulo}}">
     </div>
+    <div class="tex-nb">
+    <h4 class="lg-nb">  {{ep.titulo}} </h4>
+        <br> 
+        </a>                      
+    </div>
+
+ </div>
         {%endfor%}   
 </div>
  

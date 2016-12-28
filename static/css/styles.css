@@ -24,14 +24,57 @@
 .save {
     float: right;
 }
+.cont-nb {
+    right: 0.2em;
+    margin-left: 0.2em;
+}
+.link-nb { 
+    color: #fff;
+   font-size:1em;
+    text-transform: uppercase;
+}
+.link-nb:hover{
+    color: #716243;
+}
 .nav-nb { 
- 
     position: relative;
-    top: 6.6em;
+    top: 1.2em;
+    left: 3.8em;
+}
+.logo-nb{
+    position: relative;
+    top: 0.5em;
+    left:5em;
+}
+.menu-nb { 
+    position: relative;
+    left: 5em;
+
+}
+.navbar-nb {
+    background-color: #86744f !important;
+    height:90px;
 }
 .form-nb {
     position: relative;
     top:5.5em;
+}
+.mini-img-nb {
+    position: relative;
+    top: 3em;
+}
+/* cria um quadrado em torno da imagem e do modal */
+.quad-nb {
+    position: relative;
+    right:0.5em;
+    top: 2em;
+    padding-right:2em;
+    border-style: solid;
+    border: 1em solid #86744f;
+}
+.quad-nb:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .form-campo input, textarea, label 
 {
@@ -114,9 +157,15 @@
    position : relative;
    top: 1.5em;
 }
+.lg-nb {
+    text-align:center;
+    color: #86744f;
+    font-weight:600;
+    font-size: 1em;
+    text-transform: uppercase;
+}
 
     
-}
 .modal-footer {   border-top: 0px; }
    
 .navbar-default{ 

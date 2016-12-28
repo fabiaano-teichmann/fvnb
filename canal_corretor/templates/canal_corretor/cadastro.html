@@ -14,13 +14,14 @@
             <div class="col-md-6 col-md-offset-3">
 	         <label>Nome de usuário</label>
 	         {{form.username}} 
-	         {{form.username.error}}
+             <p>  {{form.username.error}} </p>
 	         <label>E-mail</label>
 	         {{form.email}}
-	         {{form.email.error}}
-	         <label>senha </label>
+             <p>{{form.email.error}} </p>
+
+             <label> Senha( Crie senha com 8 digitos com letras e dígitos) </label>
 	         {{form.password}}
-	         {{form.password.error}}
+        {{form.password.error}}
             
 	        <button class="btn btn-default lg"submit">cadastrar</button>
             </div>  

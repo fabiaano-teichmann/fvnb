@@ -11,22 +11,22 @@
             
             {% csrf_token %}
             <div class="col-md-5 col-md-offset-1">
-         <label>Nome:</label>
+         <label>Nome: (Campo Obrigatório) </label>
             {{form.nome}}
-            
+            {{form.nome.error}}
           </div>
          <div class="col-md-5"> 
-            <label>Data de Nascimento:</label>
+            <label>Data de Nascimento: (Campo Obrigatório)</label>
             {{form.nasc}}
             {{form.nasc.error}}
           </div>
          <div class="col-md-5 col-md-offset-1"> 
-            <label>Cpf:</label>
+            <label>Cpf:(Campo Obrigatório)  </label>
             {{form.cpf}}
             {{form.cpf.error}}
                </div>
          <div class="col-md-5 "> 
-           <label>Creci:</label>
+           <label>Creci:(Campo Obrigatório) </label>
             {{form.creci}}
             {{form.creci.error}}
             </div>
@@ -35,12 +35,12 @@
            {{form.telefone}}
          </div>
           <div class="col-md-5 "> 
-            <label>Celular:</label>
+            <label>Celular:(Campo Obrigatório) </label>
             {{form.phone}}
             {{form.phone.error}}
           </div>
           <div class="col-md-5 col-md-offset-1">
-              <label> Email: </label>
+              <label> Email: (Campo Obrigatório)     </label>
               {{form.email}}
               {{form.email.error}}
           </div>    
@@ -51,28 +51,28 @@
             {{form.site.error}}
           </div>
           <div class="col-md-5 col-md-offset-1 "> 
-                <label>Endereço: </label>
+                <label>Endereço:(Campo Obrigatório)  </label>
             {{form.endereco}}
             {{form.endereco.error}}
           </div>
           <div class="col-md-5 "> 
-            <label>CEP: </label>
+            <label>CEP: (Campo Obrigatório) </label>
             {{form.cep}}
           </div>
           <div class="col-md-5 col-md-offset-1">    
-            <label>Cidade:</label>
+            <label>Cidade:(Campo Obrigatório)   </label>
             {{form.cidade}}
             {{form.cidade.error}}
             
           </div>
           <div class="col-md-5"> 
-            <label>Bairro:</label>
+            <label>Bairro:(Campo Obrigatório)   </label>
             {{form.bairro}}
             {{form.bairro.error}}
           </div>
           <div class="col-md-5 col-md-offset-1 ">
 
-            <label> Estado </label>
+            <label> Estado:(Campo Obrigatório) </label>
             {{form.estado}}
             {{form.estado.error}}
           </div>  

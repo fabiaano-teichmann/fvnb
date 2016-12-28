@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import menssages
 from .forms import CorretorForm, ImobiliariaForm, AfiliadoForm, UserModelForm
 from .models import *
 from django.http import HttpResponse
@@ -50,6 +51,7 @@ def do_logout(request):
 def imobiliaria_new(request):
     # Pega a classe form
     form = ImobiliariaForm(request.POST or None)
+    # AQUI A VALIDAÇÃO DOS CAMPOS SÃO FEITA O QUE TENHO QUE FAZER E ENVIAR UMA MENSAGEM DE ERRO
     if form.is_valid():
         instance = form.save(commit=False)
         instance = form.save()
@@ -80,24 +82,23 @@ def afiliado_new(request):
 
 # CADASTRO DE CORRETORES DEPPOIS DE CADASTRADO EMCAMINHA PARA CRIAR SENHA 
 def corretor_new(request):
-        form = CorretorForm(request.POST or None)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance = form.save()
-            instance = form.cleaned_data.get('nome')
-            return redirect(cadastro)
-        return render(request, 'canal_corretor/cad_corretor.html',{'form': form})
+    form = CorretorForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance = form.save()
+        instance = form.cleaned_data.get('nasc')
+        return redirect(cadastro)
+    return render(request, 'canal_corretor/cad_corretor.html',{'form': form})
 
 def cadastro(request):
     form = UserModelForm(request.POST or None)
     context = {'form': form}
-    if request.method == "POST":
-         if form.is_valid():
-            instance = form.save(commit=False)
-            instance = form.save()
-            instance = form.cleaned_data.get('username')
-            return redirect(portal)
-    return render (request, 'canal_corretor/cadastro.html', context)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance = form.save()
+        instance = form.cleaned_data.get('username')
+        return redirect(portal)
+    return render(request, 'canal_corretor/cadastro.html', context)
 
 
 # PROVA
@@ -122,24 +123,26 @@ def prova(request, pk):
 @login_required
 def ep_detail(request, pk):
     eps = get_object_or_404(Empreendimento, pk=pk)
-    return render(request, 'canal_corretor/ep_detail.html',{'ep': ep})
+    return render(request, 'canal_corretor/ep_detail.html',{'eps': eps})
 
 # LISTAR CATEGORIA
 @login_required
 def categoria(request, pk):
     cats = get_object_or_404(Categoria, pk=pk)
-    eps = Empreendimento.objects.all()
     context = {
-	'cats': cats,
-	'eps': eps }
-
+	'cats': cats }
     return render(request,'canal_corretor/categoria.html',context )
-
-# Detalhe da categoria
+# LISTA AS CATEGORIAS DOS EMPREENDIMENTOS
 @login_required
-def cat_detail(request, pk):
-    cats = get_object_or_404(Categoria, pk=pk)
-    return render(request, 'canal_corretor/cat_detail.html', {'cats': cats})
+def cat_ep(request):
+    cats = Categoria.object.all()
+    context = {'cats': cats}
+    return render(request, 'canal_corretor/cat_ep.html', context)
+
+
+
+
+
 
 
 

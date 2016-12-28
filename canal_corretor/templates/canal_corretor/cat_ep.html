@@ -1,0 +1,14 @@
+{% extends 'canal_corretor/base.html'%}
+{% load staticfiles%}
+{% block cat_ep %}
+<div class="container">
+    <div class="row">
+        <div class="menu navbar col-sm-8 col-sm-offset-2">
+            <ul class="nav-pills">
+                <a class="navbar-text" href="{% url 'canal_corretor.views.portal' %}"> <img class="img-responsive" src="{% static 'img/bran.png'%} alt="Logo New Bank"> </a>
+                <a class="navbar-text" href=" {% url 'canal_corretor.views.cat_ep.html'%}<p> Categorias </p> </a>
+               
+            </ul>
+    </div>
+</div>
+{% endblock cat_ep% }

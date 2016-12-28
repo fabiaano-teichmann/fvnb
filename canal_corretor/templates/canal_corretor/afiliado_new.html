@@ -10,77 +10,77 @@
    <span class="clearfix"><br></span>
    <h1 class="lg"> Corretores  Afiliado a Imobiliária </h1> 
 
-  <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="nav-nb">  
+  <form action="{% url 'canal_corretor.views.afiliado_new' %}"  method="POST" class="form-nb">  
     
   {% csrf_token %}
-      <div class="col-md-5 col-md-offset-1">
-        <label>Nome:</label>
+      <div class="col-sm-5 col-sm-offset-1">
+        <label>Nome:(Campo Obrigatório) </label>
         {{form.nome}}
         {{form.mome.error}}
       </div>
-      <div class="col-md-5">
-        <label>Data de Nascimento:</label>
+      <div class="col-sm-5 ">
+        <label>Data de Nascimento:(Campo Obrigatório)</label>
         {{form.nasc}}
         {{form.nasc.error}}
       </div>
-      <div class="col-md-5 col-md-offset-1">
-        <label>Cpf:</label>
+      <div class="col-sm-5 col-sm-offset-1">
+        <label>Cpf: (Campo Obrigatório)</label>
             {{form.cpf}}
         {{form.cpf.error}}
       </div>
-      <div class="col-md-5 ">
-        <label>Creci:</label>
+      <div class="col-sm-5  ">
+        <label>Creci:(Campo Obrigatório) </label>
         {{form.creci}}
         {{form.creci.error}}
       </div>
             
-      <div class="col-md-5 col-md-offset-1">
-       <label>Telefone:</label> 
+      <div class="col-sm-5 col-sm-offset-1">
+          <label>Telefone:(Campo Obrigatório) </label> 
        {{form.telefone}}
        {{form.telefone.error}}
       </div>
-      <div class="col-md-5">
+      <div class="col-sm-5 ">
         <label>Celular:</label>
         {{form.phone}}
         {{form.phone.error}}
       </div>
-      <div class="col-md-5 col-md-offset-1">
-        <label>Email:</label>
+      <div class="col-sm-5 col-sm-offset-1">
+        <label>Email:(Campo Obrigatório) </label>
         {{form.email}}
         {{form.email.error}}
       </div>
-      <div class="col-md-5 ">
-        <label>Endereço: </label>
+      <div class="col-sm-5  ">
+        <label>Endereço:(Campo Obrigatório)  </label>
         {{form.endereco}}
         {{form.endereco.error}}
       </div>  
-      <div class="col-md-5 col-md-offset-1">
-        <label> Bairro: </label>
+      <div class="col-sm-5 col-sm-offset-1">
+       <label> Bairro:(Campo Obrigatório) </label>
         {{form.bairro}}
         {{form.bairro.error}}
       </div>
-      <div class="col-md-5 ">
-          <label> Cidade: </label>
+      <div class="col-sm-5  ">
+          <label> Cidade: (Campo Obrigatório) </label>
         {{form.cidade}}
         {{form.cidade.error}}
       </div>
-      <div class="col-md-5 col-md-offset-1 ">
-        <label>Estado:</label>
+      <div class="col-sm-5 col-sm-offset-1 ">
+        <label>Estado:(Campo Obrigatório)</label>
         {{form.estado}}
         {{form.estado.error}}
       </div>
-      <div class="col-md-5">
-          <label> Cep: </label>
+      <div class="col-sm-5 ">
+          <label> Cep:(Campo Obrigatório) </label>
           {{form.cep}}
           {{fom.cep.erro}}
     </div>
-      <div class="col-md-5 col-md-offset-1">
-        <label>Imobiliaria:</label>
+      <div class="col-sm-5 col-sm-offset-1">
+        <label>Imobiliaria:(Campo Obrigatório)</label>
         {{form.imob}}
         {{form.id_imob.error}}       
       </div>   
       <span class="clearfix"> </span>
-    <div class="col-md-5 col-md-offset-1 ">    
+    <div class="col-sm-5 col-sm-offset-1 ">    
         <span class="clearfix"> </span>
        
          <button class="btn btn-default lg" type="submit">cadastrar</button>

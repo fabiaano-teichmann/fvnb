@@ -7,25 +7,22 @@ from django.contrib.auth.models import User # importa o model da  tabela User qu
 class CorretorForm(forms.ModelForm):
     class Meta:
         model = Corretor
-        fields = ["nome", "nasc", "cpf", "creci","telefone", "email", "site", "phone", "endereco","bairro", "cep" ,"cidade", "estado"  ]
-		#email = forms.ModelChoiceField(queryset=User.objects.all().order_by('id'), widget=forms.Select({'class': 'form-control' })),
-		#id_cargo = forms.ModelChoiceField (queryset=Cargo.objects.all().order_by('id'), widget=forms.Select)
+        fields = ['nome', 'nasc', 'cpf', 'creci', 'telefone', 'phone', 'email', 'site', 'endereco', 'bairro','cep', 'cidade', 'estado']
         widgets = {
             "nome": forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Nome'}),
             "nasc": forms.DateInput(attrs ={'class': 'form-control ','placeholder': 'Data Nascimento'}),
             "cpf": forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'CPF'}),
-            "creci" : forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Creci'}),
+            "creci" : forms.TextInput(attrs ={'class': 'form-control ','placeholder': 'Creci'}),
             "telefone" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Telefone'}),
             "email" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'E-mail'}),
-            "site" :forms.URLInput(attrs ={'class': 'form-control ', 'placeholder': 'Site'}),
+            "site" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Site'}),
             "phone" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Celular'}),
             "endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
             "bairro": forms.TextInput(attrs = {'class':'form-control', 'placeholder': 'Bairro'}),
             "cep" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Cep'}),
             "cidade" :forms.TextInput(attrs ={'class': 'form-control ', 'placeholder': 'Cidade'}),
             "estado":forms.Select(attrs ={'class': 'form-control ', 'placeholder': 'Estado'}),
-
- }
+            }
         error_messages = {
             'nome': {'required': 'Este campo é obrigatório'},
             'nasc': {'required': 'Este campo é obrigatório'},
@@ -33,28 +30,46 @@ class CorretorForm(forms.ModelForm):
             'creci': {'required': 'Este campo é obrigatório'},
             'email': {'Requer': 'O uso de @ e .'},
             'phone': {'required': 'Este campo é obrigatório'},
-            'endereco': {'required': 'Este campo é obrigatório'},
+            'endereco':{'required': 'Este campo é obrigatório'},
             'bairro':{'required': 'Este campo é obrigatório'},
             'cidade': {'required': 'Este campo é obrigatório'},
             'estado': {'required': 'Este campo é obrigatório'},
 
-			}
+
+}
+'''
+        nome = forms.CharField(widget=forms.TextInput(attrs= {'class': 'form-control', 'placeholder': 'Nome'}))
+        nasc = forms.DateField(widget=forms.DateInput(format='%d/%m/%Y'))
+        cpf = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Cpf', 'required': 'True'}) )
+        creci =  forms.CharField(widget=forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Creci', 'required': 'True'}))
+        telefone = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'telefone', 'required': 'False'}) )
+        phone =  forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Celular', 'required': 'True' }) )
+        email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder': ' Email', 'required': 'True'}) )
+        site = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Site', 'required': 'True'}) )
+        endereco = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Endereço', 'required': 'True'}))
+        bairro  = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Bairro', 'required': 'True'}) )
+        cidade = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Cidade', 'required': 'True'})  )
+        cep = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Cep', 'required': 'True'}) )
+        estado = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Estado', 'required': 'True'}) )
+
+'''
 class UserModelForm(forms.ModelForm):
-	class Meta:
-		model = User
-		fields = ['username','email', 'password']
-		#janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
-		widgets = {
-			'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
-			'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'E-mail caso precise redefinir senha'}),
-			'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
+    class Meta:
+        model = User
+        fields = ['username','email', 'password']
+        #janela criada para criar um form personalizado assim posso passar classe tamanho e tamanho
+        widgets = {
+            'username': forms.TextInput(attrs = {'class': 'form-control','placeholder': 'Nome de usuário'}),
+            'email': forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'E-mail caso precise redefinir senha'}),
+            'password': forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Senha'}),
 			}
-		error_messages = {
-			'username': {'required': 'Esse usuário não exite'},
-			'email': {'Required': 'Email tem que possuir @ e ponto'},
-			'password':{ 'required': 'senha Inválida'},
+        error_messages = {
+            'username': {'required': 'Esse usuário não exite'},
+            'email': {'Required': 'Email tem que possuir @ e ponto'},
+            'password':{ 'required': 'senha Inválida'},
 
 		}
+'''
 #IMOBILIARIA
 class ImobiliariaForm(forms.ModelForm):
 	class Meta:
