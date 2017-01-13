@@ -23,6 +23,29 @@
 
 .save {
     float: right;
+
+
+}
+/* Inicia classe especificamente da New Bank atenção não copie esse codigo desse brilhante programador kkkkkk só zueira */
+.atab-nb {
+    text-transform: uppercase;
+    color: #86744f;
+
+}
+.ep-nb {
+    position: relative;
+    top: 0.2em;
+    
+}
+.tab-nb {
+    position: relative;
+    top: 2em;
+
+}
+.show-nb {
+    
+    position: relative;
+    top: 5.5em;
 }
 .cont-nb {
     right: 0.2em;

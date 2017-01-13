@@ -6,29 +6,30 @@
           <img class="img-reponsive logoimg "  src="{% static 'img/brand.png'%}" alt="Logo New Bank">
           <span class="clearfix"><br></span>
           <h1 class="lg">Cadastro Corretores</h1>
-
-            <form action="{% url 'canal_corretor.views.corretor_new' %}" method="POST" class="form-nb">
-            
+        
+<form action="{% url 'canal_corretor.views.corretor_new' %}" method="POST" class="form-nb" name="form" >  
+                                                                                                           
             {% csrf_token %}
             <div class="col-md-5 col-md-offset-1">
          <label>Nome: (Campo Obrigatório) </label>
             {{form.nome}}
-            {{form.nome.error}}
+
           </div>
          <div class="col-md-5"> 
             <label>Data de Nascimento: (Campo Obrigatório)</label>
             {{form.nasc}}
-            {{form.nasc.error}}
+            {{form.nasc.error_messages|striptags}}
+
           </div>
          <div class="col-md-5 col-md-offset-1"> 
             <label>Cpf:(Campo Obrigatório)  </label>
             {{form.cpf}}
-            {{form.cpf.error}}
+            {{form.cpf.error|striptags}}
                </div>
          <div class="col-md-5 "> 
            <label>Creci:(Campo Obrigatório) </label>
             {{form.creci}}
-            {{form.creci.error}}
+            {{form.creci.error|striptags}}
             </div>
          <div class="col-md-5 col-md-offset-1"> 
            <label>Telefone:</label> 
@@ -37,50 +38,53 @@
           <div class="col-md-5 "> 
             <label>Celular:(Campo Obrigatório) </label>
             {{form.phone}}
-            {{form.phone.error}}
+            {{form.phone.error|striptags}}
           </div>
           <div class="col-md-5 col-md-offset-1">
-              <label> Email: (Campo Obrigatório)     </label>
+              <label> Email: (Campo Obrigatório) </label>
               {{form.email}}
-              {{form.email.error}}
+
+
           </div>    
           <div class="col-md-5 "> 
 
             <label>Site </label>
             {{form.site}}
-            {{form.site.error}}
+            {{form.site.error|striptags}}
           </div>
-          <div class="col-md-5 col-md-offset-1 "> 
+          <div class="col-md-5 col-md-offset-1  "> 
+
                 <label>Endereço:(Campo Obrigatório)  </label>
             {{form.endereco}}
-            {{form.endereco.error}}
+            {{form.endereco.error|striptags}}
+
           </div>
           <div class="col-md-5 "> 
-            <label>CEP: (Campo Obrigatório) </label>
+            <label>CEP:  </label>
             {{form.cep}}
           </div>
           <div class="col-md-5 col-md-offset-1">    
             <label>Cidade:(Campo Obrigatório)   </label>
             {{form.cidade}}
-            {{form.cidade.error}}
+            {{form.cidade.error|striptags}}
             
           </div>
-          <div class="col-md-5"> 
+          <div class="col-md-5">  
             <label>Bairro:(Campo Obrigatório)   </label>
             {{form.bairro}}
-            {{form.bairro.error}}
+            {{form.bairro.error|striptags}}
           </div>
           <div class="col-md-5 col-md-offset-1 ">
 
             <label> Estado:(Campo Obrigatório) </label>
             {{form.estado}}
-            {{form.estado.error}}
+            {{form.estado.error|striptags}}
           </div>  
           <span class="clearfix"> </span> 
           <div class="col-md-5 col-md-offset-1 ">
                  <button class="btn btn-default lg" type="submit"> Cadastrar </button>
-            </div>
-            </form>       
-
+          </div>
+     </form>       
+</div>
 
 {% endblock cad_corretor %}

@@ -52,7 +52,7 @@ escolha = (
 class Corretor(models.Model):
 	class Meta:
 		verbose_name = 'Corretore'
-	nome = models.CharField(verbose_name='Nome*:',max_length=150, blank=False)
+	nome = models.CharField(help_text='Preencha o campo nome.',verbose_name='Nome*:',max_length=150, blank=False)
 	nasc = models.DateField(verbose_name="Data de nascimento*:")
 	cpf = models.CharField(verbose_name='Cpf:', blank=False, max_length=16)
 	creci =  models.CharField(verbose_name='Creci Físico*:', blank=False, max_length=12)
@@ -99,7 +99,7 @@ class Imobiliaria(models.Model):
     razao = models.CharField(max_length=200 ,verbose_name=' Razão social  *:', blank=False)
     creci_j = models.CharField(max_length=6, verbose_name='Creci Jurídico *:', blank=False)
     nome = models.CharField(verbose_name='Nome Fantasia *:', blank=False, max_length=150)
-    cnpj = models.CharField(verbose_name=' Cnpj *:', blank=False, max_length=14)
+    cnpj = models.CharField(verbose_name=' Cnpj *:', blank=False, max_length=30)
     endereco = models.CharField(max_length=254, verbose_name='Endereço *:',blank=False )
     bairro = models.CharField(verbose_name='Bairro *: ', max_length=100, blank=True)
     cidade = models.CharField(verbose_name='Cidade *: ',blank=False,max_length=200)
@@ -164,7 +164,7 @@ class Tabela(models.Model):
 class Planta(models.Model):
 	nome = models.CharField(max_length=100,verbose_name='Nome do arquivo', blank=False)
 	file = models.FileField(upload_to='static/doc',verbose_name='Arquivos ',blank=True)
-	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT)
+	ep_id = models.ForeignKey("Empreendimento", on_delete=models.PROTECT,related_name='planta')
 
 	def __str__(self):
 		return(self.nome)

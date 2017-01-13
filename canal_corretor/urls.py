@@ -11,7 +11,7 @@ url(r'^corretor/new$', views.corretor_new, name='corretor_new'),# cadastro dos d
 url(r'^imobiliaria/new$', views.imobiliaria_new, name="imobiliaria_new"),# cadastro de imobiliarias
 url(r'^imobiliaria/corretor/new$', views.afiliado_new, name="afiliado_new"), # corretores afiliados que se cadastrarm no site
 #visualização de empreendimentos
-url(r'^categorias/(?P<pk>[0-9]+)/$', views.categoria, name="categoria"), # lista as categorias do 
+#url(r'^categorias/(?P<pk>[0-9]+)/$', views.categoria, name="categoria"), # lista as categorias do 
 url(r'^portal/$', views.portal, name="portal"), # portal do site é a página de boas vindas e lista os empreendimentos
 url(r'^categoria/empreendimentos/$', views.cat_ep, name="cat_ep"),
 url(r'^detalhes/empreendimento/(?P<pk>[0-9]+)/$', views.ep_detail, name="ep_detail"), #mostra o emprendimentos com todos detalhes
