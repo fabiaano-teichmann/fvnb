@@ -5,33 +5,37 @@ from django.contrib.auth.models import User # importa o model da  tabela User qu
 from django.core.exceptions import ValidationError
 #CORRETOR 
 class CorretorForm(forms.ModelForm):
-    nome = forms.CharField( help_text='Preencha o campo nome.', error_messages={'required': 'Preencha o campo corretamente'}, widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'Nome'}))
-    nasc = forms.DateField(['%d/%m/%Y'], error_messages={'required': 'Prencha corretamente o campo data'}, widget=forms.DateInput(attrs={'class':'form-control','placeholder': 'Data de nascimento'}))
-    cpf = forms.CharField(help_text='Preencha o campo cpf.' ,required=True, error_messages={'required': 'Preencha o campo'}, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Cpf'}))
-    creci = forms.CharField(help_text='Digite seu creci.', required=True, error_messages={'required': 'Preencha o creci'}, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'creci'}))
-    telefone = forms.CharField( help_text='Preencha o campo corretamente.', required=False, error_messages={'required': 'Preencha o campo'}, widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'telefone'}))
-    phone = forms.CharField(required=True, error_messages={'required': 'Preencha o campo'},widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'celular'}))
-    email = forms.EmailField(required=True, error_messages={'required': 'Seu email está incorreto'},widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder': ' Email', 'ng-model':'email'}))
-    site = forms.CharField(required=False, error_messages={'required':'Preencha corretanente o campo do site'},widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Site'}))
-    endereco = forms.CharField(required=True, error_messages={'required': 'Preencha o campo'}, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Endereço'}))
-    bairro  = forms.CharField(required=True, error_messages={'required': 'Preencha o campo'},widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Bairro'}))
-    cidade = forms.CharField(required=True, error_messages={'required': 'Preencha o campo'}, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Cidade'}) )
-    cep = forms.CharField(required=True, error_messages={'required': 'Preencha o campo'}, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Cep'}))
+
     class Meta:
         model = Corretor
-        fields = ['nome', 'nasc', 'cpf', 'creci', 'telefone', 'phone', 'email', 'site', 'endereco', 'bairro','cep', 'cidade', 'estado']
+        fields = ['nome', 'nasc', 'cpf', 'creci', 'telefone', 'phone', 'email', 'site', 'endereco', 'bairro','cep', 'cidade', 'estado']  
+        widgets = {
+            'nome':forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nome'}),
+            'nasc': forms.DateInput(attrs = {'class': 'form-control', 'placeholder':'Data Nascimento' }),
+            'cpf' : forms.TextInput( attrs = {'class': 'form-control',  'placeholder': 'Cpf'}),
+            'creci': forms.TextInput(attrs= {'class': 'form-control' , 'placeholder': 'Creci'}),
+            'telefone': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Telefone'}),
+            'phone': forms.TextInput(attrs = {'class': 'form-control' , 'placeholder': 'Celular'}),
+            'email': forms.EmailInput(attrs = {'class': 'form-control' , 'placeholder': 'E-mail'}),
+            'endereco':forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+            'bairro' :forms.TextInput(attrs = {'class':'form-control', 'placeholder': 'Bairro'}),
+            'cidade' :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
+            'cep': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Cep'}),
+            'estado': forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
+            'site': forms.TextInput(attrs ={' class': 'form-control', 'placeholder': 'Site'}),
+            }
 
-    def clean_nome(self):
-        nome = self.cleaned_data['nome']
-        if len(nome) < 10:
-            raise forms.ValidationError('Digite seu nome completo')
-        return (nome)
+        def clean_nome(self):
+            nome = self.cleaned_data['nome']
+            if len(nome) < 10:
+                raise forms.ValidationError('Digite seu nome completo')
+            return (nome)
 
-    def clean_cpf(self):
-        cpf = self.cleaned_data['cpf']
-        if len(cpf) < 10:
-            raise forms.ValidationError('Digite seu cpf')
-        return (cpf)
+        def clean_cpf(self):
+            cpf = self.cleaned_data['cpf']
+            if len(cpf) < 10:
+                raise forms.ValidationError('Digite seu cpf')
+            return (cpf)
 
 class UserModelForm(forms.ModelForm):
     class Meta:
@@ -120,71 +124,39 @@ class ProvaForm(forms.ModelForm):
 		}
 
 
-
-
-
 #CORRETOR AFILIADO
 
 class AfiliadoForm(forms.ModelForm):
-	class Meta:
-		model = Afiliado
-		fields = [
-		"nome","nasc", "cpf", "creci","telefone","phone", "email","endereco","bairro", "cidade","cep", "estado", "imob"
-		]
-		widgets = {
-			'nome': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nome'}),
-			'nasc': forms.DateInput(attrs = {'class': 'form-control', 'placeholder':'Data Nascimento' }),
-			'cpf' : forms.TextInput( attrs = {'class': 'form-control',  'placeholder': 'Cpf'}),
-			'creci': forms.TextInput(attrs= {'class': 'form-control' , 'placeholder': 'Creci'}),
-			'telefone': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Telefone'}),
-			'phone': forms.TextInput(attrs = {'class': 'form-control' , 'placeholder': 'Celular'}),
-			'email': forms.EmailInput(attrs = {'class': 'form-control' , 'placeholder': 'E-mail'}),
-                        "endereco":forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
-                        "bairro" :forms.TextInput(attrs = {'class':'form-control', 'placeholder': 'Bairro'}),
-                        "cidade" :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
-                        "cep" : forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Cep'}),
-                        "estado":forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
-                        "imob": forms.Select(attrs={'class':'form-control', 'placeholder': 'imobiliaria'}),
-		}
-		error_messages ={
 
-			'nome': {
-				'required': 'Este campo é obrigatório'
-
-			},
-			'nasc': {
-				'required': 'Este campo é obrigatório',
-				'required': 'Digite com as 00/00/0000',
-			},
-			'cpf' :{
-				'required': 'Este campo é obrigatório'
-			},
-			'creci':{
-				'required': 'Este campo é obrigatório'
-			},
-			'telefone':{
-				'required': 'Este campo é obrigatório'
-			},
-			'email':{
-				'required': 'Este campo é obrigatório'
-			},
-			'endereco': {
-				'required': 'Este campo é obrigatório'
-				},
-			'bairro': {
-				'required': 'Este campo é obrigatório'
-				},
-			'cidade': {
-				'required': 'Este campo é obrigatório'
-				},
-                        'imob':{ 'required': 'Este campo é requirido'
-                            }
+    class Meta:
+        model = Afiliado
+        fields = [ "nome","nasc", "cpf", "creci","telefone","phone", "email","endereco","bairro", "cidade","cep", "estado", "imob"]
+        widgets = {
+            'nome': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nome'}),
+            'nasc': forms.DateInput(attrs = {'class': 'form-control', 'placeholder':'Data Nascimento' }),
+            'cpf' : forms.TextInput( attrs = {'class': 'form-control',  'placeholder': 'Cpf'}),
+            'creci': forms.TextInput(attrs= {'class': 'form-control' , 'placeholder': 'Creci'}),
+            'telefone': forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Telefone'}),
+            'phone': forms.TextInput(attrs = {'class': 'form-control' , 'placeholder': 'Celular'}),
+            'email': forms.EmailInput(attrs = {'class': 'form-control' , 'placeholder': 'E-mail'}),
+            'endereco':forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Endereço'}),
+            'bairro' :forms.TextInput(attrs = {'class':'form-control', 'placeholder': 'Bairro'}),
+            'cidade' :forms.TextInput(attrs ={'class': 'form-control', 'placeholder': 'Cidade'}),
+            'cep' : forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Cep'}),
+            'estado':forms.Select(attrs ={'class': 'form-control', 'placeholder': 'Estado'}),
+            'imob': forms.Select(attrs={'class':'form-control', 'placeholder': 'imobiliaria'}),
+	}
+        error_messages ={
+            'nome': {'required': 'Este campo é obrigatório'},
+            'nasc': {'required': 'Digite com as 00/00/0000',},
+            'cpf' :{'required': 'Este campo é obrigatório'},
+            'creci':{'required': 'Este campo é obrigatório'},
+            'telefone':{'required': 'Este campo é obrigatório'},
+            'email':{'required': 'Este campo é obrigatório'},
+            'endereco': {'required': 'Este campo é obrigatório'	},
+            'bairro': {'required': 'Este campo é obrigatório'},
+            'cidade': {	'required': 'Este campo é obrigatório'	},
+            'imob':{ 'required': 'Este campo é requirido' },
 
 
-                        }
-
-
-
-
-
-
+         }

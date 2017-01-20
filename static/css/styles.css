@@ -35,7 +35,11 @@
 .ep-nb {
     position: relative;
     top: 0.2em;
-    
+     
+}
+.p-nb {
+    color: #86744f;
+    font-size: 1.2em;
 }
 .tab-nb {
     position: relative;
@@ -156,7 +160,12 @@
 .label-nb{
     font-size: 1.5em;
     color:#86744f;
-    font-family: 
+
+}
+.title-nb {
+    text-align: center;
+    color: #86744f;
+    
 }
 .titulo{
     font-weight: 900 !important;
@@ -176,10 +185,16 @@
 .lg {
    text-align: center;
    color: #86744f;
-   font-weight:800;
    position : relative;
-   top: 1.5em;
+   top: 2em;
 }
+.lg-btn {
+    text-align:center;
+    color: #86744f;
+    position: relative;
+    top: 3em;
+}
+
 .lg-nb {
     text-align:center;
     color: #86744f;
@@ -201,7 +216,7 @@
 .plink {
     font-size: 1.0em;
     text-transform: uppercase;
-    padding-right: 5px;
+    margin-left: 3.2em; 
  }
 .menu {
     position: relative;

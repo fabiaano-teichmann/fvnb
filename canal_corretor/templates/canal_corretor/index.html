@@ -8,27 +8,29 @@
 		<img class="img-reponsive logoimg" src="{% static 'img/brand.png'%}" alt="Logo New Bank">
         <h1 class="lg"> Força de Vendas New Bank </h1> 
 	</div>
-         	
+    <div class="col-sm-10 col-sm-offset-1" >         	
 	    <form action="{% url 'canal_corretor.views.do_login' %}" method="post" class="form-nb">
 	    
 	        	{% csrf_token %}
 	        	<br>
                 <div class="col-sm-6 col-sm-offset-3"> 
-	            <input type="text" name="username" placeholder="Usuário" class="form-control ">
-	        	 <br>
+	                 <input type="text" name="username" placeholder="Usuário" class="form-control ">
+	        	     <br>
                 </div>
                 <div class="col-sm-6 col-sm-offset-3"> 
-	            <Input type="password" name="password" placeholder="Senha" class="form-control ">
-	        	<br>
+	                <input type="password" name="password" placeholder="Senha" class="form-control ">
+	        	    <br>
                 </div>
-                <div class="col-sm-6 col-sm-offset-3"> 
-	          <button class="btn btn-default lg" type="submit">Login</button>
+                <div class="col-sm-6 col-sm-offset-3">
+                     <br>
+                    <button class="btn btn-default lg-btn" type="submit">Login</button>
                </div>
     </form>
+    </div>
     <span class="clearfix"> </span>
     <br>
-   <div class="nav"> 
-	 <ul class="nav nav-pills col-sm-6 col-sm-offset-3">
+   <div class="nav col-sm-10 col-sm-offset-3 "> 
+	 <ul class="nav nav-pills col-sm-6 ">
 	    <a class="navbar-text plink"  href="{% url 'canal_corretor.views.corretor_new' %}"><p class="plink"> Cadastro Corretor </p></a>    		
     	<a  class=" navbar-text plink" href="{% url 'canal_corretor.views.imobiliaria_new'%}"> Cadastro Imobiliária</a></li>
     </ul>  

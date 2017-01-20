@@ -20,9 +20,11 @@ def do_login(request):
 """
 @login_required
 def portal(request):
-     eps = Empreendimento.objects.all()
+    eps = Empreendimento.objects.all()
+    if not request.user.is_authenticated:
      #aplicar um filtro para que possa redirecionar 
-     return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
+        return  redirect('%s?next=%s' % 'canal_corretor/index.html')
+    return render(request, 'canal_corretor/ep_list.html',{'eps': eps})
 
 def do_logout(request):
     logout(request)
@@ -55,15 +57,9 @@ def afiliado_new(request):
                 instance = form.save()
                 instance = form.cleaned_data.get('nome')
                 return render(request, 'canal_corretor/enviado.html')
-            return render(request, 'canal_corretor/afiliado_new.html', context) 
+    return render(request, 'canal_corretor/afiliado_new.html', context) 
         # AUTONOMO
 
-        """
-        @login_required
-        def corretorafiliado_new(request):
-            form = CorretorAfiliadoForm(request.POST or None)
-            context = {}
-            """
 # Cadastro de corretor 
 def corretor_new(request):
     form = CorretorForm(request.POST or None)
@@ -99,21 +95,32 @@ def prova(request, pk):
         instance = form.clearned_data.get('pergunta')
         return redirect(portal)
     return render(request, 'canal_corretor/prova.html',{'form': form})
-
+# PAGINA DE ENTRATADA DO PORTAL DO CORRETOR
 def ep_detail(request, pk):
     eps = get_object_or_404(Empreendimento, pk=pk)
     ptas = eps.planta.all()
-    context =  { 'eps': eps,  'ptas': ptas}
+    tbs = eps.tabela.all()
+    imgs = eps.image.all()
+    vds = eps.video.all()
+    mts = eps.material.all()
+    context =  { 'eps': eps, 'ptas': ptas, 'tbs': tbs, 'imgs': imgs, 'vds': vds, 'mts': mts}
     return render(request, 'canal_corretor/ep_detail.html', context)
 
-# LISTAR CATEGORIA
+#lISTA AS CATEGORIAS
 @login_required
-def cat_ep(request, pk):
+def cat_list(request):
+    cats = Categoria.objects.all()
+    context = { 'cats': cats}
+    return render(request, 'canal_corretor/cat_list.html', context)
+
+# DETALHAR  CATEGORIA
+@login_required
+def cat_detail(request, pk):
     cats = get_object_or_404(Categoria, pk=pk)
-    context = {
-	'cats': cats }
+    eps = categoria.empreendimento.all()
+    context = {	'cats': cats, 'eps':eps }
     return render(request,'canal_corretor/categoria.html',context )
-# LISTA AS CATEGORIAS DOS EMPREENDIMENTOS
+
 
 
 
